@@ -130,7 +130,7 @@ $(OUTPUT_DIR)/man/%.html: blogc/man/%.ronn Makefile
 		$(RONN) \
 			--html \
 			--pipe \
-			--organization "$(AUTHOR)" \
+			--organization $(AUTHOR_NAME) \
 			--manual "blogc Manual" \
 			--style man,toc \
 			$< > $@
