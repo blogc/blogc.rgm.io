@@ -1,4 +1,14 @@
-TITLE: Hello World!
-DATE: 2015-04-25 12:00:00
+TITLE: Hello, World!
+DATE: 2015-06-06 06:00:00
 -------------------------
-Hello World!
+Hello, World!
+
+This is the first post in blogc's website, that is obviously the first website
+created with blogc itself! \\o/
+
+So, it seems that blogc is ready for a `0.1` release.
+
+Stay tuned!
+
+Cheers,  
+Rafael
