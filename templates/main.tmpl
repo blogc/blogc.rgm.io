@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ SITE_TAGLINE }}">
+    <meta name="author" content="{{ AUTHOR }}">
+    <title>{{ SITE_TITLE }}{% block entry %} - {% ifdef TITLE %}{{ TITLE }}{% endif %}{% ifndef TITLE %}{{ SITE_TAGLINE }}{% endif %}{% endblock %}</title>
+    <link href="//cdn.jsdelivr.net/bootswatch/3.3.2/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ BASE_URL }}/assets/custom.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="{{ BASE_URL }}/atom.xml" rel="alternate" type="application/atom+xml" title="{{ SITE_TITLE }}" />
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ BASE_URL }}/">{{ SITE_TITLE }}</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li{% if MENU == "home" %} class="active"{% endif %}><a href="{{ BASE_URL }}/">Home</a></li>
+            <li{% if MENU == "news" %} class="active"{% endif %}><a href="{{ BASE_URL }}/news/">News</a></li>
+            <li><a href="https://github.com/rafaelmartins/blogc">Development</a></li>
+            <li><a href="https://github.com/rafaelmartins/blogc/releases">Downloads</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          {% block listing %}
+          <article>
+            <h3><a href="{{ BASE_URL }}/news/{{ FILENAME }}/">{{ TITLE }}</a></h3>
+            {{ CONTENT }}
+            <div class="metadata well well-sm">
+              Author: <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a><br />
+              {% ifdef DATE_FORMATTED %}Published on: {{ DATE_FORMATTED }}<br />{% endif %}
+              <a href="{{ BASE_URL }}/news/{{ FILENAME }}/">Permalink</a>
+            </div>
+          </article>
+          {% endblock %}
+          {% block listing_once %}
+          <ul class="pager">
+            {% ifdef PREVIOUS_PAGE %}
+            <li class="previous">
+              <a href="{{ BASE_URL }}/news/page/{{ PREVIOUS_PAGE }}/">&larr; Newer</a>
+            </li>
+            {% endif %}
+            {% ifdef NEXT_PAGE %}
+            <li class="next">
+              <a href="{{ BASE_URL }}/news/page/{{ NEXT_PAGE }}/">Older &rarr;</a>
+            </li>
+            {% endif %}
+          </ul>
+          {% endblock %}
+          {% block entry %}
+          <article>
+            <h3>{{ TITLE }}</h3>
+            {{ CONTENT }}
+            {% ifdef IS_POST %}
+            <div class="metadata well well-sm">
+              Author: <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a><br />
+              {% ifdef DATE_FORMATTED %}Published on: {{ DATE_FORMATTED }}<br />{% endif %}
+              <a href="{{ BASE_URL }}/news/{{ FILENAME }}/">Permalink</a>
+            </div>
+            {% endif %}
+          </article>
+          {% endblock %}
+        </div>
+        <div class="col-md-3 sidebar">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">Documentation</h4>
+            </div>
+            <div class="list-group">
+              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc.1.html"><code>blogc(1)</code></a>
+              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-source.7.html"><code>blogc-source(7)</code></a>
+              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-template.7.html"><code>blogc-template(7)</code></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="copyright text-muted">
+            &copy; 2015 <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a>.
+            Project released under a <a href="https://github.com/rafaelmartins/blogc/blob/master/LICENSE">BSD 3 clause license</a>.</p>
+        </div>
+      </div>
+    </div>
+    <script src="//cdn.jsdelivr.net/g/jquery@2.1.4,bootstrap@3.3.4"></script>
+  </body>
+</html>
