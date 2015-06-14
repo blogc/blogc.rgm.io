@@ -17,19 +17,21 @@
     <p>blogc was designed with simplicity in mind. If the implamentation of
     some feature requires a very complex change, it is just discarded.</p>
     <h4>blogc is powerful...</h4>
-    <p>Based on the flexibility of its template engine, even if considering
+    <p>Based on the flexibility of its template engine, even considering
     that it just implements the basic features of a template engine, blogc
     can be used to generate almost any blog/website resource.</p>
     <h4>blogc is compatible with <code>make</code>...</h4>
     <p>blogs was designed to be used with <code>make</code>. It is stateless
-    (no global state is shared between process calls, and each call always
-    results on a single output file), and works pretty much like a "real"
-    source code compiler.</p>
+    and idempotent (no global state is shared between process calls, and each
+    call with the same arguments will always result in the same output), and
+    works pretty much like a "real" source code compiler.</p>
   </div>
   <div class="col-md-6">
     <h4>blogc is portable...</h4>
-    <p>Even if it does not seems to work on Windows, blogc may run on any
-    Unix-like operating system. Patches for portability are always welcome and
+    <p>blogc is tested on Linux and FreeBSD, but the code should work on any
+    Unix-like operating system. We have plans on supporting Windows, and you
+    may be able to get it running there with Cygwin or MSYS, but usability
+    can be heavily improved. Patches for portability are always welcome and
     have high priority.</p>
     <h4>blogc is self-contained...</h4>
     <p>blogc just depends on a libc. No external libraries required at all.

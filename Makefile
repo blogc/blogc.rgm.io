@@ -149,4 +149,4 @@ deploy: all
 clean:
 	rm -rf "$(OUTPUT_DIR)"
 
-.PHONY: all clean
+.PHONY: all deploy clean
