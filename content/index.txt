@@ -30,9 +30,8 @@
     <h4>blogc is portable...</h4>
     <p>blogc is tested on Linux and FreeBSD, but the code should work on any
     Unix-like operating system. We have plans on supporting Windows, and you
-    may be able to get it running there with Cygwin or MSYS, but usability
-    can be heavily improved. Patches for portability are always welcome and
-    have high priority.</p>
+    may be able to get it running there with Cygwin or MSYS. Patches for
+    portability are always welcome and have high priority.</p>
     <h4>blogc is self-contained...</h4>
     <p>blogc just depends on a libc. No external libraries required at all.
     The test suite (yes, blogc comes with a somewhat complete test suite!)
