@@ -4,22 +4,23 @@
     <code>blogc(1)</code> is a blog compiler. It converts source
     files and templates into blog/website resources.
   </p>
-  <!--<p>
-    <a class="btn btn-lg btn-success" href="/news/" role="button">
+  <p>
+    <a class="btn btn-success" href="/news/" role="button">
       Read latest news
     </a>
-  </p>-->
+  </p>
 </div>
 
 <div class="row">
   <div class="col-md-6">
     <h4>blogc is simple...</h4>
-    <p>blogc was designed with simplicity in mind. If the implamentation of
-    some feature requires a very complex change, it is just discarded.</p>
+    <p>blogc was designed with simplicity in mind. If the implementation of
+    some feature requires a very complex change, it is discarded.</p>
     <h4>blogc is powerful...</h4>
     <p>Based on the flexibility of its template engine, even considering
     that it just implements the basic features of a template engine, blogc
-    can be used to generate almost any blog/website resource.</p>
+    can be used to generate almost any blog/website resource, including atom
+    feeds and sitemaps.</p>
     <h4>blogc is compatible with <code>make</code>...</h4>
     <p>blogs was designed to be used with <code>make</code>. It is stateless
     and idempotent (no global state is shared between process calls, and each
@@ -42,3 +43,50 @@
     with <code>make</code> and similar development tools.</p>
   </div>
 </div>
+
+### Frequently Asked Questions
+
+#### Is this a blog engine?
+
+No, it is just a blog compiler. It will only build one file at once, and does
+not know anything about the other files that needs to be built to get a full
+blog working. This is a job for a build tool like ``make``.
+
+#### What is its markup language?
+
+blogc comes with its own markup language, see
+[blogc-source(7)](./man/blogc-source.7.html). The language is quite similar to
+John Gruber's Markdown, but differs in some aspects.
+
+#### But why not just support Markdown?
+
+While the blogc markup language is quite simple, we have plans to support
+advanced features that are not part of Markdown, like something similar
+to [reStructuredText directives](http://docutils.sourceforge.net/docs/ref/rst/directives.html).
+Also, this project is an experiment, and one of the targets of the experiment
+is the markup language.
+
+#### How can I get started with blogc?
+
+You should install it from [github](https://github.com/rafaelmartins/blogc) or
+from a [stable release](https://github.com/rafaelmartins/blogc/releases). It
+is a standard autotools project, that can be built with ``./configure && make
+&& make install``.
+
+There's also a Git repository with an example blog:
+[[https://github.com/rafaelmartins/blogc-example]]
+
+Feel free to clone it, remove ``.git`` and start your brand new blog.
+
+The example repository uses GNU Make. You should be able to write a Makefile
+that only uses POSIX features, and get it working with any ``make``
+implementation, but our example uses lots of GNU features. This should be
+fixed in future.
+
+#### I don't like ``make``, what can I do about it?
+
+You are free to use any other build tool you like. You can even use something
+like ``grunt``, if you really want. blogc is a command-line application, like
+any other. Anything that can call command-line tools should work just fine.
+
+Our example repository uses GNU Make, though.
