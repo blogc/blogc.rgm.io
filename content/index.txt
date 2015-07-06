@@ -68,13 +68,13 @@ is the markup language.
 
 #### How can I get started with blogc?
 
-You should install it from [github](https://github.com/rafaelmartins/blogc) or
-from a [stable release](https://github.com/rafaelmartins/blogc/releases). It
+You should install it from [github](https://github.com/blogc/blogc) or
+from a [stable release](https://github.com/blogc/blogc/releases). It
 is a standard autotools project, that can be built with ``./configure && make
 && make install``.
 
 There's also a Git repository with an example blog:
-[[https://github.com/rafaelmartins/blogc-example]]
+[[https://github.com/blogc/blogc-example]]
 
 Feel free to clone it, remove ``.git`` and start your brand new blog.
 
