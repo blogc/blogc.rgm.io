@@ -32,6 +32,7 @@ MANPAGES = \
 BLOGC ?= $(shell which blogc)
 INSTALL ?= $(shell which install)
 RONN ?= $(shell which ronn)
+GIT ?= $(shell which git)
 GITHUB_PAGES_PUBLISH ?= $(shell which github-pages-publish)
 OUTPUT_DIR ?= _build
 BASE_DOMAIN ?= http://blogc.org
@@ -61,7 +62,11 @@ LAST_PAGE = $(shell $(BLOGC_COMMAND) \
 	-l \
 	$(addprefix content/news/, $(addsuffix .txt, $(POSTS))))
 
-all: \
+all:
+	$(GIT) submodule update --init
+	$(MAKE) all-local
+
+all-local: \
 	$(OUTPUT_DIR)/index.html \
 	$(OUTPUT_DIR)/news/index.html \
 	$(OUTPUT_DIR)/atom.xml \
@@ -149,4 +154,4 @@ deploy: all
 clean:
 	rm -rf "$(OUTPUT_DIR)"
 
-.PHONY: all deploy clean
+.PHONY: all all-local deploy clean
