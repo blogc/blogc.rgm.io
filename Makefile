@@ -62,11 +62,7 @@ LAST_PAGE = $(shell $(BLOGC_COMMAND) \
 	-l \
 	$(addprefix content/news/, $(addsuffix .txt, $(POSTS))))
 
-all:
-	$(GIT) submodule update --init
-	$(MAKE) all-local
-
-all-local: \
+all: \
 	$(OUTPUT_DIR)/index.html \
 	$(OUTPUT_DIR)/news/index.html \
 	$(OUTPUT_DIR)/atom.xml \
@@ -130,7 +126,7 @@ $(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl
 		-t templates/main.tmpl \
 		$<
 
-$(OUTPUT_DIR)/man/%.html: blogc/man/%.ronn
+$(OUTPUT_DIR)/man/%.html: content/man/%.ronn
 	$(INSTALL) -d -m 0755 $(shell dirname $@) && \
 		$(RONN) \
 			--html \
