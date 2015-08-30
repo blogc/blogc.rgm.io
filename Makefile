@@ -74,7 +74,7 @@ all: \
 	$(addprefix $(OUTPUT_DIR)/man/, $(addsuffix .html, $(MANPAGES))) \
 	$(NULL)
 
-$(OUTPUT_DIR)/news/index.html: $(addprefix content/news/, $(addsuffix .txt, $(POSTS))) templates/main.tmpl
+$(OUTPUT_DIR)/news/index.html: $(addprefix content/news/, $(addsuffix .txt, $(POSTS))) templates/main.tmpl Makefile
 	$(BLOGC_COMMAND) \
 		-D DATE_FORMAT=$(DATE_FORMAT) \
 		-D FILTER_PAGE=1 \
@@ -85,7 +85,7 @@ $(OUTPUT_DIR)/news/index.html: $(addprefix content/news/, $(addsuffix .txt, $(PO
 		-t templates/main.tmpl \
 		$(addprefix content/news/, $(addsuffix .txt, $(POSTS)))
 
-$(OUTPUT_DIR)/news/page/%/index.html: $(addprefix content/news/, $(addsuffix .txt, $(POSTS))) templates/main.tmpl
+$(OUTPUT_DIR)/news/page/%/index.html: $(addprefix content/news/, $(addsuffix .txt, $(POSTS))) templates/main.tmpl Makefile
 	$(BLOGC_COMMAND) \
 		-D DATE_FORMAT=$(DATE_FORMAT) \
 		-D FILTER_PAGE=$(shell echo $@ | sed -e 's,^$(OUTPUT_DIR)/news/page/,,' -e 's,/index\.html$$,,') \
@@ -96,7 +96,7 @@ $(OUTPUT_DIR)/news/page/%/index.html: $(addprefix content/news/, $(addsuffix .tx
 		-t templates/main.tmpl \
 		$(addprefix content/news/, $(addsuffix .txt, $(POSTS)))
 
-$(OUTPUT_DIR)/atom.xml: $(addprefix content/news/, $(addsuffix .txt, $(POSTS))) templates/atom.tmpl
+$(OUTPUT_DIR)/atom.xml: $(addprefix content/news/, $(addsuffix .txt, $(POSTS))) templates/atom.tmpl Makefile
 	$(BLOGC_COMMAND) \
 		-D DATE_FORMAT=$(DATE_FORMAT_ATOM) \
 		-D FILTER_PAGE=1 \
@@ -109,7 +109,7 @@ $(OUTPUT_DIR)/atom.xml: $(addprefix content/news/, $(addsuffix .txt, $(POSTS))) 
 $(OUTPUT_DIR)/news/%/index.html: MENU = news
 $(OUTPUT_DIR)/news/%/index.html: IS_POST = 1
 
-$(OUTPUT_DIR)/%/index.html: content/%.txt templates/main.tmpl
+$(OUTPUT_DIR)/%/index.html: content/%.txt templates/main.tmpl Makefile
 	$(BLOGC_COMMAND) \
 		-D DATE_FORMAT=$(DATE_FORMAT) \
 		-D MENU=$(MENU) \
@@ -118,7 +118,7 @@ $(OUTPUT_DIR)/%/index.html: content/%.txt templates/main.tmpl
 		-t templates/main.tmpl \
 		$<
 
-$(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl
+$(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl Makefile
 	$(BLOGC_COMMAND) \
 		-D DATE_FORMAT=$(DATE_FORMAT) \
 		-D MENU=home \
@@ -126,7 +126,7 @@ $(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl
 		-t templates/main.tmpl \
 		$<
 
-$(OUTPUT_DIR)/man/%.html: content/man/%.ronn
+$(OUTPUT_DIR)/man/%.html: content/man/%.ronn Makefile
 	$(INSTALL) -d -m 0755 $(shell dirname $@) && \
 		$(RONN) \
 			--html \
@@ -136,18 +136,11 @@ $(OUTPUT_DIR)/man/%.html: content/man/%.ronn
 			--style man,toc \
 			$< > $@
 
-$(OUTPUT_DIR)/assets/%: assets/%
+$(OUTPUT_DIR)/assets/%: assets/% Makefile
 	$(INSTALL) -d -m 0755 $(dir $@) && \
 		$(INSTALL) -m 0644 $< $@
-
-deploy: all
-	$(GITHUB_PAGES_PUBLISH) \
-		--verbose \
-		--cname blogc.org \
-		. \
-		$(OUTPUT_DIR)
 
 clean:
 	rm -rf "$(OUTPUT_DIR)"
 
-.PHONY: all all-local deploy clean
+.PHONY: all clean
