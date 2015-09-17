@@ -1,0 +1,13 @@
+TITLE: [ANN] blogc-0.1
+DATE: 2015-09-17 04:00:00
+-------------------------
+After a few beta releases, I'm proud to release the first "stable"
+version of blogc. I consider it stable and documented enough for basic
+usage.
+
+For download links, please visit [[http://blogc.org]].
+
+Get it while it is hot!
+
+Thanks,  
+Rafael

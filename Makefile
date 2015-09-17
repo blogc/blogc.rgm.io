@@ -12,6 +12,7 @@ POSTS_PER_PAGE = 4
 POSTS_PER_PAGE_ATOM = 10
 
 POSTS = \
+	blogc-0.1 \
 	hello-world \
 	$(NULL)
 
