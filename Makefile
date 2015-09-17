@@ -1,5 +1,7 @@
 # Content
 
+LATEST_RELEASE = 0.1
+
 AUTHOR_NAME = "Rafael G. Martins"
 AUTHOR_EMAIL = "rafael@rafaelmartins.eng.br"
 SITE_TITLE = "blogc"
@@ -44,6 +46,7 @@ DATE_FORMAT_ATOM = "%Y-%m-%dT%H:%M:%SZ"
 BLOGC_COMMAND = \
 	LC_ALL=$(LOCALE) \
 	$(BLOGC) \
+		-D LATEST_RELEASE=$(LATEST_RELEASE) \
 		-D AUTHOR_NAME=$(AUTHOR_NAME) \
 		-D AUTHOR_EMAIL=$(AUTHOR_EMAIL) \
 		-D SITE_TITLE=$(SITE_TITLE) \

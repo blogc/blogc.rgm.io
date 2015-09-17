@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ SITE_TAGLINE }}">
     <meta name="author" content="{{ AUTHOR }}">
-    <title>{{ SITE_TITLE }}{% block entry %} - {% ifdef TITLE %}{{ TITLE }}{% endif %}{% ifndef TITLE %}{{ SITE_TAGLINE }}{% endif %}{% endblock %}</title>
+    <title>{{ SITE_TITLE }}{% block entry %} - {% ifdef TITLE %}{{ TITLE }}{% endif %}{% ifndef TITLE %}{{ SITE_TAGLINE }}{% endif %}{% endblock %}{% block listing_once %} - News{% endblock %}</title>
     <link href="//cdn.jsdelivr.net/bootswatch/3.3.2/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="{{ BASE_URL }}/assets/custom.css" rel="stylesheet" type="text/css">
@@ -33,7 +33,6 @@
             <li{% if MENU == "home" %} class="active"{% endif %}><a href="{{ BASE_URL }}/">Home</a></li>
             <li{% if MENU == "news" %} class="active"{% endif %}><a href="{{ BASE_URL }}/news/">News</a></li>
             <li><a href="https://github.com/blogc">Development</a></li>
-            <li><a href="https://github.com/blogc/blogc/releases">Downloads</a></li>
           </ul>
         </div>
       </div>
@@ -81,6 +80,38 @@
           {% endblock %}
         </div>
         <div class="col-md-3 sidebar">
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">Latest Release</h4>
+            </div>
+            <div class="list-group">
+              <div class="list-group-item" style="text-align: center; font-size: 1.4em">
+                blogc-{{ LATEST_RELEASE }}
+              </div>
+              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/download/v0.1/blogc-{{ LATEST_RELEASE }}.tar.gz">
+                <strong>Source:</strong> blogc-{{ LATEST_RELEASE }}.tar.gz
+              </a>
+              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/download/v0.1/blogc-{{ LATEST_RELEASE }}.tar.bz2">
+                <strong>Source:</strong> blogc-{{ LATEST_RELEASE }}.tar.bz2
+              </a>
+              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/download/v0.1/blogc-{{ LATEST_RELEASE }}.tar.xz">
+                <strong>Source:</strong> blogc-{{ LATEST_RELEASE }}.tar.xz
+              </a>
+              <a class="list-group-item" href="https://packages.gentoo.org/package/app-text/blogc">
+                <strong>Gentoo:</strong> app-text/blogc
+              </a>
+              <a class="list-group-item" href="https://copr.fedoraproject.org/coprs/rafaelmartins/blogc/">
+                <strong>Fedora/RHEL/CentOS:</strong> Copr
+              </a>
+              <a class="list-group-item disabled" href="#" onclick="return false">
+                <strong>Ubuntu:</strong> PPA (pending)
+              </a>
+            </div>
+          </div>
+
+
+
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">Documentation</h4>
