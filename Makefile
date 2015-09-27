@@ -33,10 +33,9 @@ MANPAGES = \
 # Arguments
 
 BLOGC ?= $(shell which blogc)
-INSTALL ?= $(shell which install)
+MKDIR ?= $(shell which mkdir)
+CP ?= $(shell which cp)
 RONN ?= $(shell which ronn)
-GIT ?= $(shell which git)
-GITHUB_PAGES_PUBLISH ?= $(shell which github-pages-publish)
 OUTPUT_DIR ?= _build
 BASE_DOMAIN ?= http://blogc.org
 BASE_URL ?=
@@ -131,7 +130,7 @@ $(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl Makefile
 		$<
 
 $(OUTPUT_DIR)/man/%.html: content/man/%.ronn Makefile
-	$(INSTALL) -d -m 0755 $(shell dirname $@) && \
+	$(MKDIR) -p $(dir $@) && \
 		$(RONN) \
 			--html \
 			--pipe \
@@ -141,8 +140,8 @@ $(OUTPUT_DIR)/man/%.html: content/man/%.ronn Makefile
 			$< > $@
 
 $(OUTPUT_DIR)/assets/%: assets/% Makefile
-	$(INSTALL) -d -m 0755 $(dir $@) && \
-		$(INSTALL) -m 0644 $< $@
+	$(MKDIR) -p $(dir $@) && \
+		$(CP) $< $@
 
 clean:
 	rm -rf "$(OUTPUT_DIR)"
