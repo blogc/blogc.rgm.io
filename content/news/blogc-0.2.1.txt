@@ -1,0 +1,15 @@
+TITLE: [ANN] blogc-0.2.1
+DATE: 2015-10-08 03:15:00
+-------------------------
+I just released version ``0.2.1`` of blogc, that includes a new feature. Now
+blogc accepts an empty list of source files when called with ``-l``.
+
+This release is ``0.2.1`` because I released ``0.2`` with broken
+documentation.
+
+For download links, please visit [[http://blogc.org]].
+
+Get it while it is hot!
+
+Thanks,  
+Rafael

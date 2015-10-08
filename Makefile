@@ -1,6 +1,6 @@
 # Content
 
-LATEST_RELEASE = 0.1
+LATEST_RELEASE = 0.2.1
 
 AUTHOR_NAME = "Rafael G. Martins"
 AUTHOR_EMAIL = "rafael@rafaelmartins.eng.br"
@@ -12,6 +12,7 @@ POSTS_PER_PAGE = 4
 POSTS_PER_PAGE_ATOM = 10
 
 POSTS = \
+	blogc-0.2.1 \
 	blogc-0.1 \
 	hello-world \
 	$(NULL)
@@ -33,9 +34,14 @@ MANPAGES = \
 # Arguments
 
 BLOGC ?= $(shell which blogc)
+BLOGC_RUNSERVER ?= $(shell which blogc-runserver)
 MKDIR ?= $(shell which mkdir)
 CP ?= $(shell which cp)
 RONN ?= $(shell which ronn)
+
+BLOGC_RUNSERVER_HOST ?= 127.0.0.1
+BLOGC_RUNSERVER_PORT ?= 8080
+
 OUTPUT_DIR ?= _build
 BASE_DOMAIN ?= http://blogc.org
 BASE_URL ?=
@@ -143,7 +149,13 @@ $(OUTPUT_DIR)/assets/%: assets/% Makefile
 	$(MKDIR) -p $(dir $@) && \
 		$(CP) $< $@
 
+serve: all
+	$(BLOGC_RUNSERVER) \
+		-t $(BLOGC_RUNSERVER_HOST) \
+		-p $(BLOGC_RUNSERVER_PORT) \
+		$(OUTPUT_DIR)
+
 clean:
 	rm -rf "$(OUTPUT_DIR)"
 
-.PHONY: all clean
+.PHONY: all serve clean
