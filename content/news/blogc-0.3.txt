@@ -1,0 +1,13 @@
+TITLE: [ANN] blogc-0.3
+DATE: 2015-10-16 02:14:00
+-------------------------
+I just released version ``0.3`` of blogc, that includes a new feature. Now
+blogc adds an ``id`` attribute to the headers in the generated HTML, that
+can be used to create anchor links to specific sections of your content.
+
+For download links, please visit [[http://blogc.org]].
+
+Get it while it is hot!
+
+Thanks,  
+Rafael
