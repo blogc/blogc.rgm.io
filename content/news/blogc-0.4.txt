@@ -3,7 +3,7 @@ DATE: 2015-10-25 02:25:00
 -------------------------
 I just released version ``0.4`` of blogc. This is the first release that
 officially support Microsoft Windows. It also includes a new datetime
-parser, and a improvements in the error reporting for the parsers.
+parser, and improvements in the error reporting for the parsers.
 
 For download links, please visit [[http://blogc.org]].
 Windows users can find prebuilt binaries in the web page sidebar.
