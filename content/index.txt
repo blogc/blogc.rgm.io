@@ -29,9 +29,8 @@
   </div>
   <div class="col-md-6">
     <h4>blogc is portable...</h4>
-    <p>blogc is tested on Linux and FreeBSD, but the code should work on any
-    Unix-like operating system. We have plans on supporting Windows, and you
-    may be able to get it running there with Cygwin or MSYS. Patches for
+    <p>blogc is tested on Linux, FreeBSD and Microsoft Windows, but the code
+    should work on any Unix-like operating system as well. Patches for
     portability are always welcome and have high priority.</p>
     <h4>blogc is self-contained...</h4>
     <p>blogc just depends on a libc. No external libraries required at all.
