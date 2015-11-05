@@ -1,0 +1,15 @@
+TITLE: [ANN] blogc-0.5
+DATE: 2015-11-05 02:52:00
+-------------------------
+I just released version ``0.5`` of blogc. This release introduces fixes
+a deficiency of the template parser, that couldn't do comparisions between two
+variables. Thanks to [@palmer-dabbelt](https://github.com/palmer-dabbelt) for
+the patch.
+
+For download links, please visit [[http://blogc.org]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Get it while it is hot!
+
+Thanks,  
+Rafael

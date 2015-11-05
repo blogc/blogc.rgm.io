@@ -1,6 +1,6 @@
 # Content
 
-LATEST_RELEASE = 0.4
+LATEST_RELEASE = 0.5
 
 AUTHOR_NAME = "Rafael G. Martins"
 AUTHOR_EMAIL = "rafael@rafaelmartins.eng.br"
@@ -12,6 +12,7 @@ POSTS_PER_PAGE = 4
 POSTS_PER_PAGE_ATOM = 10
 
 POSTS = \
+	blogc-0.5 \
 	blogc-0.4 \
 	blogc-0.3 \
 	blogc-0.2.1 \
