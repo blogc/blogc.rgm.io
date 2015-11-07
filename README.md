@@ -1,3 +1,3 @@
-# blogc.org
+# blogc.rgm.io
 
-http://blogc.org/ sources.
+https://blogc.rgm.io/ sources.

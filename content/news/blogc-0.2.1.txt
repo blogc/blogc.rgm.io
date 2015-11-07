@@ -7,7 +7,7 @@ blogc accepts an empty list of source files when called with ``-l``.
 This release is ``0.2.1`` because I released ``0.2`` with broken
 documentation.
 
-For download links, please visit [[http://blogc.org]].
+For download links, please visit [[https://blogc.rgm.io]].
 
 Get it while it is hot!
 

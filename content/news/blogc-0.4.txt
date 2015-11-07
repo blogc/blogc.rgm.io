@@ -5,7 +5,7 @@ I just released version ``0.4`` of blogc. This is the first release that
 officially support Microsoft Windows. It also includes a new datetime
 parser, and improvements in the error reporting for the parsers.
 
-For download links, please visit [[http://blogc.org]].
+For download links, please visit [[https://blogc.rgm.io]].
 Windows users can find prebuilt binaries in the web page sidebar.
 
 Get it while it is hot!
