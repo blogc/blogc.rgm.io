@@ -1,0 +1,14 @@
+TITLE: [ANN] blogc-0.5.1
+DATE: 2015-12-03 23:18:00
+-------------------------
+I just released version ``0.5.1`` of blogc. This release fixes handling of
+locale environment variables, like ``LC_ALL``. This is useful to change
+date formatting that is locale-specific.
+
+For download links, please visit [[https://blogc.rgm.io]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Get it while it is hot!
+
+Thanks,  
+Rafael
