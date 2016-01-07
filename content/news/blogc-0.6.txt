@@ -1,0 +1,14 @@
+TITLE: [ANN] blogc-0.6
+DATE: 2016-01-07 03:05:00
+-------------------------
+I just released version ``0.6`` of blogc. This release adds a foreach
+iterator to templates and fixes behaviour of the (poorly documented) post
+filter by tags, that now splits tags by spaces instead of commas.
+
+For download links, please visit [[https://blogc.rgm.io]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Get it while it is hot!
+
+Thanks,  
+Rafael
