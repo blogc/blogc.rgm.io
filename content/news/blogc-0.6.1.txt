@@ -1,0 +1,14 @@
+TITLE: [ANN] blogc-0.6.1
+DATE: 2016-01-10 02:46:00
+-------------------------
+I just released version ``0.6.1`` of blogc. This is a bugfix release, that
+fixes the handling of the ``FOREACH_ITEM`` special variable. Now it can be
+used as a normal variable, including ``if`` and ``endif`` statements.
+
+For download links, please visit [[https://blogc.rgm.io]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Get it while it is hot!
+
+Thanks,  
+Rafael
