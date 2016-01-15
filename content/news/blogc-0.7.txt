@@ -1,0 +1,13 @@
+TITLE: [ANN] blogc-0.7
+DATE: 2016-01-15 00:15:00
+-------------------------
+I just released version ``0.7`` of blogc. This release adds [whitespace
+control support in templates](/man/blogc-template.7.html#WHITESPACE-CONTROL).
+
+For download links, please visit [[https://blogc.rgm.io]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Get it while it is hot!
+
+Thanks,  
+Rafael
