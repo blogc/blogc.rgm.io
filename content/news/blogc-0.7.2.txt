@@ -1,0 +1,13 @@
+TITLE: [ANN] blogc-0.7.2
+DATE: 2016-01-25 19:40:00
+-------------------------
+I just released version ``0.7.2`` of blogc. This release fixes a bug when
+rendering an `if` statement that evaluates to `false` right after another
+`if` statement that evaluates to `true`. This bug was causing segmentation
+faults for some source files and all users are asked to upgrade.
+
+For download links, please visit [[https://blogc.rgm.io]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Thanks,  
+Rafael
