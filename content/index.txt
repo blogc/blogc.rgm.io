@@ -82,6 +82,11 @@ that only uses POSIX features, and get it working with any ``make``
 implementation, but our example uses lots of GNU features. This should be
 fixed in future.
 
+#### What the name "blogc" means?
+
+"blogc" stands for "blog compiler". The name has nothing to do with the
+programming language used to implement it. ;-)
+
 #### I don't like ``make``, what can I do about it?
 
 You are free to use any other build tool you like. You can even use something
