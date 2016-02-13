@@ -12,36 +12,51 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-    <h4>blogc is simple...</h4>
-    <p>blogc was designed with simplicity in mind. If the implementation of
-    some feature requires a very complex change, it is discarded.</p>
-    <h4>blogc is powerful...</h4>
-    <p>Based on the flexibility of its template engine, even considering
-    that it just implements the basic features of a template engine, blogc
-    can be used to generate almost any blog/website resource, including atom
-    feeds and sitemaps.</p>
-    <h4>blogc is compatible with <code>make</code>...</h4>
-    <p>blogs was designed to be used with <code>make</code>. It is stateless
-    and idempotent (no global state is shared between process calls, and each
-    call with the same arguments will always result in the same output), and
-    works pretty much like a "real" source code compiler.</p>
-  </div>
-  <div class="col-md-6">
-    <h4>blogc is portable...</h4>
-    <p>blogc is tested on Linux, FreeBSD and Microsoft Windows, but the code
-    should work on any Unix-like operating system as well. Patches for
-    portability are always welcome and have high priority.</p>
-    <h4>blogc is self-contained...</h4>
-    <p>blogc just depends on a libc. No external libraries required at all.
-    The test suite (yes, blogc comes with a somewhat complete test suite!)
-    depends on <a href="http://cmocka.org/">cmocka</a>, though.</p>
-    <h4>blogc is designed for developers...</h4>
-    <p>Due to its simplicity and similarity to a "real" source code compiler,
-    blogc is meant to be used by software developers, that are used to work
-    with <code>make</code> and similar development tools.</p>
-  </div>
+<div class="col-md-6">
+
+#### blogc is simple...
+
+blogc was designed with simplicity in mind. If the implementation of some
+feature requires a very complex change, it is discarded.
+
+#### blogc is powerful...
+
+Based on the flexibility of its template engine, even considering that it
+just implements the basic features of a template engine, blogc can be used
+to generate almost any blog/website resource, including atom feeds and
+sitemaps.
+
+#### blogc is compatible with `make`...
+
+blogs was designed to be used with `make`. It is stateless and idempotent
+(no global state is shared between process calls, and each call with the
+same arguments will always result in the same output), and works pretty
+much like a "real" source code compiler.
+
 </div>
+<div class="col-md-6">
+
+#### blogc is portable...
+
+blogc is tested on Linux, FreeBSD and Microsoft Windows, but the code
+should work on any Unix-like operating system as well. Patches for
+portability are always welcome and have high priority.
+
+#### blogc is self-contained...
+
+blogc just depends on a libc. No external libraries required at all.
+The test suite (yes, blogc comes with a somewhat complete test suite!)
+depends on [cmocka](http://cmocka.org/), though.
+
+#### blogc is designed for developers...
+
+Due to its simplicity and similarity to a "real" source code compiler,
+blogc is meant to be used by software developers, that are used to work
+with `make` and similar development tools.
+
+</div>
+</div>
+
 
 ### Frequently Asked Questions
 
