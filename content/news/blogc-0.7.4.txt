@@ -1,0 +1,15 @@
+TITLE: [ANN] blogc-0.7.4
+DATE: 2016-02-21 15:30:00
+-------------------------
+I just released version ``0.7.4`` of blogc. This release fixes a bug when the
+content parser handles links and images. Content like the examples below should
+be considered invalid and kept unparsed.
+
+    [My link] qwe (https://blogc.rgm.io/)
+    ![My image alt text] qwe (https://blogc.rgm.io/image.jpg)
+
+For download links, please visit [[https://blogc.rgm.io]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Thanks,  
+Rafael
