@@ -39,14 +39,17 @@ much like a "real" source code compiler.
 #### blogc is portable...
 
 blogc is tested on Linux, FreeBSD and Microsoft Windows, but the code
-should work on any Unix-like operating system as well. Patches for
+should work on any POSIX-compliant operating system as well. Patches for
 portability are always welcome and have high priority.
 
 #### blogc is self-contained...
 
-blogc just depends on a libc. No external libraries required at all.
+blogc just depends on a libc and [squareball]
+(https://github.com/rafaelmartins/squareball), that is an utility library
+based on code extracted from old versions of blogc itself. squareball library
+is bundled in blogc, then users don't need to install any dependency manually.
 The test suite (yes, blogc comes with a somewhat complete test suite!)
-depends on [cmocka](http://cmocka.org/), though.
+depends on [cmocka](http://cmocka.org/), but users aren't required to run it.
 
 #### blogc is designed for developers...
 

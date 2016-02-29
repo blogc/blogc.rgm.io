@@ -1,0 +1,14 @@
+TITLE: [ANN] blogc-0.7.6
+DATE: 2016-02-29 03:00:00
+-------------------------
+I just released version ``0.7.6`` of blogc. This release replaces the internal
+utilities library with [squareball](https://github.com/rafaelmartins/squareball).
+The squareball library is bundled in blogc, so users don't need to care about
+this change. Linux distribution packages will use a library globally installed
+in the system though.
+
+For download links, please visit [[https://blogc.rgm.io]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Thanks,  
+Rafael
