@@ -1,9 +1,5 @@
 # Content
 
-# quick workaround to find custom stuff on server
-SHELL := /bin/bash
-PATH := "$(HOME)/bin:$(HOME)/.local/bin:$(PATH)"
-
 LATEST_RELEASE = 0.7.6
 
 AUTHOR_NAME = "Rafael G. Martins"
