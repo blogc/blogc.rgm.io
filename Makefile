@@ -96,6 +96,10 @@ all: \
 	$(addprefix $(OUTPUT_DIR)/man/, $(addsuffix .html, $(MANPAGES))) \
 	$(NULL)
 
+man: \
+	$(addprefix content/man/, $(addsuffix .html, $(MANPAGES))) \
+	$(NULL)
+
 $(OUTPUT_DIR)/news/index.html: $(addprefix content/news/, $(addsuffix .txt, $(POSTS))) templates/main.tmpl Makefile
 	$(BLOGC_COMMAND) \
 		-D DATE_FORMAT=$(DATE_FORMAT) \
@@ -148,7 +152,7 @@ $(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl Makefile
 		-t templates/main.tmpl \
 		$<
 
-$(OUTPUT_DIR)/man/%.html: content/man/%.ronn Makefile
+content/man/%.html: content/man/%.ronn Makefile
 	$(MKDIR) -p $(dir $@) && \
 		$(RONN) \
 			--html \
@@ -159,6 +163,10 @@ $(OUTPUT_DIR)/man/%.html: content/man/%.ronn Makefile
 			$< > $@
 
 $(OUTPUT_DIR)/assets/%: assets/% Makefile
+	$(MKDIR) -p $(dir $@) && \
+		$(CP) $< $@
+
+$(OUTPUT_DIR)/man/%: content/man/% Makefile
 	$(MKDIR) -p $(dir $@) && \
 		$(CP) $< $@
 

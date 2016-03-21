@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>blogc-source(7) - blogc&#39;s source file format</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#SOURCE-VARIABLES">SOURCE VARIABLES</a>
+    <a href="#SOURCE-CONTENT-BLOCK-ELEMENTS">SOURCE CONTENT - BLOCK ELEMENTS</a>
+    <a href="#SOURCE-CONTENT-INLINE-ELEMENTS">SOURCE CONTENT - INLINE ELEMENTS</a>
+    <a href="#BUGS">BUGS</a>
+    <a href="#AUTHOR">AUTHOR</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>blogc-source(7)</li>
+    <li class='tc'>blogc Manual</li>
+    <li class='tr'>blogc-source(7)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>blogc-source</code> - <span class="man-whatis">blogc's source file format</span>
+</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p>Source files are used as input data to the <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> compiler. They provide
+variables and content, that are used by the compiler to fill the gaps available
+in the templates (see <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a>).</p>
+
+<p>The syntax of the source files is designed to be as simple as possible. The
+variables are defined in the top of the file as key-value lines, and the
+content is defined right after the variables.</p>
+
+<p>Content is written in a markup language that is similar to John Gruber's
+Markdown, but that is NOT Markdown. This language is very simple, while
+powerful enough to write big posts.</p>
+
+<h2 id="SOURCE-VARIABLES">SOURCE VARIABLES</h2>
+
+<p>Variables are key-value lines. The variable name must be upper-case, starting
+with a letter and following with one or more letters and/or underscores. The
+value is separated from the variable name with a ':' and finishes in the end
+of the line. Multi-line values are not supported.</p>
+
+<pre><code>VARIABLE1: Value of variable one
+VARIABLE2: Value of variable two
+--------------------------------
+</code></pre>
+
+<p>All the variables defined in the source files are local and will override
+global variables provided to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> in the command-line, but just inside
+blocks that handle local variables. See <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> for details.</p>
+
+<p>The <code>DATE</code> variable is special, and represents the publishing date of the
+post. It may be formatted with the <code>DATE_FORMAT</code> variable, if provided,
+otherwise will be kept as is. The proper way to access the date from the
+template is to use the <code>DATE_FORMATTED</code> variable, that will contain the
+formatted date, or the original date, depending on whether the <code>DATE_FORMAT</code>
+variable is provided or not.</p>
+
+<p>The <code>DATE</code> variable should be in the following format: <code>yyyy-mm-dd hh:mm:ss</code>.
+You can omit seconds, minutes and hours if you want, they will be filled with
+'0'. Allowed formats are <code>yyyy-mm-dd hh:mm:ss</code>, <code>yyyy-mm-dd hh:mm</code>,
+<code>yyyy-mm-dd hh</code> and <code>yyyy-mm-dd</code></p>
+
+<p>The <code>DATE_FORMAT</code> variable should be passed to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> as a global
+variable. Its value must be a valid <a class="man-ref" href="http://man.cx/strptime(3)">strptime<span class="s">(3)</span></a> format.</p>
+
+<h2 id="SOURCE-CONTENT-BLOCK-ELEMENTS">SOURCE CONTENT - BLOCK ELEMENTS</h2>
+
+<h3 id="Paragraphs">Paragraphs</h3>
+
+<p>Paragraphs are simple blocks of text.</p>
+
+<pre><code>This is a paragraph.
+
+This is another paragraph.
+</code></pre>
+
+<h3 id="Headers">Headers</h3>
+
+<p>Headers are defined starting with '#' characters, then number of characters is
+the level of the header.</p>
+
+<pre><code># H1
+
+## H2
+
+### H3
+
+#### H4
+</code></pre>
+
+<p>Each header will have an <code>id</code> attribute, that is a lowercase version of the
+unparsed header title, with non-alphanumeric characters replaced by '-'. These
+<code>id</code>s can be used to create anchor links to specific sections of your content.</p>
+
+<h3 id="Blockquotes">Blockquotes</h3>
+
+<p>Blockquotes are defined with lines starting with '>' characters. Content defined
+inside a blockquote is parsed again, so all the block elements are allowed inside
+blockquotes. The indentation after the '>' character must be preserved in the
+begin of each blockquote line.</p>
+
+<pre><code>&gt; Hello,
+&gt; 
+&gt; This is the blockquote example!
+</code></pre>
+
+<h3 id="Unordered-Lists">Unordered Lists</h3>
+
+<p>Unordered lists are defined with lines starting with '*', '+' or '-'. The same
+starting character must be used for all the list items, and the indentation after
+the starting character must be preserved in the begin of each line.</p>
+
+<pre><code>* First item
+* Second item
+* Third item
+</code></pre>
+
+<p>Multi-line items are supported. Content must be aligned properly:</p>
+
+<pre><code>* First item
+  Continuation of first item
+* Second item
+* Third item
+</code></pre>
+
+<h3 id="Ordered-Lists">Ordered Lists</h3>
+
+<p>Ordered lists are defined with lines starting with a number and a '.' character.
+The indentation after the starting character must be preserved in the begin of
+each line, meaning that the content of the items must be aligned. The order and
+value of the numbers is ignored.</p>
+
+<pre><code>1.  First item
+2.  Second item
+10. Tenth item
+</code></pre>
+
+<p>Multi-line items are supported. Content must be aligned properly:</p>
+
+<pre><code>1.  First item
+    Continuation of first item
+2.  Second item
+10. Tenth item
+</code></pre>
+
+<p>To use numbers with '.' character in a non-list string, you must escape the '.'.</p>
+
+<pre><code>1234\. This is not a list
+</code></pre>
+
+<h3 id="Code-Blocks">Code Blocks</h3>
+
+<p>Code blocs are defined by indenting the lines with one or more whitespace characters.</p>
+
+<pre><code>This is a paragraph.
+
+    This is a code block.
+    Some more code.
+
+This is another paragraph.
+</code></pre>
+
+<h3 id="Horizontal-Rules">Horizontal Rules</h3>
+
+<p>Horizontal rules are defined as a paragraph with a sequence of 2 or more '*', '+'
+or '-' characters.</p>
+
+<pre><code>This is a paragraph before horizontal rule
+
+***
+
+This is a paragraph after horizontal rule
+</code></pre>
+
+<p>The horizontal rule must not be on its own paragraph, otherwise it will be parsed
+as a continuation of the previous paragraph.</p>
+
+<h3 id="HTML-Blocks">HTML Blocks</h3>
+
+<p>HTML blocks are paragraphs started with '&lt;' character. Everything is kept untouched
+in HTML blocks, until the next paragraph.</p>
+
+<pre><code>&lt;p&gt;This is raw HTML&lt;/p&gt;
+
+This is an usual paragraph
+
+&lt;p&gt;This is more raw HTML&lt;/p&gt;
+</code></pre>
+
+<h3 id="Excerpt-Separator">Excerpt Separator</h3>
+
+<p>The excerpt is separated from the full content of a page/post using a paragraph with
+a sequence of 2 or more '.' characters.</p>
+
+<p>After parsing, the excerpt will be part of the full content as well.</p>
+
+<h2 id="SOURCE-CONTENT-INLINE-ELEMENTS">SOURCE CONTENT - INLINE ELEMENTS</h2>
+
+<h3 id="Bold">Bold</h3>
+
+<p>Bold text is defined with 2 '*' or '_' before and after the text.</p>
+
+<pre><code>Bold text: **text**
+Bold text: __text__
+</code></pre>
+
+<h3 id="Italic">Italic</h3>
+
+<p>Italic text is defined with 1 '*' or '_' before and after the text.</p>
+
+<pre><code>Italic text: *text*
+Italic text: _text_
+</code></pre>
+
+<h3 id="Bold-and-Italic">Bold and Italic</h3>
+
+<p>Bold and italic text is defined mixing markers, like:</p>
+
+<pre><code>Italic and bold text: _**text**_
+Italic and bold text: *__text__*
+Italic and bold text: __*text*__
+Italic and bold text: **_text_**
+</code></pre>
+
+<h3 id="Code">Code</h3>
+
+<p>Code is defined with 1 or 2 '`' before and after the text.</p>
+
+<pre><code>This is inline code: `code`
+This is inline code: ``code``
+</code></pre>
+
+<h3 id="Images">Images</h3>
+
+<p>Images are defined using the following syntax:</p>
+
+<pre><code>This is an image: ![This is the image alt text](picture.jpg)
+</code></pre>
+
+<p>Whitespace characters and new lines are allowed between alt text and image URL:</p>
+
+<pre><code>This is an image: ![This is the image alt text]
+(picture.jpg)
+</code></pre>
+
+<h3 id="Links">Links</h3>
+
+<p>Links are defined using the following syntax:</p>
+
+<pre><code>To learn more about blogc, [click here](https://blogc.rgm.io).
+</code></pre>
+
+<p>Whitespace characters and new lines are allowed between link text and link URL:</p>
+
+<pre><code>To learn more about blogc, [click here]
+(https://blogc.rgm.io).
+</code></pre>
+
+<h3 id="Image-Links">Image Links</h3>
+
+<p>Links can be combined with images:</p>
+
+<pre><code>[![This is the image alt text](picture.jpg)](https://blogc.rgm.io)
+</code></pre>
+
+<p>Whitespace characters and new lines are allowed between link text and link URL,
+and between alt text and image URL:</p>
+
+<pre><code>[![This is the image alt text]
+(picture.jpg)]
+(https://blogc.rgm.io)
+</code></pre>
+
+<h3 id="Automatic-Links">Automatic Links</h3>
+
+<p>Automatic link is defined with 2 '[' before and 2 ']' after the URL.</p>
+
+<pre><code>To learn more about blogc, visit [[https://blogc.rgm.io]].
+</code></pre>
+
+<h3 id="Line-break">Line break</h3>
+
+<p>Line breaks can be added after a paragraph line adding 2 or more white spaces
+to the end of the line.</p>
+
+<h2 id="BUGS">BUGS</h2>
+
+<p>The source content is handled by handwritten parsers, that even being well
+tested, may be subject of parsing bugs. Please report any issues to:
+<a href="https://github.com/blogc/blogc" data-bare-link="true">https://github.com/blogc/blogc</a></p>
+
+<h2 id="AUTHOR">AUTHOR</h2>
+
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x72;&#x61;&#x66;&#x61;&#101;&#108;&#x40;&#x72;&#97;&#102;&#97;&#101;&#108;&#109;&#97;&#114;&#x74;&#105;&#x6e;&#x73;&#x2e;&#101;&#110;&#x67;&#x2e;&#x62;&#x72;" data-bare-link="true">&#x72;&#x61;&#102;&#97;&#x65;&#x6c;&#x40;&#114;&#x61;&#x66;&#97;&#101;&#108;&#109;&#x61;&#114;&#116;&#x69;&#110;&#115;&#46;&#101;&#110;&#x67;&#46;&#98;&#x72;</a>&gt;</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a>, <a class="man-ref" href="http://man.cx/strptime(3)">strptime<span class="s">(3)</span></a></p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>Rafael G. Martins</li>
+    <li class='tc'>March 2016</li>
+    <li class='tr'>blogc-source(7)</li>
+  </ol>
+
+  </div>
+</body>
+</html>
