@@ -2,7 +2,7 @@ TITLE: [ANN] blogc-0.8.0
 DATE: 2016-04-17 01:30:00
 -------------------------
 I released version ``0.8.0`` of blogc a few days ago. This release added
-support to convert \-\- and \-\-\- to ``&ndash;`` and ``&mdash;`` in
+support to convert ``--`` and ``---`` to ``&ndash;`` and ``&mdash;`` in
 source files and moved file utilities and error infrastructure code from
 ``blogc`` to ``squareball``.
 

@@ -2,7 +2,7 @@ TITLE: [ANN] blogc-0.8.1
 DATE: 2016-04-17 02:30:00
 -------------------------
 I just released version ``0.8.1`` of blogc. This release fixes a bug when
-using \-\- and \-\-\- inside inline code. The dashes should not be
+using ``--`` and ``---`` inside inline code. The dashes should not be
 converted to ``&ndash;`` and ``&mdash;`` in such cases.
 
 For download links, please visit [[https://blogc.rgm.io]].
