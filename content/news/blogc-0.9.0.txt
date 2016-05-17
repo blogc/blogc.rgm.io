@@ -1,0 +1,27 @@
+TITLE: [ANN] blogc-0.9.0
+DATE: 2016-05-17 20:57:00
+-------------------------
+I released version ``0.9.0`` of blogc a few weeks (?!) ago. This release
+added support to extract a ``DESCRIPTION`` template variable from source
+files, that contains the first line of the first paragraph parsed from the
+source file, and is suitable to be used as HTML ``description`` meta tag.
+
+This release also includes several project-wise changes. I decided to merge
+the helper tools, namely ``blogc-git-receiver(1)`` and ``blogc-runserver(1)``,
+into the main ``blogc`` distribution. Users can build these tools adding the
+``--enable-git-receiver`` and ``--enable-runserver`` options to the
+``./configure`` call. Gentoo users can rely on the ``git`` and ``http`` USE
+flags for it, and Fedora/RHEL/CentOS users still have the packages splitted
+as before.
+
+``squareball`` library was also removed, and code was merged back to ``blogc``
+repository, for easier maintenance.
+
+Windows pre-built binaries were also dropped in this release. They were not
+really useful at this point, and I'm not aware of anyone using those binaries.
+Code is still supposed to build on Windows, though.
+
+For download links, please visit [[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael

@@ -1,6 +1,6 @@
 # Content
 
-LATEST_RELEASE = 0.8.1
+LATEST_RELEASE = 0.9.0
 
 AUTHOR_NAME = "Rafael G. Martins"
 AUTHOR_EMAIL = "rafael@rafaelmartins.eng.br"
@@ -12,6 +12,7 @@ POSTS_PER_PAGE = 4
 POSTS_PER_PAGE_ATOM = 10
 
 POSTS = \
+	blogc-0.9.0 \
 	blogc-0.8.1 \
 	blogc-0.8.0 \
 	blogc-0.7.6 \
@@ -41,8 +42,11 @@ ASSETS = \
 
 MANPAGES = \
 	blogc.1 \
+	blogc-git-receiver.1 \
+	blogc-runserver.1 \
 	blogc-source.7 \
 	blogc-template.7 \
+	blogc-pagination.7 \
 	$(NULL)
 
 
@@ -150,7 +154,7 @@ $(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl Makefile
 		-t templates/main.tmpl \
 		$<
 
-$(OUTPUT_DIR)/man/%.html: content/man/%.ronn Makefile
+$(OUTPUT_DIR)/man/%.html: content/man/%.ronn content/man/index.txt Makefile
 	$(MKDIR) -p $(dir $@) && \
 		$(RONN) \
 			--html \
