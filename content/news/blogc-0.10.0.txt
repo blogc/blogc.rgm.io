@@ -1,0 +1,16 @@
+TITLE: [ANN] blogc-0.10.0
+DATE: 2016-05-30 22:16:00
+-------------------------
+I just released version ``0.10.0`` of blogc. This release fixes [extraction
+of ``DESCRIPTION`` template variable from source files]
+(/man/blogc-source.7.html#SOURCE-VARIABLES) (it is now a one-line string with
+the unparsed content of the first paragraph, ignoring paragraphs inside
+blockquotes), adds support to [truncate variables when calling them in
+templates](/man/blogc-template.7.html#Truncated-variables) (including
+meta-variables like `FOREACH_ITEM` and `DATE_FORMATTED`, and improves some man
+pages.
+
+For download links, please visit [[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
