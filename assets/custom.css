@@ -1,15 +1,5 @@
-body {
-    padding-top: 60px;
-}
-
-h3 {
-    margin-bottom: 20px;
-}
-
-h4 {
-    margin-top: 20px;
-}
-
+h3,
+h4,
 h5 {
     margin-top: 20px;
 }
@@ -18,6 +8,39 @@ h5 {
     padding-top: 20px;
 }
 
-.jumbotron {
-    text-align: center;
+/*
+ * Open dropdowns on hover instead of click.
+ */
+@media (min-width: 768px) {
+  .dropdown:hover {
+    background: #1A242F;
+  }
+  .dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
+/*
+ * The following is needed since the dropdowns are <div> elements instead
+ * of <a> elements
+ */
+.nav > li > div {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  cursor: default;
+}
+.navbar-nav > li > div {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  line-height: 20px;
+}
+.navbar-default .navbar-nav > li > div {
+  color: rgb(119, 119, 119);
+}
+.navbar-collapse.collapse {
+  display: none;
+}
+.dropdown-open {
+  background: #1A242F;
 }
