@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ SITE_TAGLINE }}">
     <title>{{ SITE_TITLE }}{% block entry %} - {% ifdef TITLE %}{{ TITLE }}{% endif %}{% ifndef TITLE %}{{ SITE_TAGLINE }}{% endif %}{% endblock %}{% block listing_once %} - News{% endblock %}</title>
-    <link href="//cdn.jsdelivr.net/bootswatch/3.3.2/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdn.jsdelivr.net/bootswatch/3.3.6/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdn.jsdelivr.net/fontawesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="{{ BASE_URL }}/assets/custom.css" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
       <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -16,11 +16,11 @@
     <link href="{{ BASE_URL }}/atom.xml" rel="alternate" type="application/atom+xml" title="{{ SITE_TITLE }}" />
   </head>
   <body>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="{{ BASE_URL }}/">{{ SITE_TITLE }}</a>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
             <span class="sr-only">Toggle Navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -85,8 +85,8 @@
               <h4 class="panel-title">Latest Release</h4>
             </div>
             <div class="list-group">
-              <div class="list-group-item" style="text-align: center; font-size: 1.4em">
-                blogc-{{ LATEST_RELEASE }}
+              <div class="list-group-item text-center">
+                <span class="h3">blogc-{{ LATEST_RELEASE }}</span>
               </div>
               <a class="list-group-item" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.tar.gz">
                 <strong>Source:</strong> blogc-{{ LATEST_RELEASE }}.tar.gz
@@ -148,6 +148,31 @@
         </div>
       </div>
     </div>
-    <script src="//cdn.jsdelivr.net/g/jquery@2.1.4,bootstrap@3.3.4"></script>
+    <script>
+        (function() {
+            'use strict';
+            var daMenus = {
+
+                // Navbar and dropdowns
+                toggle: document.getElementsByClassName('navbar-toggle')[0],
+                collapse: document.getElementsByClassName('navbar-collapse')[0],
+
+                toggleMenu: function() { // Toggle if navbar menu is open or closed
+                    daMenus.collapse.classList.toggle('collapse');
+                },
+
+                // Close dropdowns when screen becomes big enough to switch to open by hover
+                closeMenusOnResize: function() {
+                    if (document.body.clientWidth >= 768) {
+                        daMenus.collapse.classList.add('collapse');
+                    }
+                }
+            };
+
+            // dropdown menu listeners
+            window.addEventListener('resize', daMenus.closeMenusOnResize, false);
+            daMenus.toggle.addEventListener('click', daMenus.toggleMenu, false);
+        }());
+    </script>
   </body>
 </html>
