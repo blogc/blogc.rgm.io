@@ -7,7 +7,6 @@ parser was mostly rewrote. This release also adds some basic debug support for
 templates, see ``blogc(1)``.
 
 For download links, please visit [[https://blogc.rgm.io]].
-Windows users can find prebuilt binaries in the web page sidebar.
 
 Thanks,  
 Rafael

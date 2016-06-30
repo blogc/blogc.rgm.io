@@ -5,7 +5,6 @@ I just released version ``0.10.1`` of blogc. This release fixes a bug when
 using ``blogc-git-receiver(1)`` to mirror repositories with old git versions.
 
 For download links, please visit [[https://blogc.rgm.io]].
-Windows users can find prebuilt binaries in the web page sidebar.
 
 Thanks,  
 Rafael
