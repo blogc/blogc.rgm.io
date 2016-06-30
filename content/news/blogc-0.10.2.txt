@@ -1,0 +1,13 @@
+TITLE: [ANN] blogc-0.10.2
+DATE: 2016-06-30 00:32:00
+-------------------------
+I just released version ``0.10.2`` of blogc. This release fixes some invalid
+HTML that was generated when invalid syntax was parsed from content files, the
+parser was mostly rewrote. This release also adds some basic debug support for
+templates, see ``blogc(1)``.
+
+For download links, please visit [[https://blogc.rgm.io]].
+Windows users can find prebuilt binaries in the web page sidebar.
+
+Thanks,  
+Rafael
