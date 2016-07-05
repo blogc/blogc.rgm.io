@@ -1,0 +1,11 @@
+TITLE: [ANN] blogc-0.11.0
+DATE: 2016-07-05 02:12:00
+-------------------------
+I just released version ``0.11.0`` of blogc. This release adds the ``else``
+statement for templates (finally!!), and adds some UTF-8 validation (source
+files and templates must have valid UTF-8 content).
+
+For download links, please visit [[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
