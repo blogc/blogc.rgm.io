@@ -1,0 +1,12 @@
+TITLE: [ANN] blogc-0.11.1
+DATE: 2016-07-18 01:00:00
+-------------------------
+I just released version ``0.11.1`` of blogc, that is a bugfix release. It
+fixes a bug on block scope handling in templates, that allowed nonsense usage
+of blocks, that was unlikely to happen in real life but was invalid. It also
+includes some minor code refactoring.
+
+For download links, please visit [[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
