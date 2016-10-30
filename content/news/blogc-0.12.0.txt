@@ -1,0 +1,23 @@
+TITLE: [ANN] blogc-0.12.0
+DATE: 2016-10-30 21:58:00
+-------------------------
+After some months, I just released version ``0.12.0`` of blogc, and it is
+huge! This release includes:
+
+- Big blogs can now be moved to ``blogc``. This version includes support to
+  read the list of source files from standard input, instead of command line
+  arguments. The size limit of command line arguments would be a problem for
+  big blogs with previous versions of ``blogc``.
+- No more external dependencies for any of the blogc tools. This comes at the
+  cost of reducing portability, but I don't think that we have lots of users
+  running anything else than linux, and the tools are easily replaceable with
+  something else.
+- Increased test coverage. Now every tool have tests, and some "integration
+  tests" were included as well.
+- ``blogc-git-receiver(1)`` can read mirror URLs from a configuration file.
+- Lots of bug fixes and code rework.
+
+For download links, please visit [[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
