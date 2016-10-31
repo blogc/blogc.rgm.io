@@ -28,11 +28,10 @@ sitemaps.
 
 #### blogc is portable...
 
-blogc is often tested on Linux, FreeBSD and Microsoft Windows, but the code
-should work on any POSIX-compliant operating system as well. Patches for
-portability are always welcome and have high priority. The optional helper
-tools, like `blogc-git-receiver(1)` and `blogc-runserver(1)` are only
-tested on Linux.
+blogc is often tested on Linux and FreeBSD, but the code should work on any
+POSIX-compliant operating system. Patches for portability are always welcome
+and have high priority. The optional helper tools, like `blogc-git-receiver(1)`
+and `blogc-runserver(1)` are only tested on Linux.
 
 </div>
 <div class="col-md-6">
@@ -47,11 +46,9 @@ much like a "real" source code compiler.
 #### blogc is self-contained...
 
 blogc just depends on a libc. The test suite (yes, blogc comes with a
-somewhat complete test suite!) depends on [cmocka](http://cmocka.org/),
-but users aren't required to run it. The optional tool `blogc-runserver(1)`
-depends on [libevent](http://libevent.org/) and
-[libmagic](https://github.com/file/file), but users can replace it with
-any HTTP server.
+somewhat complete test suite!) depends on [cmocka](http://cmocka.org/) and a
+few other common tools found on Linux machines, but users aren't required to
+run it.
 
 #### blogc is designed for developers...
 
