@@ -18,7 +18,8 @@ huge! This release includes:
 - ``blogc-git-receiver(1)`` can read mirror URLs from a configuration file.
 - Lots of bug fixes and code rework.
 
-For download links, please visit [[https://blogc.rgm.io]].
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
 
 Thanks,  
 Rafael
