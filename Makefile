@@ -160,7 +160,7 @@ $(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl Makefile
 		-t templates/main.tmpl \
 		$<
 
-$(OUTPUT_DIR)/man/%.html: content/man/%.ronn content/man/index.txt Makefile
+content/man/%.html: content/man/%.ronn content/man/index.txt Makefile
 	$(MKDIR) -p $(dir $@) && \
 		$(RONN) \
 			--html \
@@ -169,6 +169,10 @@ $(OUTPUT_DIR)/man/%.html: content/man/%.ronn content/man/index.txt Makefile
 			--manual "blogc Manual" \
 			--style man,toc \
 			$< > $@
+
+$(OUTPUT_DIR)/man/%.html: content/man/%.html
+	$(MKDIR) -p $(dir $@) && \
+		$(CP) $< $@
 
 $(OUTPUT_DIR)/assets/%: assets/% Makefile
 	$(MKDIR) -p $(dir $@) && \
@@ -183,4 +187,5 @@ serve: all
 clean:
 	rm -rf "$(OUTPUT_DIR)"
 
+.SECONDARY: $(addprefix content/man/, $(addsuffix .html, $(MANPAGES)))
 .PHONY: all serve clean

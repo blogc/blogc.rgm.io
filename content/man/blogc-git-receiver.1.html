@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>blogc-git-receiver(1) - a simple login shell/git hook to deploy blogc websites</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#SETUP">SETUP</a>
+    <a href="#REPOSITORY-MIRRORING">REPOSITORY MIRRORING</a>
+    <a href="#ENVIRONMENT-VARIABLES">ENVIRONMENT VARIABLES</a>
+    <a href="#BUGS">BUGS</a>
+    <a href="#AUTHOR">AUTHOR</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>blogc-git-receiver(1)</li>
+    <li class='tc'>blogc Manual</li>
+    <li class='tr'>blogc-git-receiver(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>blogc-git-receiver</code> - <span class="man-whatis">a simple login shell/git hook to deploy blogc websites</span>
+</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p>chsh -s $(command -v <code>blogc-git-receiver</code>) <var>user</var></p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><strong>blogc-git-receiver</strong> provides a PaaS-like way to deploy <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> websites.
+When used as a login shell, it will accept git payloads, creating bare repositories
+as needed, and installing a hook, that will take care of rebuilding the website each
+time someone push something to the <code>master</code> branch.</p>
+
+<p>The git repository must provide a <code>Makefile</code> (or a <code>GNUMakefile</code>), that should
+accept the <code>OUTPUT_DIR</code> variable, and install built files in the directory pointed
+by this variable.</p>
+
+<p><code>blogc-git-receiver</code> is part of <code>blogc</code> project, but isn't tied to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>. Any
+repository with <code>Makefile</code> that builds content and install it to <code>OUTPUT_DIR</code>
+should works with <code>blogc-git-receiver</code>.</p>
+
+<h2 id="SETUP">SETUP</h2>
+
+<p>After creating an user (<code>blogc</code> for the examples), change its shell to
+<a class="man-ref" href="blogc-git-receiver.1.html">blogc-git-receiver<span class="s">(1)</span></a>:</p>
+
+<pre><code># chsh -s $(command -v blogc-git-receiver) blogc
+</code></pre>
+
+<p>Now add ssh keys to <code>/home/blogc/.ssh/authorized_keys</code>. Every key in
+<code>authorized_keys</code> will be allowed to push to the git repositories, and even
+create new ones.</p>
+
+<p>Also, make sure to install all the dependencies required by the websites,
+including a web server. <code>blogc-git-receiver</code> can't handle web server virtual hosts.</p>
+
+<p>To deploy a website (e.g. blogc example repository):</p>
+
+<pre><code>$ git clone https://github.com/blogc/blogc-example.git
+$ cd blogc-example
+$ git remote add blogc blogc@${SERVER_IP}:blogs/blogc-example.git
+$ git push blogc master
+</code></pre>
+
+<p>This will deploy the example to the server, creating a symlink to the built content
+in <code>/home/blogc/repos/blogs/blogc-example.git/htdocs</code>. This symlink should be used
+as the document root for the web server virtual host.</p>
+
+<h3 id="Setup-with-SELinux-enabled-Fedora-">Setup with SELinux enabled (Fedora)</h3>
+
+<p>Supposing the usage of nginx as webserver, running as the <code>nginx</code> user:</p>
+
+<pre><code># dnf install -y nginx policycoreutils-python-utils
+# useradd -m -s $(command -v blogc-git-receiver) blogc
+# gpasswd -a nginx blogc
+# chmod -R g+rx /home/blogc
+# su -c "mkdir /home/blogc/{builds,repos}" -s /bin/sh blogc
+# semanage fcontext -a -t httpd_sys_content_t "/home/blogc/(builds|repos)(/.*)?"
+# restorecon -R -v /home/blogc
+# systemctl restart nginx
+</code></pre>
+
+<p>After running these commands, the machine is ready to be used.</p>
+
+<h2 id="REPOSITORY-MIRRORING">REPOSITORY MIRRORING</h2>
+
+<p>Users can rely on <code>blogc-git-receiver</code> to mirror repositories to a remote Git
+repository (e.g. a free Bitbucket private repository).</p>
+
+<p>Please note that the <code>blogc</code> user must be able to push to the remote repository, and
+that any content manually pushed to the remote repository is overwritten by
+<code>blogc-git-receiver</code>.</p>
+
+<p>Some reasonable ways to allow the <code>blogc</code> user to push to the remote repository are:</p>
+
+<ul>
+<li>Create a password-less SSH key. The key <em>must</em> be password-less, because the push
+is automatic, and remote git hooks can't be interactive.</li>
+<li>Create an oauth token in the hosting service (if it supports oauth authentication
+in git, e.g. GitHub) and add it to the git URL.</li>
+</ul>
+
+
+<p>The mirroring feature wont't block a <code>git push</code>, it will just raise warnings. That
+means that if an error happens when mirroring the repository, the deploy will still
+succeed. Users should pay attention to the git hook logs, to avoid losing data
+due to repositories not being mirrored.</p>
+
+<p>This feature just requires adding a remote called <code>mirror</code> to the bare repository
+in the server, or creating a configuration file (~/blogc-git-receiver.ini), that is
+a simple INI-style file where each repository is represented by a section and the
+value of the <code>mirror</code> variable is the URL that should be used to push.</p>
+
+<p>To create the configuration file (recommended):</p>
+
+<pre><code># su -s /bin/sh - blogc
+# cat &gt; ~/blogc-git-receiver.ini &lt;&lt;EOF
+[repo:myblog.git]
+mirror=$YOUR_GIT_MIRROR_URL
+EOF
+</code></pre>
+
+<p>Or to add the <code>mirror</code> remote:</p>
+
+<pre><code># su -s /bin/sh - blogc
+$ cd repos
+$ git init --bare myblog.git  # if not created yet
+$ cd myblog.git
+$ git remote add --mirror=push mirror $YOUR_GIT_MIRROR_URL
+</code></pre>
+
+<p>Both examples assume that your repository is named <code>myblog.git</code>.</p>
+
+<h3 id="Caveats-of-repository-mirroring-with-SSH">Caveats of repository mirroring with SSH</h3>
+
+<p>The authentication must be done with a password-less SSH key created by the <code>blogc</code>
+user.</p>
+
+<p>As the <code>git push --mirror</code> call is automated, users must disable SSH strict host
+checking in SSH's <code>~/.ssh/config</code> file:</p>
+
+<pre><code>Host bitbucket.org
+    StrictHostKeyChecking no
+</code></pre>
+
+<p>The example uses <code>bitbucket.org</code> as remote host, that should be changed if needed.</p>
+
+<p>To change this file, users must login with <code>/bin/sh</code> or any other "real" shell,
+as <code>root</code>:</p>
+
+<pre><code># su -s /bin/sh - blogc
+</code></pre>
+
+<h2 id="ENVIRONMENT-VARIABLES">ENVIRONMENT VARIABLES</h2>
+
+<p><code>blogc-git-receiver</code> will export an environment variable called <code>BLOGC_GIT_RECEIVER</code>
+when calling <code>gmake</code> to build websites. This variable can be used to enable building
+of content that should only be built when running in production environment, for
+example.</p>
+
+<h2 id="BUGS">BUGS</h2>
+
+<p>Please report any issues to: <a href="https://github.com/blogc/blogc" data-bare-link="true">https://github.com/blogc/blogc</a></p>
+
+<h2 id="AUTHOR">AUTHOR</h2>
+
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x72;&#97;&#x66;&#x61;&#x65;&#x6c;&#64;&#114;&#97;&#102;&#97;&#101;&#108;&#x6d;&#97;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#x65;&#x6e;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#x65;&#x6c;&#x40;&#x72;&#97;&#102;&#x61;&#x65;&#108;&#109;&#x61;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#101;&#x6e;&#x67;&#x2e;&#x62;&#114;</a>&gt;</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="http://man.cx/git(7)">git<span class="s">(7)</span></a>, <a class="man-ref" href="http://man.cx/chsh(1)">chsh<span class="s">(1)</span></a>, <a class="man-ref" href="http://man.cx/su(1)">su<span class="s">(1)</span></a>, <a class="man-ref" href="http://man.cx/make(1)">make<span class="s">(1)</span></a></p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>Rafael G. Martins</li>
+    <li class='tc'>October 2016</li>
+    <li class='tr'>blogc-git-receiver(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

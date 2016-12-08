@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>blogc-pagination(7) - blogc&#39;s pagination support</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#PAGINATION-PARAMETERS">PAGINATION PARAMETERS</a>
+    <a href="#TEMPLATE-VARIABLES">TEMPLATE VARIABLES</a>
+    <a href="#EXAMPLES">EXAMPLES</a>
+    <a href="#BUGS">BUGS</a>
+    <a href="#AUTHOR">AUTHOR</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>blogc-pagination(7)</li>
+    <li class='tc'>blogc Manual</li>
+    <li class='tr'>blogc-pagination(7)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>blogc-pagination</code> - <span class="man-whatis">blogc's pagination support</span>
+</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> supports some basic pagination and post filtering, when running on
+<code>listing</code> mode. Files are listed in the order that they are provided to
+<a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> in the command line, no sorting is done.</p>
+
+<h2 id="PAGINATION-PARAMETERS">PAGINATION PARAMETERS</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> accepts some variables as <code>-D</code> options, that are used to filter the
+files passed as arguments to it:</p>
+
+<dl>
+<dt><code>FILTER_PER_PAGE</code></dt><dd><p>Integer, limits the maximum number of files to be listed.</p></dd>
+<dt><code>FILTER_PAGE</code></dt><dd><p>Integer, current page. If calling <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> with 10 files,
+<code>FILTER_PER_PAGE</code>=4 and <code>FILTER_PAGE</code>=3, it will return just the 2 last
+files, skipping the first 2 pages with 4 files each one.</p></dd>
+<dt><code>FILTER_TAG</code></dt><dd><p>String, if defined, <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will only list files that declare a <code>TAGS</code>
+variable, as a space-separated list of tags (tags can't have spaces,
+obviously). See <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a> for details about how to define source
+variables. The pagination filters will only act on the files with the
+provided tag, instead of filtering the whole file set.</p></dd>
+</dl>
+
+
+<h2 id="TEMPLATE-VARIABLES">TEMPLATE VARIABLES</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will export some global <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> variables, that can be used
+to build links for next and previous page.</p>
+
+<dl>
+<dt><code>CURRENT_PAGE</code></dt><dd><p>Integer, usually the same value of <code>FILTER_PAGE</code> pagination paramenter, if
+defined, or 1.</p></dd>
+<dt><code>FIRST_PAGE</code></dt><dd><p>Integer, 1 if more than zero files were listed.</p></dd>
+<dt><code>LAST_PAGE</code></dt><dd><p>Integer, last page available if more than zero files were listed.</p></dd>
+<dt><code>PREVIOUS_PAGE</code></dt><dd><p>Integer, <code>CURRENT_PAGE</code> minus 1, if <code>CURRENT_PAGE</code> is bigger than 1.</p></dd>
+<dt><code>NEXT_PAGE</code></dt><dd><p>Integer, <code>CURRENT_PAGE</code> plus 1, if <code>LAST_PAGE</code> is bigger than <code>CURRENT_PAGE</code>.</p></dd>
+</dl>
+
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> can output the value of the variables after evaluation, instead of
+actually rendering the files, using the <code>-p</code> option. See <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> for details.
+This is useful to know the last page that needs to be built, using <code>-p LAST_PAGE</code>,
+for example.</p>
+
+<h3 id="Date-variables">Date variables</h3>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will also export some global <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> variables related to
+the <code>DATE</code> variable, as specified in <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a>.</p>
+
+<dl>
+<dt><code>DATE_FIRST</code></dt><dd>String, <code>DATE</code> variable from the first file in the listing.</dd>
+<dt><code>DATE_LAST</code></dt><dd>String, <code>DATE</code> variable from the last file in the listing.</dd>
+</dl>
+
+
+<p>These variables can be also formatted with <code>DATE_FORMAT</code> global <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> parameter,
+if provided, using <code>DATE_FIRST_FORMATTED</code> and <code>DATE_LAST_FORMATTED</code> global
+template variables.</p>
+
+<h3 id="File-name-variables">File name variables</h3>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will also export some global <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> variables related to
+the <code>FILENAME</code> variable, as automatically exported by the source file parser,
+see <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a> for details.</p>
+
+<dl>
+<dt><code>FILENAME_FIRST</code></dt><dd>String, <code>FILENAME</code> variable from the first file in the listing.</dd>
+<dt><code>FILENAME_LAST</code></dt><dd>String, <code>FILENAME</code> variable from the last file in the listing.</dd>
+</dl>
+
+
+<h2 id="EXAMPLES">EXAMPLES</h2>
+
+<h3 id="Source-file-with-tags">Source file with tags</h3>
+
+<pre><code>TITLE: My post
+TAGS: foo bar baz
+-----------------
+Post content
+</code></pre>
+
+<p>This source file defines 3 tags: <code>foo</code>, <code>bar</code> and <code>baz</code>.</p>
+
+<h3 id="Template-with-pagination">Template with pagination</h3>
+
+<pre><code>{% block listing_once %}
+&lt;ul class="pager"&gt;
+    {% ifdef PREVIOUS_PAGE %}
+    &lt;li class="previous"&gt;
+        &lt;a href="/page/{{ PREVIOUS_PAGE }}/"&gt;&amp;larr; Newer&lt;/a&gt;
+    &lt;/li&gt;
+    {% endif %}
+    {% ifdef NEXT_PAGE %}
+    &lt;li class="next"&gt;
+        &lt;a href="/page/{{ NEXT_PAGE }}/"&gt;Older &amp;rarr;&lt;/a&gt;
+    &lt;/li&gt;
+    {% endif %}
+&lt;/ul&gt;
+{% endblock %}
+</code></pre>
+
+<p>This example does not uses all the variables, but the concept is the same for
+all of them.</p>
+
+<h2 id="BUGS">BUGS</h2>
+
+<p>Please report any issues to: <a href="https://github.com/blogc/blogc" data-bare-link="true">https://github.com/blogc/blogc</a></p>
+
+<h2 id="AUTHOR">AUTHOR</h2>
+
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x72;&#97;&#x66;&#x61;&#x65;&#x6c;&#64;&#114;&#97;&#102;&#97;&#101;&#108;&#x6d;&#97;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#x65;&#x6e;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#x65;&#x6c;&#x40;&#x72;&#97;&#102;&#x61;&#x65;&#108;&#109;&#x61;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#101;&#x6e;&#x67;&#x2e;&#x62;&#114;</a>&gt;</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a>, <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a></p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>Rafael G. Martins</li>
+    <li class='tc'>October 2016</li>
+    <li class='tr'>blogc-pagination(7)</li>
+  </ol>
+
+  </div>
+</body>
+</html>
