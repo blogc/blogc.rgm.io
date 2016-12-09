@@ -160,7 +160,7 @@ $(OUTPUT_DIR)/index.html: content/index.txt templates/main.tmpl Makefile
 		-t templates/main.tmpl \
 		$<
 
-content/man/%.html: content/man/%.ronn content/man/index.txt Makefile
+content/man/%.html: content/man/%.ronn content/man/index.txt
 	$(MKDIR) -p $(dir $@) && \
 		$(RONN) \
 			--html \
@@ -170,7 +170,7 @@ content/man/%.html: content/man/%.ronn content/man/index.txt Makefile
 			--style man,toc \
 			$< > $@
 
-$(OUTPUT_DIR)/man/%.html: content/man/%.html
+$(OUTPUT_DIR)/man/%.html: content/man/%.html Makefile
 	$(MKDIR) -p $(dir $@) && \
 		$(CP) $< $@
 
