@@ -29,8 +29,8 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li{% if BM_TYPE == "page" %}{% if FILENAME == "index" %} class="active"{% endif %}{% endif %}><a href="{{ BASE_URL }}/">Home</a></li>
-            <li{% if BM_TYPE == "post" %} class="active"{% endif %}><a href="{{ BASE_URL }}/news/">News</a></li>
+            <li{% if MAKE_TYPE == "page" %}{% if FILENAME == "index" %} class="active"{% endif %}{% endif %}><a href="{{ BASE_URL }}/">Home</a></li>
+            <li{% if MAKE_TYPE == "post" %} class="active"{% endif %}><a href="{{ BASE_URL }}/news/">News</a></li>
             <li><a href="https://github.com/blogc/blogc">GitHub</a></li>
           </ul>
         </div>
