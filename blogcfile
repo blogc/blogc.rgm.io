@@ -43,7 +43,7 @@ hello-world
 [pages]
 index
 
-[copy_files]
+[copy]
 assets/custom.css
 man/blogc.1.html
 man/blogc-git-receiver.1.html
