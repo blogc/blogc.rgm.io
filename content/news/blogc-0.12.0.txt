@@ -7,7 +7,7 @@ huge! This release includes:
 - Large blogs can now be moved to ``blogc``. This version includes support to
   read the list of source files from standard input, instead of command line
   arguments. The operating system's size limit of command line arguments
-  would be a problem for big blogs, when building with previous versions of
+  would be a problem for large blogs, when building with previous versions of
   ``blogc``.
 - No more external dependencies for any of the blogc tools. This comes at the
   cost of reducing portability, but I don't think that we have lots of users
