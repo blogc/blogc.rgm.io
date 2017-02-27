@@ -1,4 +1,4 @@
-[environment]
+[global]
 LATEST_RELEASE = 0.12.0
 AUTHOR_NAME = Rafael G. Martins
 AUTHOR_EMAIL = rafael@rafaelmartins.eng.br
