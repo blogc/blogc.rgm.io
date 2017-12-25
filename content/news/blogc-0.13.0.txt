@@ -1,5 +1,5 @@
 TITLE: [ANN] blogc-0.13.0
-DATE: 2017-12-25
+DATE: 2017-12-25 13:30:00
 -------------------------
 After more than one year, we are releasing blogc ``0.13.0``. This is a special
 release, with lots of features. The release was actually cut more than 1 month
