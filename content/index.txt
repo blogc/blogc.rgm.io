@@ -43,7 +43,7 @@ Windows.
 `blogc(1)` was designed to be used with `make`. It is stateless and idempotent
 (no global state is shared between process calls, and each call with the
 same arguments will always result in the same output), and works pretty
-much like a real-life source code compiler.
+much like a system compiler.
 
 #### blogc is self-contained...
 
@@ -54,7 +54,7 @@ run it.
 
 #### blogc is designed for developers...
 
-Due to its simplicity and similarity to a "real" source code compiler,
+Due to its simplicity and similarity to a system compiler,
 `blogc(1)` is meant to be used by software developers, that are used to work
 with `make` and similar development tools.
 
