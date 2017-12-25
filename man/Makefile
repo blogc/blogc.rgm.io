@@ -1,6 +1,8 @@
 all: \
 	blogc.1.html \
+	blogcfile.5.html \
 	blogc-git-receiver.1.html \
+	blogc-make.1.html \
 	blogc-runserver.1.html \
 	blogc-source.7.html \
 	blogc-template.7.html \

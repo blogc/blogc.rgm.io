@@ -1,5 +1,5 @@
 [global]
-LATEST_RELEASE = 0.12.0
+LATEST_RELEASE = 0.13.0
 AUTHOR_NAME = Rafael G. Martins
 AUTHOR_EMAIL = rafael@rafaelmartins.eng.br
 SITE_TITLE = blogc
@@ -39,6 +39,7 @@ blogc-0.10.2
 blogc-0.11.0
 blogc-0.11.1
 blogc-0.12.0
+blogc-0.13.0
 
 [pages]
 index
@@ -46,7 +47,9 @@ index
 [copy]
 assets/custom.css
 man/blogc.1.html
+man/blogcfile.5.html
 man/blogc-git-receiver.1.html
+man/blogc-make.1.html
 man/blogc-runserver.1.html
 man/blogc-source.7.html
 man/blogc-template.7.html

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>blogc-make(1) - a simple build tool for blogc</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#OPTIONS">OPTIONS</a>
+    <a href="#HELPER-RULES">HELPER RULES</a>
+    <a href="#BUILD-RULES">BUILD RULES</a>
+    <a href="#FILES">FILES</a>
+    <a href="#ENVIRONMENT">ENVIRONMENT</a>
+    <a href="#EXAMPLES">EXAMPLES</a>
+    <a href="#BUGS">BUGS</a>
+    <a href="#AUTHOR">AUTHOR</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>blogc-make(1)</li>
+    <li class='tc'>blogc Manual</li>
+    <li class='tr'>blogc-make(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>blogc-make</code> - <span class="man-whatis">a simple build tool for blogc</span>
+</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p><code>blogc-make</code> [<code>-V</code>] [<code>-f</code> <var>FILE</var>] [<var>RULE</var> ...]<br />
+<code>blogc-make</code> [<code>-h</code>|<code>-v</code>]</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><strong>blogc-make</strong> is a simple build tool for blogc websites. It reads a <a class="man-ref" href="blogcfile.5.html">blogcfile<span class="s">(5)</span></a>
+and generates the output files using <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> and some predefined rules, that are
+useful enough for most common use cases.</p>
+
+<p>See <a class="man-ref" href="blogcfile.5.html">blogcfile<span class="s">(5)</span></a> for details on the file format.</p>
+
+<h2 id="OPTIONS">OPTIONS</h2>
+
+<dl>
+<dt class="flush"><code>-D</code></dt><dd><p>Builds for development environment. This option is useful to load local,
+non-optimized assets for development purposes. It adds two global
+variables to all <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> calls: <code>MAKE_ENV_DEV=1</code> and <code>MAKE_ENV=dev</code>.</p></dd>
+<dt class="flush"><code>-V</code></dt><dd><p>Activates verbose mode, that will give more details of commands runs.</p></dd>
+<dt class="flush"><code>-f</code> <var>FILE</var></dt><dd><p>Reads <var>FILE</var> as <code>blogcfile</code>.</p></dd>
+<dt class="flush"><code>-v</code></dt><dd><p>Show program name, version and exit.</p></dd>
+<dt class="flush"><code>-h</code></dt><dd><p>Show help message and exit.</p></dd>
+</dl>
+
+
+<h2 id="HELPER-RULES">HELPER RULES</h2>
+
+<dl>
+<dt class="flush"><code>all</code></dt><dd><p>Run all build rules. This is the default rule.</p></dd>
+<dt class="flush"><code>clean</code></dt><dd><p>Clean built files and empty directories in output directory.</p></dd>
+<dt><code>runserver</code></dt><dd><p>Run <code>blogc-runserver(1)</code> pointing to output directory, if available. This
+rule accepts some arguments, in the following format:</p>
+
+<pre><code>runserver:host=127.0.0.1,port=8080,threads=20
+</code></pre>
+
+<p>The values in the example are the default values.</p></dd>
+</dl>
+
+
+<h2 id="BUILD-RULES">BUILD RULES</h2>
+
+<dl>
+<dt class="flush"><code>index</code></dt><dd><p> Build website index from posts.</p></dd>
+<dt class="flush"><code>atom</code></dt><dd><p> Build main atom feed from posts.</p></dd>
+<dt><code>atom_tags</code></dt><dd><p> Build atom feeds for each tag from posts.</p></dd>
+<dt><code>pagination</code></dt><dd><p> Build pagination pages from posts.</p></dd>
+<dt class="flush"><code>posts</code></dt><dd><p> Build individual pages for each post.</p></dd>
+<dt class="flush"><code>tags</code></dt><dd><p> Build post listings for each tag from posts.</p></dd>
+<dt class="flush"><code>pages</code></dt><dd><p> Build individual pages for each page.</p></dd>
+<dt class="flush"><code>copy</code></dt><dd><p> Copy static files from source directory to output directory.</p></dd>
+</dl>
+
+
+<h2 id="FILES">FILES</h2>
+
+<p>The <code>blogc-make</code> command expects a settings file, called <code>blogcfile</code> by default,
+or any other file passed to <code>-f</code> option. <code>blogcfile</code> must have valid UTF-8 content.</p>
+
+<p>The <code>blogc-make</code> command will read any files listed on <code>blogcfile</code>, and may write
+files to the configured output directory.</p>
+
+<h2 id="ENVIRONMENT">ENVIRONMENT</h2>
+
+<dl>
+<dt class="flush"><code>BLOGC</code></dt><dd><p>Path to <code>blogc(1)</code> binary. If not provided, the <code>blogc</code> binary in <code>$PATH</code> will
+be used.</p></dd>
+<dt><code>BLOGC_RUNSERVER</code></dt><dd><p>Path to <code>blogc-runserver(1)</code> binary. If not provided, the <code>blogc-runserver</code>
+binary in <code>$PATH</code> will be used, if available.</p></dd>
+<dt><code>OUTPUT_DIR</code></dt><dd><p>Path to the directory where <code>blogc-make</code> should write (or instruct <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> to
+write) output files.</p></dd>
+</dl>
+
+
+<p>Any other environment variables are inherited by <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> and <a class="man-ref" href="blogc-runserver.1.html">blogc-runserver<span class="s">(1)</span></a>,
+when called by <code>blogc-make</code>.</p>
+
+<h2 id="EXAMPLES">EXAMPLES</h2>
+
+<p>Build all files:</p>
+
+<pre><code>$ blogc-make
+</code></pre>
+
+<p>or</p>
+
+<pre><code>$ blogc-make all
+</code></pre>
+
+<p>Clean built files:</p>
+
+<pre><code>$ blogc-make clean
+</code></pre>
+
+<h2 id="BUGS">BUGS</h2>
+
+<p>Please report any issues to: <a href="https://github.com/blogc/blogc" data-bare-link="true">https://github.com/blogc/blogc</a></p>
+
+<h2 id="AUTHOR">AUTHOR</h2>
+
+<p>Rafael G. Martins &lt;<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#114;&#x61;&#x66;&#97;&#101;&#108;&#64;&#114;&#97;&#102;&#x61;&#101;&#x6c;&#109;&#97;&#114;&#x74;&#x69;&#x6e;&#115;&#x2e;&#x65;&#110;&#x67;&#x2e;&#98;&#114;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#x6c;&#64;&#x72;&#97;&#102;&#x61;&#101;&#108;&#x6d;&#x61;&#114;&#116;&#105;&#110;&#115;&#x2e;&#101;&#x6e;&#103;&#x2e;&#98;&#114;</a>&gt;</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="blogc-runserver.1.html">blogc-runserver<span class="s">(1)</span></a>, <a class="man-ref" href="blogcfile.5.html">blogcfile<span class="s">(5)</span></a></p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>Rafael G. Martins</li>
+    <li class='tc'>December 2017</li>
+    <li class='tr'>blogc-make(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

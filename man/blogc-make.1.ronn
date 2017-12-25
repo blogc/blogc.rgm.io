@@ -1,0 +1,127 @@
+blogc-make(1) -- a simple build tool for blogc
+==============================================
+
+## SYNOPSIS
+
+`blogc-make` [`-V`] [`-f` <FILE>] [<RULE> ...]<br>
+`blogc-make` [`-h`|`-v`]
+
+## DESCRIPTION
+
+**blogc-make** is a simple build tool for blogc websites. It reads a blogcfile(5)
+and generates the output files using blogc(1) and some predefined rules, that are
+useful enough for most common use cases.
+
+See blogcfile(5) for details on the file format.
+
+## OPTIONS
+
+  * `-D`:
+    Builds for development environment. This option is useful to load local,
+    non-optimized assets for development purposes. It adds two global
+    variables to all blogc(1) calls: `MAKE_ENV_DEV=1` and `MAKE_ENV=dev`.
+
+  * `-V`:
+    Activates verbose mode, that will give more details of commands runs.
+
+  * `-f` <FILE>:
+    Reads <FILE> as `blogcfile`.
+
+  * `-v`:
+    Show program name, version and exit.
+
+  * `-h`:
+    Show help message and exit.
+
+## HELPER RULES
+
+  * `all`:
+    Run all build rules. This is the default rule.
+
+  * `clean`:
+    Clean built files and empty directories in output directory.
+
+  * `runserver`:
+    Run `blogc-runserver(1)` pointing to output directory, if available. This
+    rule accepts some arguments, in the following format:
+
+        runserver:host=127.0.0.1,port=8080,threads=20
+
+    The values in the example are the default values.
+
+## BUILD RULES
+
+  * `index`:
+     Build website index from posts.
+
+  * `atom`:
+     Build main atom feed from posts.
+
+  * `atom_tags`:
+     Build atom feeds for each tag from posts.
+
+  * `pagination`:
+     Build pagination pages from posts.
+
+  * `posts`:
+     Build individual pages for each post.
+
+  * `tags`:
+     Build post listings for each tag from posts.
+
+  * `pages`:
+     Build individual pages for each page.
+
+  * `copy`:
+     Copy static files from source directory to output directory.
+
+## FILES
+
+The `blogc-make` command expects a settings file, called `blogcfile` by default,
+or any other file passed to `-f` option. `blogcfile` must have valid UTF-8 content.
+
+The `blogc-make` command will read any files listed on `blogcfile`, and may write
+files to the configured output directory.
+
+## ENVIRONMENT
+
+  * `BLOGC`:
+    Path to `blogc(1)` binary. If not provided, the `blogc` binary in `$PATH` will
+    be used.
+
+  * `BLOGC_RUNSERVER`:
+    Path to `blogc-runserver(1)` binary. If not provided, the `blogc-runserver`
+    binary in `$PATH` will be used, if available.
+
+  * `OUTPUT_DIR`:
+    Path to the directory where `blogc-make` should write (or instruct blogc(1) to
+    write) output files.
+
+Any other environment variables are inherited by blogc(1) and blogc-runserver(1),
+when called by `blogc-make`.
+
+## EXAMPLES
+
+Build all files:
+
+    $ blogc-make
+
+or
+
+    $ blogc-make all
+
+Clean built files:
+
+    $ blogc-make clean
+
+## BUGS
+
+Please report any issues to: <https://github.com/blogc/blogc>
+
+## AUTHOR
+
+Rafael G. Martins &lt;<rafael@rafaelmartins.eng.br>&gt;
+
+## SEE ALSO
+
+blogc(1), blogc-runserver(1), blogcfile(5)

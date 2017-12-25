@@ -159,7 +159,7 @@ will be included only once.
 </code></pre>
 
 <p>This is a 'real life' usage example of a <code>listing_once</code> block, supposing
-that each source file defines a <code>TITLE</code> variable:</p>
+that the <code>TITLE</code> variable is defined:</p>
 
 <pre><code>{% block listing_once %}
 &lt;ul&gt;
@@ -201,7 +201,7 @@ a formatter will be applied, if available for the variable name:</p>
 
 <ul>
 <li>Date formatter: if variable name starts with <code>DATE_</code>, it is formatted with
-a <a class="man-ref" href="http://man.cx/strptime(3)">strptime<span class="s">(3)</span></a> format, provided by <code>DATE_FORMAT</code> variable. The <code>DATE_FORMATTED</code>
+a <a class="man-ref" href="https://man.cx/strftime(3)">strftime<span class="s">(3)</span></a> format, provided by <code>DATE_FORMAT</code> variable. The <code>DATE_FORMATTED</code>
 "meta-variable" will return the formatted version of the <code>DATE</code> variable.
 If <code>DATE_FORMAT</code> is not provided, the original value will be returned.</li>
 </ul>
@@ -278,7 +278,7 @@ variable evaluates to true in the current scope. The left operand of the
 comparision <em>must</em> be a variable.</p>
 
 <p>The available operators are: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>></code>, <code>&lt;=</code> and <code>>=</code>. The
-comparisions are <a class="man-ref" href="http://man.cx/strcmp(3)">strcmp<span class="s">(3)</span></a>-like.</p>
+comparisions are <a class="man-ref" href="https://man.cx/strcmp(3)">strcmp<span class="s">(3)</span></a>-like.</p>
 
 <p>This is how an <code>if</code> conditional is defined in a template:</p>
 
@@ -362,16 +362,16 @@ tested, may be subject of parsing bugs. Please report any issues to:
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x72;&#97;&#x66;&#x61;&#x65;&#x6c;&#64;&#114;&#97;&#102;&#97;&#101;&#108;&#x6d;&#97;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#x65;&#x6e;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#x65;&#x6c;&#x40;&#x72;&#97;&#102;&#x61;&#x65;&#108;&#109;&#x61;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#101;&#x6e;&#x67;&#x2e;&#x62;&#114;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#114;&#97;&#x66;&#x61;&#101;&#108;&#64;&#x72;&#x61;&#102;&#97;&#x65;&#x6c;&#109;&#x61;&#114;&#x74;&#x69;&#x6e;&#x73;&#x2e;&#101;&#110;&#103;&#x2e;&#98;&#x72;" data-bare-link="true">&#114;&#x61;&#x66;&#x61;&#x65;&#x6c;&#64;&#x72;&#x61;&#102;&#x61;&#x65;&#x6c;&#x6d;&#x61;&#114;&#x74;&#105;&#x6e;&#x73;&#x2e;&#101;&#x6e;&#103;&#x2e;&#x62;&#x72;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
-<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a>, <a class="man-ref" href="http://man.cx/strcmp(3)">strcmp<span class="s">(3)</span></a></p>
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a>, <a class="man-ref" href="https://man.cx/strcmp(3)">strcmp<span class="s">(3)</span></a>, <a class="man-ref" href="https://man.cx/strftime(3)">strftime<span class="s">(3)</span></a></p>
 
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>October 2016</li>
+    <li class='tc'>December 2017</li>
     <li class='tr'>blogc-template(7)</li>
   </ol>
 

@@ -104,8 +104,8 @@
               <a class="list-group-item" href="https://copr.fedoraproject.org/coprs/rafaelmartins/blogc/">
                 <strong>Fedora/RHEL/CentOS:</strong> Copr
               </a>
-              <a class="list-group-item disabled" href="#" onclick="return false">
-                <strong>Ubuntu:</strong> PPA (pending)
+              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/tag/v{{ LATEST_RELEASE }}">
+                <strong>More downloads on GitHub</strong>
               </a>
             </div>
           </div>
@@ -120,15 +120,14 @@
               <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-template.7.html"><code>blogc-template(7)</code></a>
               <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-pagination.7.html"><code>blogc-pagination(7)</code></a>
             </div>
-          </div>
-
-          <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">Helper tools</h4>
             </div>
             <div class="list-group">
               <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-git-receiver.1.html"><code>blogc-git-receiver(1)</code></a>
               <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-runserver.1.html"><code>blogc-runserver(1)</code></a>
+              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-make.1.html"><code>blogc-make(1)</code></a>
+              <a class="list-group-item" href="{{ BASE_URL }}/man/blogcfile.5.html"><code>blogcfile(5)</code></a>
             </div>
           </div>
 
@@ -140,9 +139,10 @@
       <div class="row">
         <div class="col-md-12">
           <p class="copyright text-muted">
-            &copy; 2015-2016 <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a>.
+            &copy; 2015-2017 <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a>.
             Project released under a <a href="https://github.com/blogc/blogc/blob/master/LICENSE">BSD 3 clause license</a>.
-            Website powered by: <strong>blogc {{ BLOGC_VERSION }}</strong></p>
+            Website powered by: <strong>blogc {{ BLOGC_VERSION }}</strong> |
+            <a href="https://rgm.io/imprint/" rel="nofollow">Impressum/Imprint</a></p>
         </div>
       </div>
     </div>

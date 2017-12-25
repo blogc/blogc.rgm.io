@@ -92,13 +92,13 @@ When used as a login shell, it will accept git payloads, creating bare repositor
 as needed, and installing a hook, that will take care of rebuilding the website each
 time someone push something to the <code>master</code> branch.</p>
 
-<p>The git repository must provide a <code>Makefile</code> (or a <code>GNUMakefile</code>), that should
-accept the <code>OUTPUT_DIR</code> variable, and install built files in the directory pointed
-by this variable.</p>
+<p>The git repository must provide a <a class="man-ref" href="blogcfile.5.html">blogcfile<span class="s">(5)</span></a> (if <a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a> is installed), or
+a <code>Makefile</code> (or a <code>GNUMakefile</code>) that should accept the <code>OUTPUT_DIR</code> variable, and
+install built files into the directory pointed out by this variable.</p>
 
-<p><code>blogc-git-receiver</code> is part of <code>blogc</code> project, but isn't tied to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>. Any
-repository with <code>Makefile</code> that builds content and install it to <code>OUTPUT_DIR</code>
-should works with <code>blogc-git-receiver</code>.</p>
+<p><code>blogc-git-receiver</code> is part of <code>blogc</code> project, but isn't tied to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> or
+<a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a>. Any repository with <code>Makefile</code> that builds content and install it to
+<code>OUTPUT_DIR</code> should work with <code>blogc-git-receiver</code>.</p>
 
 <h2 id="SETUP">SETUP</h2>
 
@@ -126,6 +126,18 @@ $ git push blogc master
 <p>This will deploy the example to the server, creating a symlink to the built content
 in <code>/home/blogc/repos/blogs/blogc-example.git/htdocs</code>. This symlink should be used
 as the document root for the web server virtual host.</p>
+
+<h3 id="Rebuild-last-successful-build">Rebuild last successful build</h3>
+
+<p>If for some reason you want to rebuild the last successful build of a given website,
+you can run its <code>pre-receive</code> hook manually in the server:</p>
+
+<pre><code># su -s /bin/sh - blogc
+$ cd ~/repos/blogs/blogc-example.git
+$ ./hooks/pre-receive
+</code></pre>
+
+<p>This should re-run the last build as if it was pushed to git.</p>
 
 <h3 id="Setup-with-SELinux-enabled-Fedora-">Setup with SELinux enabled (Fedora)</h3>
 
@@ -175,7 +187,7 @@ value of the <code>mirror</code> variable is the URL that should be used to push
 <p>To create the configuration file (recommended):</p>
 
 <pre><code># su -s /bin/sh - blogc
-# cat &gt; ~/blogc-git-receiver.ini &lt;&lt;EOF
+$ cat &gt; ~/blogc-git-receiver.ini &lt;&lt;EOF
 [repo:myblog.git]
 mirror=$YOUR_GIT_MIRROR_URL
 EOF
@@ -212,12 +224,26 @@ as <code>root</code>:</p>
 <pre><code># su -s /bin/sh - blogc
 </code></pre>
 
+<h3 id="Push-to-mirror-manually">Push to mirror manually</h3>
+
+<p>If for some reason you want to push the repository of a given website to remote
+mirror, you can run its <code>post-receive</code> hook manually in the server:</p>
+
+<pre><code># su -s /bin/sh - blogc
+$ cd ~/repos/blogs/blogc-example.git
+$ ./hooks/post-receive
+</code></pre>
+
+<p>WARNING: If you push manually and your server's repository is empty, you'll clean
+your mirror repository.</p>
+
 <h2 id="ENVIRONMENT-VARIABLES">ENVIRONMENT VARIABLES</h2>
 
 <p><code>blogc-git-receiver</code> will export an environment variable called <code>BLOGC_GIT_RECEIVER</code>
 when calling <code>gmake</code> to build websites. This variable can be used to enable building
 of content that should only be built when running in production environment, for
-example.</p>
+example. This variable will not be added when using <a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a>, whose builds are
+always considered to be "production" (<a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a> is never called with <code>-D</code>).</p>
 
 <h2 id="BUGS">BUGS</h2>
 
@@ -225,16 +251,16 @@ example.</p>
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x72;&#97;&#x66;&#x61;&#x65;&#x6c;&#64;&#114;&#97;&#102;&#97;&#101;&#108;&#x6d;&#97;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#x65;&#x6e;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#x65;&#x6c;&#x40;&#x72;&#97;&#102;&#x61;&#x65;&#108;&#109;&#x61;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#101;&#x6e;&#x67;&#x2e;&#x62;&#114;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#114;&#x61;&#x66;&#97;&#101;&#108;&#64;&#114;&#97;&#102;&#x61;&#101;&#x6c;&#109;&#97;&#114;&#x74;&#x69;&#x6e;&#115;&#x2e;&#x65;&#110;&#x67;&#x2e;&#98;&#114;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#x6c;&#64;&#x72;&#97;&#102;&#x61;&#101;&#108;&#x6d;&#x61;&#114;&#116;&#105;&#110;&#115;&#x2e;&#101;&#x6e;&#103;&#x2e;&#98;&#114;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
-<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="http://man.cx/git(7)">git<span class="s">(7)</span></a>, <a class="man-ref" href="http://man.cx/chsh(1)">chsh<span class="s">(1)</span></a>, <a class="man-ref" href="http://man.cx/su(1)">su<span class="s">(1)</span></a>, <a class="man-ref" href="http://man.cx/make(1)">make<span class="s">(1)</span></a></p>
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="https://man.cx/git(1)">git<span class="s">(1)</span></a>, <a class="man-ref" href="https://man.cx/git-shell(1)">git-shell<span class="s">(1)</span></a>, <a class="man-ref" href="https://man.cx/chsh(1)">chsh<span class="s">(1)</span></a>, <a class="man-ref" href="https://man.cx/su(1)">su<span class="s">(1)</span></a>, <a class="man-ref" href="https://man.cx/make(1)">make<span class="s">(1)</span></a></p>
 
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>October 2016</li>
+    <li class='tc'>December 2017</li>
     <li class='tr'>blogc-git-receiver(1)</li>
   </ol>
 

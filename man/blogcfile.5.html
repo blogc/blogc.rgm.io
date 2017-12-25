@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>blogcfile(5) - blogc-make&#39;s configuration file</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#OPTIONS">OPTIONS</a>
+    <a href="#EXAMPLE">EXAMPLE</a>
+    <a href="#BUGS">BUGS</a>
+    <a href="#AUTHOR">AUTHOR</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>blogcfile(5)</li>
+    <li class='tc'>blogc Manual</li>
+    <li class='tr'>blogcfile(5)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>blogcfile</code> - <span class="man-whatis">blogc-make's configuration file</span>
+</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><strong>blogcfile</strong> is the configuration file for <a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a>, that is a simple
+build tool for <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>. It is an INI-style file, with some predefined
+sections, that will provide the data required by <a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a> rules to
+build websites.</p>
+
+<p><strong>blogcfile</strong> must be valid UTF-8.</p>
+
+<h2 id="OPTIONS">OPTIONS</h2>
+
+<h3 id="Global-variables">Global variables</h3>
+
+<p>The <code>[global]</code> section contains all the <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> variables that should be
+passed to all <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> calls.</p>
+
+<p>The following variables are required and should be always provided:</p>
+
+<dl>
+<dt><code>AUTHOR_NAME</code></dt><dd><p>The name of the website main author.</p></dd>
+<dt><code>AUTHOR_EMAIL</code></dt><dd><p>The email of the website main author.</p></dd>
+<dt><code>BASE_DOMAIN</code></dt><dd><p>The base domain of the website.</p></dd>
+<dt><code>SITE_TITLE</code></dt><dd><p>The website title.</p></dd>
+<dt><code>SITE_TAGLINE</code></dt><dd><p>The website tagline.</p></dd>
+</dl>
+
+
+<h3 id="Settings">Settings</h3>
+
+<p><a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a> relies on a predefined set of rules to build the websites,
+however these rules can be customized with the following settings, from the
+<code>[settings]</code> section:</p>
+
+<dl>
+<dt><code>atom_ext</code> (default: <code>.xml</code>)</dt><dd><p>The extension of the generated Atom feeds.</p></dd>
+<dt><code>atom_order</code> (default: <code>DESC</code>)</dt><dd><p>The ordering (<code>ASC</code> or <code>DESC</code>) of the Atom feeds. Please note that the files
+are not sorted by date, they are sorted by their order in the <code>[posts]</code>
+section.</p></dd>
+<dt><code>atom_posts_per_page</code> (default: <code>10</code>)</dt><dd><p>Number of posts per page in the Atom feeds.</p></dd>
+<dt><code>atom_prefix</code> (default: <code>atom</code>)</dt><dd><p>The prefix of the generated Atom feeds. It is relative to the output
+directory. With the default values of the settings, the main Atom feed will
+be <code>atom.xml</code>, the Atom feed for the <code>foo</code> tag will be <code>atom/foo.xml</code> and so
+on.</p></dd>
+<dt><code>content_dir</code> (default: <code>content</code>)</dt><dd><p>The directory that stores the source files. This directory is relative
+to <code>blogcfile</code>.</p></dd>
+<dt><code>date_format</code> (default: <code>%b %d, %Y, %I:%M %p GMT</code>)</dt><dd><p>The <a class="man-ref" href="https://man.cx/strftime(3)">strftime<span class="s">(3)</span></a> format that should be used when formating dates. Please note
+that the times are always handled as UTC/GMT.</p></dd>
+<dt><code>html_ext</code> (default: <code>/index.html</code>)</dt><dd><p>The extension of the generated HTML files. The default value will result on
+friendly URL, by creating directories with <code>index.html</code> files inside, instead
+of creating the HTML file directly. The <code>index</code> page is a special case:
+instead of generating something like <code>/index/index.html</code>, it will generate
+<code>/index.html</code>, because this is behavior that most users would expect.</p></dd>
+<dt><code>html_order</code> (default: <code>DESC</code>)</dt><dd><p>The ordering (<code>ASC</code> or <code>DESC</code>) of the posts in the listing indexes.
+Please note that the files are not sorted by date, they are sorted by
+their order in the <code>[posts]</code> section.</p></dd>
+<dt><code>index_prefix</code> (default: unset)</dt><dd><p>The prefix of the index HTML page, that is the listing of blog posts. This
+option is useful if the user wants to host a page in the root of the website,
+and move the posts listing index to a subdirectory.</p></dd>
+<dt><code>locale</code> (default: unset)</dt><dd><p>The locale to be used when calling <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>. E.g. <code>en_US.UTF-8</code>.</p></dd>
+<dt><code>main_template</code> (default: <code>main.tmpl</code>)</dt><dd><p>The template file that should be used when building HTML files. This file
+is relative to <code>template_dir</code>.</p></dd>
+<dt><code>pagination_prefix</code> (default: <code>page</code>)</dt><dd><p>The prefix of the generated pagination pages. It is relative to the
+output directory.</p></dd>
+<dt><code>post_prefix</code> (default: <code>post</code>)</dt><dd><p>The prefix of the posts file names. It is used for both content and output
+directories, and is relative to <code>content_dir</code> and the output directory.</p></dd>
+<dt><code>posts_per_page</code> (default: <code>10</code>)</dt><dd><p>Number of posts per page in the pagination pages.</p></dd>
+<dt><code>source_ext</code> (default: <code>.txt</code>)</dt><dd><p>The extension of the source files.</p></dd>
+<dt><code>tag_prefix</code> (default: <code>tag</code>)</dt><dd><p>The prefix of the generated tag listing index pages. It is relative to the
+output directory.</p></dd>
+<dt><code>template_dir</code> (default: <code>templates</code>)</dt><dd><p>The directory that stores the template files. This directory is relative
+to <code>blogcfile</code>.</p></dd>
+</dl>
+
+
+<h3 id="Posts-listing">Posts listing</h3>
+
+<p>The <code>[posts]</code> section is a listing of the posts that will be included in the
+website. They should be listed without the post prefix and without the extension,
+only the "slugs" should be used. For example, with default settings, if the source
+of the post is <code>content/post/foo.txt</code>, the line added to the <code>[posts]</code> section
+is <code>foo</code>.</p>
+
+<p>All the posts are relative to the <code>post_prefix</code> in the root of the website.</p>
+
+<h3 id="Pages-listing">Pages listing</h3>
+
+<p>The <code>[pages]</code> section is a listing of the pages that will be included in the
+website. They should be listed without the page prefix and without the extension,
+only the "slugs" should be used. For example, with default settings, if the source
+of the page is <code>content/foo.txt</code>, the line added to the <code>[pages]</code> section is <code>foo</code>.</p>
+
+<p>All the pages are relative to the root of the website.</p>
+
+<h3 id="Tags-listing">Tags listing</h3>
+
+<p>The <code>[tags]</code> section is a listing of the tags that should be listed in the
+website. <a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a> will generate post listing indexes and Atom feeds for
+each tag listed in the section.</p>
+
+<h3 id="Copy-listing">Copy listing</h3>
+
+<p>The <code>[copy]</code> section is a listing of the files that should be copied to the
+output directory.</p>
+
+<p>All the files are relative to the <code>blogcfile</code>, and their directory structure
+will be built inside the output directory.</p>
+
+<h2 id="EXAMPLE">EXAMPLE</h2>
+
+<pre><code>[global]
+AUTHOR_NAME = Author
+AUTHOR_EMAIL = author@example.org
+SITE_TITLE = Site Title
+SITE_TAGLINE = Site Tagline
+BASE_DOMAIN = http://example.org
+
+[settings]
+locale = en_US.utf8
+
+[posts]
+post1
+post2
+
+[pages]
+about
+
+[tags]
+tag1
+tag2
+
+[copy]
+assets/custom.css
+</code></pre>
+
+<h2 id="BUGS">BUGS</h2>
+
+<p>Please report any issues to: <a href="https://github.com/blogc/blogc" data-bare-link="true">https://github.com/blogc/blogc</a></p>
+
+<h2 id="AUTHOR">AUTHOR</h2>
+
+<p>Rafael G. Martins &lt;<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#114;&#x61;&#x66;&#97;&#101;&#108;&#64;&#114;&#97;&#102;&#x61;&#101;&#x6c;&#109;&#97;&#114;&#x74;&#x69;&#x6e;&#115;&#x2e;&#x65;&#110;&#x67;&#x2e;&#98;&#114;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#x6c;&#64;&#x72;&#97;&#102;&#x61;&#101;&#108;&#x6d;&#x61;&#114;&#116;&#105;&#110;&#115;&#x2e;&#101;&#x6e;&#103;&#x2e;&#98;&#114;</a>&gt;</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a>, <a class="man-ref" href="https://man.cx/strftime(3)">strftime<span class="s">(3)</span></a></p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>Rafael G. Martins</li>
+    <li class='tc'>December 2017</li>
+    <li class='tr'>blogcfile(5)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

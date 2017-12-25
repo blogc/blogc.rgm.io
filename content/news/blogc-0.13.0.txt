@@ -1,0 +1,35 @@
+TITLE: [ANN] blogc-0.13.0
+DATE: 2017-12-25
+-------------------------
+After more than one year, we are releasing blogc ``0.13.0``. This is a special
+release, with lots of features. The release was actually cut more than 1 month
+ago, but this is the time for the announcement!
+
+- blogc now includes a new helper tool: [`blogc-make(1)`](./man/blogc-make.1.html),
+  that is a build tool for blogc, and should be enough for the needs of most
+  users. See the manpages for a complete list of features. This tool is POSIX-only
+  for now, but patches porting it to Windows are welcome.
+- blogc can be used as an [AWS Lambda](https://aws.amazon.com/lambda/)
+  function, to deploy websites directly to [Amazon S3](https://aws.amazon.com/s3/),
+  triggered by [GitHub](https://github.com) changes. This is currently not
+  documented, but users with some AWS Lambda experience should be able to make it
+  work by looking at the function code. The lambda function zip file can be
+  found in our Github release page:
+  [[https://github.com/blogc/blogc/releases/tag/v0.13.0]]. Documentation will be
+  added soon.
+- Lots of minor fixes for `blogc-git-receiver(1)` and improvements to allow
+  re-running the build hooks manually.
+- Lots of improvements for `blogc-runserver(1)`, including IPv6 support, better
+  socket handling, allow users to define default host and port using environment
+  variables, etc.
+- Some random template engine, loader and content parser fixes and new features.
+
+Yeah, this is a really huge release. Please check the
+[changelog](https://github.com/blogc/blogc/compare/v0.12.0...v0.13.0) for more
+details.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael

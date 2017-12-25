@@ -12,13 +12,13 @@ When used as a login shell, it will accept git payloads, creating bare repositor
 as needed, and installing a hook, that will take care of rebuilding the website each
 time someone push something to the `master` branch.
 
-The git repository must provide a `Makefile` (or a `GNUMakefile`), that should
-accept the `OUTPUT_DIR` variable, and install built files in the directory pointed
-by this variable.
+The git repository must provide a blogcfile(5) (if blogc-make(1) is installed), or
+a `Makefile` (or a `GNUMakefile`) that should accept the `OUTPUT_DIR` variable, and
+install built files into the directory pointed out by this variable.
 
-`blogc-git-receiver` is part of `blogc` project, but isn't tied to blogc(1). Any
-repository with `Makefile` that builds content and install it to `OUTPUT_DIR`
-should works with `blogc-git-receiver`.
+`blogc-git-receiver` is part of `blogc` project, but isn't tied to blogc(1) or
+blogc-make(1). Any repository with `Makefile` that builds content and install it to
+`OUTPUT_DIR` should work with `blogc-git-receiver`.
 
 ## SETUP
 
@@ -44,6 +44,17 @@ To deploy a website (e.g. blogc example repository):
 This will deploy the example to the server, creating a symlink to the built content
 in `/home/blogc/repos/blogs/blogc-example.git/htdocs`. This symlink should be used
 as the document root for the web server virtual host.
+
+### Rebuild last successful build
+
+If for some reason you want to rebuild the last successful build of a given website,
+you can run its `pre-receive` hook manually in the server:
+
+    # su -s /bin/sh - blogc
+    $ cd ~/repos/blogs/blogc-example.git
+    $ ./hooks/pre-receive
+
+This should re-run the last build as if it was pushed to git.
 
 ### Setup with SELinux enabled (Fedora)
 
@@ -89,7 +100,7 @@ value of the `mirror` variable is the URL that should be used to push.
 To create the configuration file (recommended):
 
     # su -s /bin/sh - blogc
-    # cat > ~/blogc-git-receiver.ini <<EOF
+    $ cat > ~/blogc-git-receiver.ini <<EOF
     [repo:myblog.git]
     mirror=$YOUR_GIT_MIRROR_URL
     EOF
@@ -122,12 +133,25 @@ as `root`:
 
     # su -s /bin/sh - blogc
 
+### Push to mirror manually
+
+If for some reason you want to push the repository of a given website to remote
+mirror, you can run its `post-receive` hook manually in the server:
+
+    # su -s /bin/sh - blogc
+    $ cd ~/repos/blogs/blogc-example.git
+    $ ./hooks/post-receive
+
+WARNING: If you push manually and your server's repository is empty, you'll clean
+your mirror repository.
+
 ## ENVIRONMENT VARIABLES
 
 `blogc-git-receiver` will export an environment variable called `BLOGC_GIT_RECEIVER`
 when calling `gmake` to build websites. This variable can be used to enable building
 of content that should only be built when running in production environment, for
-example.
+example. This variable will not be added when using blogc-make(1), whose builds are
+always considered to be "production" (blogc-make(1) is never called with `-D`).
 
 ## BUGS
 
@@ -139,4 +163,4 @@ Rafael G. Martins &lt;<rafael@rafaelmartins.eng.br>&gt;
 
 ## SEE ALSO
 
-blogc(1), git(7), chsh(1), su(1), make(1)
+blogc(1), git(1), git-shell(1), chsh(1), su(1), make(1)

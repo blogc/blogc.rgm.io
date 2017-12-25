@@ -45,12 +45,18 @@ You can omit seconds, minutes and hours if you want, they will be filled with
 ``yyyy-mm-dd hh`` and ``yyyy-mm-dd``
 
 The ``DATE_FORMAT`` variable should be passed to blogc(1) as a global
-variable. Its value must be a valid strptime(3) format.
+variable. Its value must be a valid strftime(3) format.
 
 The source parser will also automatically generate a variable called `FILENAME`,
 that stores the name of the source file, without its extension. This is useful
 for building permalinks in templates. This variable can't be overriden by an
 explicit definition in source file.
+
+The variable `FIRST_HEADER` is created by the source parser by default,
+containing the unparsed value of the first header found in the source file.
+The content is not parsed but HTML entities are encoded. Headers inside
+blockquotes are ignored. This variable can be overriden by an explicit
+definition in source file, that must have the HTML entities escaped manually.
 
 Another variable, `DESCRIPTION`, will be automatically created by the source
 parser. It contains the unparsed content of the first paragraph found in the
@@ -277,4 +283,4 @@ Rafael G. Martins &lt;<rafael@rafaelmartins.eng.br>&gt;
 
 ## SEE ALSO
 
-blogc(1), blogc-template(7), strptime(3)
+blogc(1), blogc-template(7), strftime(3)

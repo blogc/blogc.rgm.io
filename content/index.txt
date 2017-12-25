@@ -16,8 +16,8 @@
 
 #### blogc is simple...
 
-blogc was designed with simplicity in mind. If the implementation of some
-feature requires a very complex change, it is discarded.
+blogc was designed with simplicity in mind. If some feature requires a very
+complex change, it won't be implemented.
 
 #### blogc is powerful...
 
@@ -28,20 +28,22 @@ sitemaps.
 
 #### blogc is portable...
 
-blogc is often tested on Linux and FreeBSD, but the code should work on any
-POSIX-compliant operating system. Patches for portability are always welcome
-and have high priority. The optional helper tools, like `blogc-git-receiver(1)`
-and `blogc-runserver(1)` are only tested on Linux.
+`blogc(1)` is often tested on Linux and FreeBSD, but the code should work
+on any POSIX-compliant operating system and Windows. Patches for portability
+are always welcome and have high priority. The optional helper tools, like
+`blogc-git-receiver(1)`, `blogc-make(1)` and `blogc-runserver(1)` are only
+tested on Linux and rely on some POSIX features that are not available on
+Windows.
 
 </div>
 <div class="col-md-6">
 
 #### blogc is compatible with `make`...
 
-blogs was designed to be used with `make`. It is stateless and idempotent
+`blogc(1)` was designed to be used with `make`. It is stateless and idempotent
 (no global state is shared between process calls, and each call with the
 same arguments will always result in the same output), and works pretty
-much like a "real" source code compiler.
+much like a real-life source code compiler.
 
 #### blogc is self-contained...
 
@@ -53,7 +55,7 @@ run it.
 #### blogc is designed for developers...
 
 Due to its simplicity and similarity to a "real" source code compiler,
-blogc is meant to be used by software developers, that are used to work
+`blogc(1)` is meant to be used by software developers, that are used to work
 with `make` and similar development tools.
 
 </div>
@@ -62,16 +64,20 @@ with `make` and similar development tools.
 
 ### Frequently Asked Questions
 
-#### Is this a blog engine?
+#### Is this a blogging engine?
 
 No, it is just a blog compiler. It will only build one file at once, and does
 not know anything about the other files that needs to be built to get a full
-blog working. This is a job for a build tool like ``make``.
+blog working. This is a job for a build tool like `make`. We recently
+developed a build tool for blogc, called
+[`blogc-make(1)`](./man/blogc-make.1.html), that can turn `blogc(1)` into a
+blogging engine suitable for most users' needs, but no user is required to use
+`blogc-make(1)`.
 
 #### What is its markup language?
 
 blogc comes with its own markup language, see
-[blogc-source(7)](./man/blogc-source.7.html). The language is quite similar to
+[`blogc-source(7)`](./man/blogc-source.7.html). The language is quite similar to
 John Gruber's Markdown, but differs in some aspects.
 
 #### But why not just support Markdown?
@@ -86,28 +92,33 @@ is the markup language.
 
 You should install it from [github](https://github.com/blogc/blogc) or
 from a [stable release](https://github.com/blogc/blogc/releases). It
-is a standard autotools project, that can be built with ``./configure && make
-&& make install``.
+is a standard autotools project, that can be built with `./configure && make
+&& make install`. Take a look at `./configure --help` to learn about how to
+enable the helper tools. There are also several pre-built binaries and
+distro-specific repositories available in the sidebar of this website.
 
 There's also a Git repository with an example blog:
 [[https://github.com/blogc/blogc-example]]
 
-Feel free to clone it, remove ``.git`` and start your brand new blog.
+Feel free to clone it, remove `.git` and start your brand new blog.
 
 The example repository uses GNU Make. You should be able to write a Makefile
-that only uses POSIX features, and get it working with any ``make``
+that only uses POSIX features, and get it working with any `make`
 implementation, but our example uses lots of GNU features. This should be
 fixed in future.
+
+A git branch using `blogc-make(1)` instead of GNU Make is being implemented
+and will be announced here as soon as it is ready. Meanwhile, users can
+use the [source code of this website](https://github.com/blogc/blogc.rgm.io)
+as an example.
 
 #### What the name "blogc" means?
 
 "blogc" stands for "blog compiler". The name has nothing to do with the
 programming language used to implement it. ;-)
 
-#### I don't like ``make``, what can I do about it?
+#### I don't like `make` nor `blogc-make`, what can I do about it?
 
 You are free to use any other build tool you like. You can even use something
-like ``grunt``, if you really want. blogc is a command-line application, like
+like `grunt`, if you really want. blogc is a command-line application, like
 any other. Anything that can call command-line tools should work just fine.
-
-Our example repository uses GNU Make, though.

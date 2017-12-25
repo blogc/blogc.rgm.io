@@ -125,12 +125,18 @@ You can omit seconds, minutes and hours if you want, they will be filled with
 <code>yyyy-mm-dd hh</code> and <code>yyyy-mm-dd</code></p>
 
 <p>The <code>DATE_FORMAT</code> variable should be passed to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> as a global
-variable. Its value must be a valid <a class="man-ref" href="http://man.cx/strptime(3)">strptime<span class="s">(3)</span></a> format.</p>
+variable. Its value must be a valid <a class="man-ref" href="https://man.cx/strftime(3)">strftime<span class="s">(3)</span></a> format.</p>
 
 <p>The source parser will also automatically generate a variable called <code>FILENAME</code>,
 that stores the name of the source file, without its extension. This is useful
 for building permalinks in templates. This variable can't be overriden by an
 explicit definition in source file.</p>
+
+<p>The variable <code>FIRST_HEADER</code> is created by the source parser by default,
+containing the unparsed value of the first header found in the source file.
+The content is not parsed but HTML entities are encoded. Headers inside
+blockquotes are ignored. This variable can be overriden by an explicit
+definition in source file, that must have the HTML entities escaped manually.</p>
 
 <p>Another variable, <code>DESCRIPTION</code>, will be automatically created by the source
 parser. It contains the unparsed content of the first paragraph found in the
@@ -374,16 +380,16 @@ tested, may be subject of parsing bugs. Please report any issues to:
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x72;&#97;&#x66;&#x61;&#x65;&#x6c;&#64;&#114;&#97;&#102;&#97;&#101;&#108;&#x6d;&#97;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#x65;&#x6e;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#x65;&#x6c;&#x40;&#x72;&#97;&#102;&#x61;&#x65;&#108;&#109;&#x61;&#114;&#116;&#x69;&#x6e;&#115;&#x2e;&#101;&#x6e;&#x67;&#x2e;&#x62;&#114;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#114;&#97;&#x66;&#x61;&#101;&#108;&#64;&#x72;&#x61;&#102;&#97;&#x65;&#x6c;&#109;&#x61;&#114;&#x74;&#x69;&#x6e;&#x73;&#x2e;&#101;&#110;&#103;&#x2e;&#98;&#x72;" data-bare-link="true">&#114;&#x61;&#x66;&#x61;&#x65;&#x6c;&#64;&#x72;&#x61;&#102;&#x61;&#x65;&#x6c;&#x6d;&#x61;&#114;&#x74;&#105;&#x6e;&#x73;&#x2e;&#101;&#x6e;&#103;&#x2e;&#x62;&#x72;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
-<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a>, <a class="man-ref" href="http://man.cx/strptime(3)">strptime<span class="s">(3)</span></a></p>
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>, <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a>, <a class="man-ref" href="https://man.cx/strftime(3)">strftime<span class="s">(3)</span></a></p>
 
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>October 2016</li>
+    <li class='tc'>December 2017</li>
     <li class='tr'>blogc-source(7)</li>
   </ol>
 
