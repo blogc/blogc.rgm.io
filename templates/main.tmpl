@@ -150,7 +150,7 @@
   </body>
 </html>
 <!--
-curl -s {{ BASE_DOMAIN }}{{ BASE_URL }}/ | grep 'LATEST_RELEASE=' | cut -d= -f2
+curl -s {{ BASE_DOMAIN }}{{ BASE_URL }}/ | grep '^LATEST_RELEASE=' | cut -d= -f2
 
 LATEST_RELEASE={{ LATEST_RELEASE }}
 -->
