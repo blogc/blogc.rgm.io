@@ -1,0 +1,11 @@
+TITLE: [ANN] blogc-0.13.1
+DATE: 2018-02-22 21:25:00
+-------------------------
+I just released version `0.13.1` of blogc. This release is mostly for bugfixes.
+It fixes OSX support and some other minor issues.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
