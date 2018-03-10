@@ -6,30 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ SITE_TAGLINE }}">
     <title>{{ SITE_TITLE }}{% block entry %} - {% ifdef TITLE %}{{ TITLE }}{% else %}{{ SITE_TAGLINE }}{% endif %}{% endblock %}{% block listing_once %} - News{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootswatch@3.3.7/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.0.0/dist/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="{{ BASE_URL }}/assets/custom.css" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]>
-      <script src="https://cdn.jsdelivr.net/combine/npm/html5shiv@3.7.3,npm/respond.js@1.4.2/dest/respond.min.js"></script>
-    <![endif]-->
     <link href="{{ BASE_URL }}/atom.xml" rel="alternate" type="application/atom+xml" title="{{ SITE_TITLE }}" />
   </head>
   <body>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="{{ BASE_URL }}/">{{ SITE_TITLE }}</a>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-            <span class="sr-only">Toggle Navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li{% if MAKE_TYPE == "page" %}{% if FILENAME == "index" %} class="active"{% endif %}{% endif %}><a href="{{ BASE_URL }}/">Home</a></li>
-            <li{% if MAKE_TYPE == "post" %} class="active"{% endif %}><a href="{{ BASE_URL }}/news/">News</a></li>
-            <li><a href="https://github.com/blogc/blogc">GitHub</a></li>
+        <a class="navbar-brand" href="{{ BASE_URL }}/">{{ SITE_TITLE }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item{% if MAKE_TYPE == "page" %}{% if FILENAME == "index" %} active{% endif %}{% endif %}">
+              <a class="nav-link" href="{{ BASE_URL }}/">Home</a>
+            </li>
+            <li class="nav-item{% if MAKE_TYPE == "post" %} active{% endif %}">
+              <a class="nav-link" href="{{ BASE_URL }}/news/">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/blogc/blogc">GitHub</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -41,99 +39,110 @@
           <article>
             <h3><a href="{{ BASE_URL }}/news/{{ FILENAME }}/">{{ TITLE }}</a></h3>
             {{ CONTENT }}
-            <div class="metadata well well-sm">
-              Author: <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a><br />
-              {% ifdef DATE_FORMATTED %}Published on: {{ DATE_FORMATTED }}<br />{% endif %}
-              <a href="{{ BASE_URL }}/news/{{ FILENAME }}/">Permalink</a>
+            <div class="metadata card bg-light mb-4">
+              <div class="card-body p-2">
+                Author: <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a><br />
+                {% ifdef DATE_FORMATTED %}Published on: {{ DATE_FORMATTED }}<br />{% endif %}
+                <a href="{{ BASE_URL }}/news/{{ FILENAME }}/">Permalink</a>
+              </div>
             </div>
           </article>
           {% endblock %}
           {% block listing_once %}
-          <ul class="pager">
-            {% ifdef PREVIOUS_PAGE %}
-            <li class="previous">
-              <a href="{{ BASE_URL }}/news/page/{{ PREVIOUS_PAGE }}/">&larr; Newer</a>
+          <ul class="pagination justify-content-center">
+            <li class="page-item{% ifndef PREVIOUS_PAGE %} disabled{% endif %}">
+              <a class="page-link" href="{% ifdef PREVIOUS_PAGE %}{{ BASE_URL }}/news/page/{{ PREVIOUS_PAGE }}/{% else %}#{% endif %}">
+                &larr; Newer
+              </a>
             </li>
-            {% endif %}
-            {% ifdef NEXT_PAGE %}
-            <li class="next">
-              <a href="{{ BASE_URL }}/news/page/{{ NEXT_PAGE }}/">Older &rarr;</a>
+            <li class="page-item{% ifndef NEXT_PAGE %} disabled{% endif %}">
+              <a class="page-link" href="{% ifdef NEXT_PAGE %}{{ BASE_URL }}/news/page/{{ NEXT_PAGE }}/{% else %}#{% endif %}">
+                Older &rarr;
+              </a>
             </li>
-            {% endif %}
           </ul>
           {% endblock %}
           {% block entry %}
           <article>
-            <h3>{{ TITLE }}</h3>
+            {% ifdef TITLE %}<h3>{{ TITLE }}</h3>{% endif %}
             {{ CONTENT }}
             {% ifdef IS_POST %}
-            <div class="metadata well well-sm">
-              Author: <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a><br />
-              {% ifdef DATE_FORMATTED %}Published on: {{ DATE_FORMATTED }}<br />{% endif %}
-              <a href="{{ BASE_URL }}/news/{{ FILENAME }}/">Permalink</a>
+            <div class="metadata card bg-light mb-4">
+              <div class="card-body p-2">
+                Author: <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a><br />
+                {% ifdef DATE_FORMATTED %}Published on: {{ DATE_FORMATTED }}<br />{% endif %}
+                <a href="{{ BASE_URL }}/news/{{ FILENAME }}/">Permalink</a>
+              </div>
             </div>
             {% endif %}
           </article>
           {% endblock %}
         </div>
         <div class="col-md-3 sidebar">
-
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">Latest Release</h4>
-            </div>
-            <div class="list-group">
-              <div class="list-group-item" style="text-align: center; font-size: 1.4em">
+          <div class="card border-light mb-3">
+            <div class="card-header">Latest Release</div>
+            <div class="list-group list-group-flush">
+              <div class="list-group-item" style="text-align: center; font-size: 1.4rem">
                 blogc-{{ LATEST_RELEASE }}
               </div>
-              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.tar.gz">
+              <a class="list-group-item list-group-item-action" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.tar.gz">
                 <strong>Source:</strong> blogc-{{ LATEST_RELEASE }}.tar.gz
               </a>
-              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.tar.bz2">
+              <a class="list-group-item list-group-item-action" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.tar.bz2">
                 <strong>Source:</strong> blogc-{{ LATEST_RELEASE }}.tar.bz2
               </a>
-              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.tar.xz">
+              <a class="list-group-item list-group-item-action" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.tar.xz">
                 <strong>Source:</strong> blogc-{{ LATEST_RELEASE }}.tar.xz
               </a>
-              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.zip">
+              <a class="list-group-item list-group-item-action" href="https://github.com/blogc/blogc/releases/download/v{{ LATEST_RELEASE }}/blogc-{{ LATEST_RELEASE }}.zip">
                 <strong>Source:</strong> blogc-{{ LATEST_RELEASE }}.zip
               </a>
-              <a class="list-group-item" href="https://packages.gentoo.org/package/app-text/blogc">
+              <a class="list-group-item list-group-item-action" href="https://packages.gentoo.org/package/app-text/blogc">
                 <strong>Gentoo:</strong> app-text/blogc
               </a>
-              <a class="list-group-item" href="https://copr.fedoraproject.org/coprs/rafaelmartins/blogc/">
+              <a class="list-group-item list-group-item-action" href="https://copr.fedoraproject.org/coprs/rafaelmartins/blogc/">
                 <strong>Fedora/RHEL/CentOS:</strong> Copr
               </a>
-              <a class="list-group-item" href="https://build.opensuse.org/package/show/utilities/blogc">
+              <a class="list-group-item list-group-item-action" href="https://build.opensuse.org/package/show/utilities/blogc">
                 <strong>openSUSE:</strong> utilities/blogc
               </a>
-              <a class="list-group-item" href="https://github.com/blogc/blogc/releases/tag/v{{ LATEST_RELEASE }}">
+              <a class="list-group-item list-group-item-action" href="https://github.com/blogc/blogc/releases/tag/v{{ LATEST_RELEASE }}">
                 <strong>More downloads on GitHub</strong>
               </a>
             </div>
           </div>
-
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">Documentation</h4>
+          <div class="card border-light mb-3">
+            <div class="card-header">Documentation</div>
+            <div class="list-group list-group-flush">
+              <a class="list-group-item list-group-item-action" href="{{ BASE_URL }}/man/blogc.1.html">
+                <code>blogc(1)</code>
+              </a>
+              <a class="list-group-item list-group-item-action" href="{{ BASE_URL }}/man/blogc-source.7.html">
+                <code>blogc-source(7)</code>
+              </a>
+              <a class="list-group-item list-group-item-action" href="{{ BASE_URL }}/man/blogc-template.7.html">
+                <code>blogc-template(7)</code>
+              </a>
+              <a class="list-group-item list-group-item-action" href="{{ BASE_URL }}/man/blogc-pagination.7.html">
+                <code>blogc-pagination(7)</code>
+              </a>
             </div>
-            <div class="list-group">
-              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc.1.html"><code>blogc(1)</code></a>
-              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-source.7.html"><code>blogc-source(7)</code></a>
-              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-template.7.html"><code>blogc-template(7)</code></a>
-              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-pagination.7.html"><code>blogc-pagination(7)</code></a>
-            </div>
-            <div class="panel-heading">
-              <h4 class="panel-title">Helper tools</h4>
-            </div>
-            <div class="list-group">
-              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-git-receiver.1.html"><code>blogc-git-receiver(1)</code></a>
-              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-runserver.1.html"><code>blogc-runserver(1)</code></a>
-              <a class="list-group-item" href="{{ BASE_URL }}/man/blogc-make.1.html"><code>blogc-make(1)</code></a>
-              <a class="list-group-item" href="{{ BASE_URL }}/man/blogcfile.5.html"><code>blogcfile(5)</code></a>
+            <div class="card-header">Helper tools</div>
+            <div class="list-group list-group-flush">
+              <a class="list-group-item list-group-item-action" href="{{ BASE_URL }}/man/blogc-git-receiver.1.html">
+                <code>blogc-git-receiver(1)</code>
+              </a>
+              <a class="list-group-item list-group-item-action" href="{{ BASE_URL }}/man/blogc-runserver.1.html">
+                <code>blogc-runserver(1)</code>
+              </a>
+              <a class="list-group-item list-group-item-action" href="{{ BASE_URL }}/man/blogc-make.1.html">
+                <code>blogc-make(1)</code>
+              </a>
+              <a class="list-group-item list-group-item-action" href="{{ BASE_URL }}/man/blogcfile.5.html">
+                <code>blogcfile(5)</code>
+              </a>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -142,14 +151,16 @@
       <div class="row">
         <div class="col-md-12">
           <p class="copyright text-muted">
-            &copy; 2015-2017 <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a>.
+            &copy; 2015-2018 <a href="mailto:{{ AUTHOR_EMAIL }}">{{ AUTHOR_NAME }}</a>.
             Project released under a <a href="https://github.com/blogc/blogc/blob/master/LICENSE">BSD 3 clause license</a>.
             Website powered by: <strong>blogc {{ BLOGC_VERSION }}</strong> |
             <a href="https://rgm.io/imprint/" rel="nofollow">Impressum/Imprint</a></p>
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/combine/npm/jquery@2.2.4,npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
 <!--
