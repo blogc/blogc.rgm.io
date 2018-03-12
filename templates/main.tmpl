@@ -19,7 +19,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item{% if MAKE_TYPE == "page" %}{% if FILENAME == "index" %} active{% endif %}{% endif %}">
+            <li class="nav-item{% if MAKE_SLUG == "index" %} active{% endif %}">
               <a class="nav-link" href="{{ BASE_URL }}/">Home</a>
             </li>
             <li class="nav-item{% if MAKE_TYPE == "post" %} active{% endif %}">
