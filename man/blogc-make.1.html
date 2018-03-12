@@ -112,32 +112,115 @@ variables to all <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)
 
 <h2 id="HELPER-RULES">HELPER RULES</h2>
 
-<dl>
-<dt class="flush"><code>all</code></dt><dd><p>Run all build rules. This is the default rule.</p></dd>
-<dt class="flush"><code>clean</code></dt><dd><p>Clean built files and empty directories in output directory.</p></dd>
-<dt><code>runserver</code></dt><dd><p>Run <code>blogc-runserver(1)</code> pointing to output directory, if available. This
+<h3 id="all">all</h3>
+
+<p>Run all build rules. This is the default rule.</p>
+
+<h3 id="clean">clean</h3>
+
+<p>Clean built files and empty directories in output directory.</p>
+
+<h3 id="runserver">runserver</h3>
+
+<p>Run <code>blogc-runserver(1)</code> pointing to output directory, if available. This
 rule accepts some arguments, in the following format:</p>
 
 <pre><code>runserver:host=127.0.0.1,port=8080,threads=20
 </code></pre>
 
-<p>The values in the example are the default values.</p></dd>
-</dl>
-
+<p>The values in the example are the default values.</p>
 
 <h2 id="BUILD-RULES">BUILD RULES</h2>
 
+<h3 id="index">index</h3>
+
+<p>Build website index from posts.</p>
+
+<p>The rule passes the following helper variables to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>:</p>
+
 <dl>
-<dt class="flush"><code>index</code></dt><dd><p> Build website index from posts.</p></dd>
-<dt class="flush"><code>atom</code></dt><dd><p> Build main atom feed from posts.</p></dd>
-<dt><code>atom_tags</code></dt><dd><p> Build atom feeds for each tag from posts.</p></dd>
-<dt><code>pagination</code></dt><dd><p> Build pagination pages from posts.</p></dd>
-<dt class="flush"><code>posts</code></dt><dd><p> Build individual pages for each post.</p></dd>
-<dt class="flush"><code>tags</code></dt><dd><p> Build post listings for each tag from posts.</p></dd>
-<dt class="flush"><code>pages</code></dt><dd><p> Build individual pages for each page.</p></dd>
-<dt class="flush"><code>copy</code></dt><dd><p> Copy static files from source directory to output directory.</p></dd>
+<dt><code>MAKE_RULE</code></dt><dd><code>index</code></dd>
+<dt><code>MAKE_TYPE</code></dt><dd><code>post</code></dd>
 </dl>
 
+
+<h3 id="atom">atom</h3>
+
+<p>Build main atom feed from posts.</p>
+
+<p>The rule passes the following helper variables to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>:</p>
+
+<dl>
+<dt><code>MAKE_RULE</code></dt><dd><code>atom</code></dd>
+<dt><code>MAKE_TYPE</code></dt><dd><code>atom</code></dd>
+</dl>
+
+
+<h3 id="atom_tags">atom_tags</h3>
+
+<p>Build atom feeds for each tag from posts.</p>
+
+<p>The rule passes the following helper variables to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>:</p>
+
+<dl>
+<dt><code>MAKE_RULE</code></dt><dd><code>atom_tags</code></dd>
+<dt><code>MAKE_TYPE</code></dt><dd><code>atom</code></dd>
+</dl>
+
+
+<h3 id="pagination">pagination</h3>
+
+<p>Build pagination pages from posts.</p>
+
+<p>The rule passes the following helper variables to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>:</p>
+
+<dl>
+<dt><code>MAKE_RULE</code></dt><dd><code>pagination</code></dd>
+<dt><code>MAKE_TYPE</code></dt><dd><code>post</code></dd>
+</dl>
+
+
+<h3 id="posts">posts</h3>
+
+<p>Build individual pages for each post.</p>
+
+<p>The rule passes the following helper variables to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>:</p>
+
+<dl>
+<dt><code>MAKE_RULE</code></dt><dd><code>posts</code></dd>
+<dt><code>MAKE_TYPE</code></dt><dd><code>post</code></dd>
+<dt><code>MAKE_SLUG</code></dt><dd>The slug of the post being built, as provided in blogcfile</dd>
+</dl>
+
+
+<h3 id="tags">tags</h3>
+
+<p>Build post listings for each tag from posts.</p>
+
+<p>The rule passes the following helper variables to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>:</p>
+
+<dl>
+<dt><code>MAKE_RULE</code></dt><dd><code>tags</code></dd>
+<dt><code>MAKE_TYPE</code></dt><dd><code>post</code></dd>
+</dl>
+
+
+<h3 id="pages">pages</h3>
+
+<p>Build individual pages for each page.</p>
+
+<p>The rule passes the following helper variables to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>:</p>
+
+<dl>
+<dt><code>MAKE_RULE</code></dt><dd><code>pages</code></dd>
+<dt><code>MAKE_TYPE</code></dt><dd><code>page</code></dd>
+<dt><code>MAKE_SLUG</code></dt><dd>The slug of the page being built, as provided in blogcfile</dd>
+</dl>
+
+
+<h3 id="copy">copy</h3>
+
+<p>Copy static files from source directory to output directory.</p>
 
 <h2 id="FILES">FILES</h2>
 
@@ -185,7 +268,7 @@ when called by <code>blogc-make</code>.</p>
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#114;&#x61;&#x66;&#97;&#101;&#108;&#64;&#114;&#97;&#102;&#x61;&#101;&#x6c;&#109;&#97;&#114;&#x74;&#x69;&#x6e;&#115;&#x2e;&#x65;&#110;&#x67;&#x2e;&#98;&#114;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#x6c;&#64;&#x72;&#97;&#102;&#x61;&#101;&#108;&#x6d;&#x61;&#114;&#116;&#105;&#110;&#115;&#x2e;&#101;&#x6e;&#103;&#x2e;&#98;&#114;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x72;&#x61;&#102;&#97;&#x65;&#x6c;&#64;&#114;&#97;&#102;&#x61;&#x65;&#108;&#x6d;&#x61;&#114;&#x74;&#105;&#x6e;&#115;&#x2e;&#x65;&#110;&#103;&#x2e;&#x62;&#114;" data-bare-link="true">&#114;&#97;&#x66;&#x61;&#x65;&#108;&#x40;&#x72;&#x61;&#x66;&#97;&#x65;&#x6c;&#109;&#97;&#x72;&#116;&#x69;&#110;&#x73;&#x2e;&#101;&#110;&#x67;&#x2e;&#98;&#114;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -194,7 +277,7 @@ when called by <code>blogc-make</code>.</p>
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>December 2017</li>
+    <li class='tc'>March 2018</li>
     <li class='tr'>blogc-make(1)</li>
   </ol>
 

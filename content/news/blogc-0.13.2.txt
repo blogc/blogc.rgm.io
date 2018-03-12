@@ -1,0 +1,21 @@
+TITLE: [ANN] blogc-0.13.2
+DATE: 2018-03-12 00:19:00
+-------------------------
+I just released version `0.13.2` of blogc. This is a minor release with some
+optimizations and two minor `blogc-make(5)` features:
+
+- Pass the `MAKE_TAGS` variable to `blogc(1)`, that contains a space-separated
+  list of tags, based on the tags listed in the `[tags]` section of
+  `blogcfile(5)`. This variable can be used with the `foreach` iterator to
+  produce tag clouds in templates.
+
+- Pass the `MAKE_SLUG` variable to `blogc(1)` when running the `pages` and
+  `posts` build rules, that contains the slug of the page/post being built,
+  as provided in `blogcfile(5). This variable can be used to highlight the
+  current page in the site menu, for example.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
