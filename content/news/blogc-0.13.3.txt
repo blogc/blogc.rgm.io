@@ -1,0 +1,13 @@
+TITLE: [ANN] blogc-0.13.3
+DATE: 2018-03-14 01:45:00
+-------------------------
+I just released version `0.13.3` of blogc. This release contains some fixes for
+bugs detected with `clang-analyzer`. Now our
+[Travis-CI](https://travis-ci.org/blogc/blogc) runs `clang-analyzer` after
+every push to the Git repository.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
