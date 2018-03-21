@@ -92,10 +92,12 @@
 files passed as arguments to it:</p>
 
 <dl>
-<dt><code>FILTER_PER_PAGE</code></dt><dd><p>Integer, limits the maximum number of files to be listed.</p></dd>
 <dt><code>FILTER_PAGE</code></dt><dd><p>Integer, current page. If calling <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> with 10 files,
-<code>FILTER_PER_PAGE</code>=4 and <code>FILTER_PAGE</code>=3, it will return just the 2 last
+<code>FILTER_PER_PAGE=4</code> and <code>FILTER_PAGE=3</code>, it will return just the 2 last
 files, skipping the first 2 pages with 4 files each one.</p></dd>
+<dt><code>FILTER_PER_PAGE</code></dt><dd><p>Integer, limits the maximum number of files to be listed. If negative or
+<code>0</code>, no posts are included. Have no effect if <code>FILTER_PAGE</code> is not
+defined.</p></dd>
 <dt><code>FILTER_TAG</code></dt><dd><p>String, if defined, <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will only list files that declare a <code>TAGS</code>
 variable, as a space-separated list of tags (tags can't have spaces,
 obviously). See <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a> for details about how to define source
@@ -193,7 +195,7 @@ all of them.</p>
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x72;&#x61;&#x66;&#x61;&#x65;&#x6c;&#x40;&#114;&#97;&#102;&#x61;&#x65;&#108;&#x6d;&#97;&#114;&#x74;&#105;&#110;&#x73;&#46;&#101;&#110;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#x61;&#x66;&#97;&#101;&#x6c;&#109;&#x61;&#114;&#116;&#x69;&#x6e;&#115;&#46;&#x65;&#x6e;&#x67;&#x2e;&#x62;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x72;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#x61;&#x66;&#97;&#x65;&#x6c;&#x6d;&#x61;&#114;&#116;&#x69;&#110;&#115;&#x2e;&#101;&#110;&#103;&#x2e;&#98;&#x72;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#108;&#64;&#114;&#97;&#x66;&#97;&#x65;&#108;&#109;&#x61;&#x72;&#x74;&#105;&#110;&#x73;&#46;&#101;&#x6e;&#x67;&#x2e;&#98;&#x72;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 

@@ -117,7 +117,8 @@ however these rules can be customized with the following settings, from the
 <dt><code>atom_order</code> (default: <code>DESC</code>)</dt><dd><p>The ordering (<code>ASC</code> or <code>DESC</code>) of the Atom feeds. Please note that the files
 are not sorted by date, they are sorted by their order in the <code>[posts]</code>
 section.</p></dd>
-<dt><code>atom_posts_per_page</code> (default: <code>10</code>)</dt><dd><p>Number of posts per page in the Atom feeds.</p></dd>
+<dt><code>atom_posts_per_page</code> (default: <code>10</code>)</dt><dd><p>Number of posts per page in the Atom feeds. If negative, all the posts are
+included. If <code>0</code>, no posts are include.</p></dd>
 <dt><code>atom_prefix</code> (default: <code>atom</code>)</dt><dd><p>The prefix of the generated Atom feeds. It is relative to the output
 directory. With the default values of the settings, the main Atom feed will
 be <code>atom.xml</code>, the Atom feed for the <code>foo</code> tag will be <code>atom/foo.xml</code> and so
@@ -144,7 +145,9 @@ is relative to <code>template_dir</code>.</p></dd>
 output directory.</p></dd>
 <dt><code>post_prefix</code> (default: <code>post</code>)</dt><dd><p>The prefix of the posts file names. It is used for both content and output
 directories, and is relative to <code>content_dir</code> and the output directory.</p></dd>
-<dt><code>posts_per_page</code> (default: <code>10</code>)</dt><dd><p>Number of posts per page in the pagination pages.</p></dd>
+<dt><code>posts_per_page</code> (default: <code>10</code>)</dt><dd><p>Number of posts per page in the pagination pages. If negative, all the posts
+are included. If <code>0</code>, no posts are included. Also, if negative or <code>0</code>, the
+<code>pagination</code> build rule is disabled.</p></dd>
 <dt><code>source_ext</code> (default: <code>.txt</code>)</dt><dd><p>The extension of the source files.</p></dd>
 <dt><code>tag_prefix</code> (default: <code>tag</code>)</dt><dd><p>The prefix of the generated tag listing index pages. It is relative to the
 output directory.</p></dd>
@@ -223,7 +226,7 @@ assets/custom.css
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x72;&#x61;&#x66;&#x61;&#x65;&#x6c;&#x40;&#114;&#97;&#102;&#x61;&#x65;&#108;&#x6d;&#97;&#114;&#x74;&#105;&#110;&#x73;&#46;&#101;&#110;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#x61;&#x66;&#97;&#101;&#x6c;&#109;&#x61;&#114;&#116;&#x69;&#x6e;&#115;&#46;&#x65;&#x6e;&#x67;&#x2e;&#x62;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x72;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#x61;&#x66;&#97;&#x65;&#x6c;&#x6d;&#x61;&#114;&#116;&#x69;&#110;&#115;&#x2e;&#101;&#110;&#103;&#x2e;&#98;&#x72;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#108;&#64;&#114;&#97;&#x66;&#97;&#x65;&#108;&#109;&#x61;&#x72;&#x74;&#105;&#110;&#x73;&#46;&#101;&#x6e;&#x67;&#x2e;&#98;&#x72;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 

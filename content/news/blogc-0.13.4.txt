@@ -1,0 +1,22 @@
+TITLE: [ANN] blogc-0.13.4
+DATE: 2018-03-21 00:03:00
+-------------------------
+I just released version `0.13.4` of blogc. This is a minor release with some
+bug fixes and a minor `blogc-make(1)` feature:
+
+- When running commands, `blogc-make(1)` will show the command's `STDERR`
+  always, to avoid suppressing `blogc(1)` warnings.
+- When setting `posts_per_page` to `-1` in `blogcfile(5)`, the pagination
+  features are disabled, and all the posts are included in the template
+  `listing` blocks.
+
+This release includes a minor change in `blogc(1)` previous behavior:
+
+- When setting `FILTER_PER_PAGE` to `0` or negative, no posts are listed,
+  instead of listing `10` by default.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
