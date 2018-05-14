@@ -1,0 +1,15 @@
+TITLE: [ANN] blogc-0.13.5
+DATE: 2018-05-14
+-------------------------
+I just released version `0.13.5` of blogc. This is a minor release,
+including the following changes:
+
+- Added a `watch` rule to `blogc-make(1)`. This rule allows the usage of
+  the automatic website reloader/rebuilder without using `blogc-runserver(1)`.
+- Changed the architecture of the `blogc-make(1)` `runserver` rule.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
