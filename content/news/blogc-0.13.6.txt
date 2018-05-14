@@ -1,0 +1,16 @@
+TITLE: [ANN] blogc-0.13.6
+DATE: 2018-05-14 21:00:00
+-------------------------
+I just released version `0.13.6` of blogc. This is a minor release,
+including the following change:
+
+- Improved `blogc-make(1)` output formatting when running the `runserver`
+  helper rule.
+
+Only aesthetic change was applied, users are not required to upgrade.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
