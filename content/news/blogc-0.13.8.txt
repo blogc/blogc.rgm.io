@@ -1,0 +1,12 @@
+TITLE: [ANN] blogc-0.13.8
+DATE: 2018-06-10 18:04:00
+-------------------------
+I just released version `0.13.8` of blogc. This is a minor release, that
+fixes a corner-case segmentation fault in `blogc-git-receiver(1)`'s
+`pre-receive` hook, that was introduced in the previous release.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
