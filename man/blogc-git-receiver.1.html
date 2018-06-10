@@ -64,7 +64,7 @@
     <a href="#DESCRIPTION">DESCRIPTION</a>
     <a href="#SETUP">SETUP</a>
     <a href="#REPOSITORY-MIRRORING">REPOSITORY MIRRORING</a>
-    <a href="#ENVIRONMENT-VARIABLES">ENVIRONMENT VARIABLES</a>
+    <a href="#ENVIRONMENT">ENVIRONMENT</a>
     <a href="#BUGS">BUGS</a>
     <a href="#AUTHOR">AUTHOR</a>
     <a href="#SEE-ALSO">SEE ALSO</a>
@@ -110,7 +110,12 @@ install built files into the directory pointed out by this variable.</p>
 
 <p>Now add ssh keys to <code>/home/blogc/.ssh/authorized_keys</code>. Every key in
 <code>authorized_keys</code> will be allowed to push to the git repositories, and even
-create new ones.</p>
+create new ones. It is also possible to add <code>blogc-git-receiver</code> as a command in
+the <code>authorized_keys</code> file for each key, but this setup is slightly more tricky,
+as you may leak shell access to an user by mystake, if you forget to add the command
+to a key that should not have shell access. Only use this method if you don't have
+another option (e.g. in shared hosting environments that only provide one shell
+account), or if you know exactly what you are doing.</p>
 
 <p>Also, make sure to install all the dependencies required by the websites,
 including a web server. <code>blogc-git-receiver</code> can't handle web server virtual hosts.</p>
@@ -125,7 +130,17 @@ $ git push blogc master
 
 <p>This will deploy the example to the server, creating a symlink to the built content
 in <code>/home/blogc/repos/blogs/blogc-example.git/htdocs</code>. This symlink should be used
-as the document root for the web server virtual host.</p>
+as the document root for the web server virtual host. If this symlink can't be
+readed by your webserver for some reason, you can create it in some other directory
+by adding the full symlink path to the ~/blogc-git-receiver.ini configuration file:</p>
+
+<pre><code>$ $EDITOR ~/blogc-git-receiver.ini
+[repo:blogs/blogc-example.git]
+symlink=/path/to/my/symlink
+</code></pre>
+
+<p>Do not duplicate the section if it already exists, just append the symlink path to
+it.</p>
 
 <h3 id="Rebuild-last-successful-build">Rebuild last successful build</h3>
 
@@ -184,13 +199,13 @@ in the server, or creating a configuration file (~/blogc-git-receiver.ini), that
 a simple INI-style file where each repository is represented by a section and the
 value of the <code>mirror</code> variable is the URL that should be used to push.</p>
 
-<p>To create the configuration file (recommended):</p>
+<p>Edit configuration file (recommended, do not duplicate the section if it already
+exists, just append the mirror to it):</p>
 
 <pre><code># su -s /bin/sh - blogc
-$ cat &gt; ~/blogc-git-receiver.ini &lt;&lt;EOF
+$ $EDITOR ~/blogc-git-receiver.ini
 [repo:myblog.git]
 mirror=$YOUR_GIT_MIRROR_URL
-EOF
 </code></pre>
 
 <p>Or to add the <code>mirror</code> remote:</p>
@@ -237,13 +252,35 @@ $ ./hooks/post-receive
 <p>WARNING: If you push manually and your server's repository is empty, you'll clean
 your mirror repository.</p>
 
-<h2 id="ENVIRONMENT-VARIABLES">ENVIRONMENT VARIABLES</h2>
+<h2 id="ENVIRONMENT">ENVIRONMENT</h2>
 
-<p><code>blogc-git-receiver</code> will export an environment variable called <code>BLOGC_GIT_RECEIVER</code>
-when calling <code>gmake</code> to build websites. This variable can be used to enable building
-of content that should only be built when running in production environment, for
-example. This variable will not be added when using <a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a>, whose builds are
-always considered to be "production" (<a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a> is never called with <code>-D</code>).</p>
+<p>The following variables can be set in the SSH Server (usually in <code>~/.ssh/environment</code>)
+to change <code>blogc-git-receiver</code> behaviour:</p>
+
+<dl>
+<dt><code>BLOGC_GIT_RECEIVER_BASE_DIR</code></dt><dd>Path to the base directory that should be used by <code>blogc-git-receiver</code>. Defaults
+to user's home directory. Useful for shared hosting environments that only provide
+one shell user.</dd>
+<dt><code>BLOGC_GIT_RECEIVER_BUILDS_DIR</code></dt><dd>Path to the directory that should be used to store the blogc builds. Defaults
+to <code>$BLOGC_GIT_RECEIVER_BASE_DIR/builds</code>. This directory must be readable by
+your webserver. This variable is useful to keep your git repositories unreadable,
+while letting your webserver access the built files. In this case, users need to
+also define custom symlinks for every repository in
+<code>$BLOGC_GIT_RECEIVER_BASE_DIR/blogc-git-receiver.ini</code>, because the default
+<code>htdocs</code> symlink inside the git repositories won't be acessible by the webserver.</dd>
+</dl>
+
+
+<p>The following variable is exported by <code>blogc-git-receiver</code> when building websites
+with <a class="man-ref" href="https://man.cx/make(1)">make<span class="s">(1)</span></a>:</p>
+
+<dl>
+<dt><code>BLOGC_GIT_RECEIVER=1</code></dt><dd>This variable can be used to enable building of content that should only be
+built when running in production environment, for example. This variable will
+not be exported when using <a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a>, whose builds are always considered to
+be "production" (<a class="man-ref" href="blogc-make.1.html">blogc-make<span class="s">(1)</span></a> is never called with <code>-D</code>).</dd>
+</dl>
+
 
 <h2 id="BUGS">BUGS</h2>
 
@@ -251,7 +288,7 @@ always considered to be "production" (<a class="man-ref" href="blogc-make.1.html
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x72;&#x61;&#102;&#97;&#x65;&#x6c;&#64;&#114;&#97;&#102;&#x61;&#x65;&#108;&#x6d;&#x61;&#114;&#x74;&#105;&#x6e;&#115;&#x2e;&#x65;&#110;&#103;&#x2e;&#x62;&#114;" data-bare-link="true">&#114;&#97;&#x66;&#x61;&#x65;&#108;&#x40;&#x72;&#x61;&#x66;&#97;&#x65;&#x6c;&#109;&#97;&#x72;&#116;&#x69;&#110;&#x73;&#x2e;&#101;&#110;&#x67;&#x2e;&#98;&#114;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#114;&#x61;&#102;&#97;&#101;&#108;&#64;&#x72;&#97;&#102;&#97;&#x65;&#x6c;&#109;&#97;&#x72;&#116;&#x69;&#x6e;&#x73;&#46;&#101;&#x6e;&#x67;&#46;&#x62;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#101;&#x6c;&#x40;&#114;&#x61;&#x66;&#x61;&#x65;&#x6c;&#x6d;&#x61;&#x72;&#116;&#x69;&#x6e;&#115;&#46;&#101;&#x6e;&#x67;&#46;&#x62;&#114;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -260,7 +297,7 @@ always considered to be "production" (<a class="man-ref" href="blogc-make.1.html
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>March 2018</li>
+    <li class='tc'>June 2018</li>
     <li class='tr'>blogc-git-receiver(1)</li>
   </ol>
 

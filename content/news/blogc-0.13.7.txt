@@ -1,0 +1,18 @@
+TITLE: [ANN] blogc-0.13.7
+DATE: 2018-06-10 14:37:00
+-------------------------
+I just released version `0.13.7` of blogc. This is a minor release,
+including the following changes:
+
+- Users can now run [`blogc-git-receiver(1)`](/man/blogc-git-receiver.1.html)
+  in shared hosting enviromnents, if they have SSH access.
+- If `atom_posts_per_page` and `posts_per_page` settings for
+  [`blogc-make(1)`](/man/blogc-make.1.html) are set to zero, index listings
+  and Atom feeds are not built, instead of producing "empty" files.
+- Fixed some other minor issues.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael

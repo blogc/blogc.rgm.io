@@ -118,7 +118,7 @@ however these rules can be customized with the following settings, from the
 are not sorted by date, they are sorted by their order in the <code>[posts]</code>
 section.</p></dd>
 <dt><code>atom_posts_per_page</code> (default: <code>10</code>)</dt><dd><p>Number of posts per page in the Atom feeds. If negative, all the posts are
-included. If <code>0</code>, no posts are include.</p></dd>
+included. If <code>0</code>, no Atom feeds are generated.</p></dd>
 <dt><code>atom_prefix</code> (default: <code>atom</code>)</dt><dd><p>The prefix of the generated Atom feeds. It is relative to the output
 directory. With the default values of the settings, the main Atom feed will
 be <code>atom.xml</code>, the Atom feed for the <code>foo</code> tag will be <code>atom/foo.xml</code> and so
@@ -146,8 +146,8 @@ output directory.</p></dd>
 <dt><code>post_prefix</code> (default: <code>post</code>)</dt><dd><p>The prefix of the posts file names. It is used for both content and output
 directories, and is relative to <code>content_dir</code> and the output directory.</p></dd>
 <dt><code>posts_per_page</code> (default: <code>10</code>)</dt><dd><p>Number of posts per page in the pagination pages. If negative, all the posts
-are included. If <code>0</code>, no posts are included. Also, if negative or <code>0</code>, the
-<code>pagination</code> build rule is disabled.</p></dd>
+are included. If <code>0</code>, no post listing pages are generated. Also, if negative or
+<code>0</code>, the <code>pagination</code> build rule is disabled.</p></dd>
 <dt><code>source_ext</code> (default: <code>.txt</code>)</dt><dd><p>The extension of the source files.</p></dd>
 <dt><code>tag_prefix</code> (default: <code>tag</code>)</dt><dd><p>The prefix of the generated tag listing index pages. It is relative to the
 output directory.</p></dd>
@@ -226,7 +226,7 @@ assets/custom.css
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x72;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#x61;&#x66;&#97;&#x65;&#x6c;&#x6d;&#x61;&#114;&#116;&#x69;&#110;&#115;&#x2e;&#101;&#110;&#103;&#x2e;&#98;&#x72;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#108;&#64;&#114;&#97;&#x66;&#97;&#x65;&#108;&#109;&#x61;&#x72;&#x74;&#105;&#110;&#x73;&#46;&#101;&#x6e;&#x67;&#x2e;&#98;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#114;&#x61;&#102;&#97;&#101;&#108;&#64;&#x72;&#97;&#102;&#97;&#x65;&#x6c;&#109;&#97;&#x72;&#116;&#x69;&#x6e;&#x73;&#46;&#101;&#x6e;&#x67;&#46;&#x62;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#101;&#x6c;&#x40;&#114;&#x61;&#x66;&#x61;&#x65;&#x6c;&#x6d;&#x61;&#x72;&#116;&#x69;&#x6e;&#115;&#46;&#101;&#x6e;&#x67;&#46;&#x62;&#114;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -235,7 +235,7 @@ assets/custom.css
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>March 2018</li>
+    <li class='tc'>June 2018</li>
     <li class='tr'>blogcfile(5)</li>
   </ol>
 
