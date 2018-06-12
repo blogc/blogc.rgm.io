@@ -1,0 +1,12 @@
+TITLE: [ANN] blogc-0.13.9
+DATE: 2018-06-12 22:33:00
+-------------------------
+I just released version `0.13.9` of blogc. This is a minor release, that
+fixes `blogc-git-receiver(1)`'s git shell to reinstall its git hooks symlinks
+if they are broken.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
