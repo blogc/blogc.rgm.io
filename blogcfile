@@ -54,6 +54,9 @@ blogc-0.13.9
 index
 
 [copy]
+assets/bootstrap.bundle.min.js
+assets/bootstrap.min.css
+assets/jquery.slim.min.js
 assets/custom.css
 man/blogc.1.html
 man/blogcfile.5.html
