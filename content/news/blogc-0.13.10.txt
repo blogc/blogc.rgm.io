@@ -1,0 +1,13 @@
+TITLE: [ANN] blogc-0.13.10
+DATE: 2018-07-22 23:47:00
+-------------------------
+I just released version `0.13.10` of blogc. This is a minor release, that
+fixes a bug in the configuration file parser used by `blogc-make(1)` and
+by `blogc-git-receiver(1)`, that prevented definition of keys with empty
+values.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
