@@ -12,6 +12,7 @@ post_prefix = news
 pagination_prefix = news/page
 index_prefix = news
 posts_per_page = 4
+atom_legacy_entry_id = true
 
 [posts]
 hello-world
