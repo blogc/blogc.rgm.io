@@ -1,0 +1,21 @@
+TITLE: [ANN] blogc-0.14.0
+DATE: 2018-07-27 23:10:00
+-------------------------
+I just released version `0.14.0` of blogc. This is a release, that includes
+some changes, mostly in `blogc-make(1)`:
+
+- Allow usage of empty values for the `*_prefix` settings in `blogcfile(5)`
+- Fixed some bugs in the default Atom feed template. This includes a change
+  in the algorithm that generates Atom IDs for every post. Users upgrading
+  to this version may want to set `atom_legacy_entry_id` to `true` in
+  `blogcfile(5)`, to avoid re-sharing posts due to the ID changes.
+- Allow usage of custom Atom feed templates. Users can dump the default
+  template to use as base for customizations, using `blogc-make(1)`
+  `atom_dump` rule.
+- Minor fixes to prevent segfaults.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
