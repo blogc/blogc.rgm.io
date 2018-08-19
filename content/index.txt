@@ -1,7 +1,7 @@
 ----------
 <div class="jumbotron">
   <p class="lead">
-    <code>blogc(1)</code> is a blog compiler. It converts source
+    <code>blogc(1)</code> is a blog compiler. It compiles source
     files and templates into blog/website resources.
   </p>
   <p>
