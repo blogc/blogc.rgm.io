@@ -1,0 +1,18 @@
+TITLE: [ANN] blogc-0.14.1
+DATE: 2019-01-15 22:00:00
+-------------------------
+I just released version `0.14.1` of blogc.
+
+This is a minor release, that includes some minor code improvements and fixes
+a bug in `blogc-make(1)` handling of rule names, that would previously accept
+incomplete rule names, but would run all the rules that matched the prefix
+substring, e.g. `atom` would match `atom`, `atom_tags`, `atom_dump`, and run
+all of them in sequence. Now it will only match the exact rule names. Also,
+`blogc-github-lambda` was removed from `blogc` git repository. It will be
+hosted in a dedicated git repository soon.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
