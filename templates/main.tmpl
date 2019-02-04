@@ -158,7 +158,7 @@
             Website powered by: <strong>blogc {{ BLOGC_VERSION }}</strong>
             {%- ifdef BLOGC_SYSINFO_USERNAME %} |
             Built by {{ BLOGC_SYSINFO_USERNAME }}
-            {%- ifdef BLOGC_SYSINFO_HOSTNAME %}@{{ BLOGC_SYSINFO_HOSTNAME }} {% endif %}
+            {%- ifdef BLOGC_SYSINFO_HOSTNAME %}@{{ BLOGC_SYSINFO_HOSTNAME }} {% ifdef BLOGC_SYSINFO_INSIDE_DOCKER %}(docker){% endif %} {% endif %}
             {%- ifdef BLOGC_RUSAGE_CPU_TIME %}in {{ BLOGC_RUSAGE_CPU_TIME }}
             {%- ifdef BLOGC_SYSINFO_DATETIME %} ({{ BLOGC_SYSINFO_DATETIME }} GMT){% endif %}
             {%- ifdef BLOGC_RUSAGE_MEMORY %}, {% endif %}{% endif %}
