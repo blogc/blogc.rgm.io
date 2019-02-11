@@ -1,0 +1,19 @@
+TITLE: [ANN] blogc-0.15.0
+DATE: 2019-02-11 21:42:00
+-------------------------
+I just released version `0.15.0` of blogc.
+
+This is release includes some predefined internal template variables, to show
+some build metadata in websites. See
+[``blogc-template(7)``](https://blogc.rgm.io/man/blogc-template.7.html)
+for details.
+
+This release also fixes a bug when using whitespace characters like ``\\r``,
+``\\n`` and ``\\t`` in template blocks, conditionals and variables, instead of
+just spaces (``' '``). These characters where not allowed previously.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael

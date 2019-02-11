@@ -1,5 +1,5 @@
 [global]
-LATEST_RELEASE = 0.14.1
+LATEST_RELEASE = 0.15.0
 AUTHOR_NAME = Rafael G. Martins
 AUTHOR_EMAIL = rafael@rafaelmartins.eng.br
 SITE_TITLE = blogc
@@ -53,6 +53,7 @@ blogc-0.13.9
 blogc-0.13.10
 blogc-0.14.0
 blogc-0.14.1
+blogc-0.15.0
 
 [pages]
 index

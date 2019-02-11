@@ -63,6 +63,7 @@
     <a href="#DESCRIPTION">DESCRIPTION</a>
     <a href="#TEMPLATE-BLOCKS">TEMPLATE BLOCKS</a>
     <a href="#TEMPLATE-VARIABLES">TEMPLATE VARIABLES</a>
+    <a href="#PREDEFINED-TEMPLATE-VARIABLES">PREDEFINED TEMPLATE VARIABLES</a>
     <a href="#TEMPLATE-CONDITIONALS">TEMPLATE CONDITIONALS</a>
     <a href="#TEMPLATE-ITERATORS">TEMPLATE ITERATORS</a>
     <a href="#WHITESPACE-CONTROL">WHITESPACE CONTROL</a>
@@ -226,6 +227,51 @@ characters of the <code>DATE_FORMATTED</code> "meta-variable".</p>
 that if <code>FOO_5</code> variable exists, it won't be handled as a truncate
 "meta-variable", and <code>FOO_5</code> variable value will be returned normally.</p>
 
+<h2 id="PREDEFINED-TEMPLATE-VARIABLES">PREDEFINED TEMPLATE VARIABLES</h2>
+
+<p><a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> provides some template variables, that can be used to display some build
+metadata in your website.</p>
+
+<p>If some of the variables are not available in the system running the build, they
+won't be defined. It is recommended to rely on template conditionals, mainly
+<code>ifdef</code> and <code>ifndef</code> when using these variables.</p>
+
+<h3 id="Static-variables">Static variables</h3>
+
+<p>These variables are always available, and are set during the <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> binary
+compilation.</p>
+
+<dl>
+<dt><code>BLOGC_VERSION</code></dt><dd>The version of <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> used to build. e.g.: <code>blogc 0.14.1</code>.</dd>
+</dl>
+
+
+<h3 id="Resource-usage-variables">Resource usage variables</h3>
+
+<p>It is not possible to measure the resource usage of <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> until the end of
+the execution, because the rendering of these variables itself is using resources,
+and the evaluation of the used resources was already done. To get better values,
+it is recommended to use these variables only in the website footer.</p>
+
+<dl>
+<dt><code>BLOGC_RUSAGE_CPU_TIME</code></dt><dd><p>The CPU time used to build, up to the point where this variable was used for
+the first time in the template (value is cached). e.g.: <code>12.345ms</code>.</p></dd>
+<dt><code>BLOGC_RUSAGE_MEMORY</code></dt><dd><p>The memory used to build, up to the point where this variable was used for the
+first time in the template (value is cached). e.g.: <code>1.234MB</code>.</p></dd>
+</dl>
+
+
+<h3 id="System-information-variables">System information variables</h3>
+
+<dl>
+<dt><code>BLOGC_SYSINFO_HOSTNAME</code></dt><dd><p>The hostname of the machine where the build happened (short hostname only, not
+FQDN).</p></dd>
+<dt><code>BLOGC_SYSINFO_USERNAME</code></dt><dd><p>The username of the user that executed the build.</p></dd>
+<dt><code>BLOGC_SYSINFO_DATETIME</code></dt><dd><p>The GMT datetime of the build. e.g. <code>2019-02-10 22:00:00</code>.</p></dd>
+<dt><code>BLOGC_SYSINFO_INSIDE_DOCKER</code></dt><dd><p>If built inside a docker container, this variable will be defined, with value <code>1</code>.</p></dd>
+</dl>
+
+
 <h2 id="TEMPLATE-CONDITIONALS">TEMPLATE CONDITIONALS</h2>
 
 <p>Template conditionals are used to include content to the output, or not,
@@ -362,7 +408,7 @@ tested, may be subject of parsing bugs. Please report any issues to:
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x72;&#x61;&#x66;&#x61;&#x65;&#x6c;&#x40;&#114;&#97;&#102;&#x61;&#x65;&#108;&#x6d;&#97;&#114;&#x74;&#105;&#110;&#x73;&#46;&#101;&#110;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#x72;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#x61;&#x66;&#97;&#101;&#x6c;&#109;&#x61;&#114;&#116;&#x69;&#x6e;&#115;&#46;&#x65;&#x6e;&#x67;&#x2e;&#x62;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#x72;&#x61;&#102;&#97;&#101;&#x6c;&#x40;&#114;&#x61;&#x66;&#97;&#x65;&#108;&#x6d;&#97;&#x72;&#x74;&#x69;&#110;&#115;&#46;&#x65;&#x6e;&#x67;&#x2e;&#98;&#114;" data-bare-link="true">&#x72;&#x61;&#x66;&#x61;&#x65;&#108;&#x40;&#x72;&#x61;&#x66;&#97;&#x65;&#108;&#x6d;&#x61;&#114;&#x74;&#105;&#110;&#115;&#46;&#x65;&#110;&#103;&#x2e;&#x62;&#x72;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -371,7 +417,7 @@ tested, may be subject of parsing bugs. Please report any issues to:
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>March 2018</li>
+    <li class='tc'>February 2019</li>
     <li class='tr'>blogc-template(7)</li>
   </ol>
 
