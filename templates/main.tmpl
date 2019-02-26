@@ -155,15 +155,15 @@
             Project released under a <a href="https://github.com/blogc/blogc/blob/master/LICENSE">BSD 3 clause license</a>.
             <a href="/imprint/" rel="nofollow">Impressum/Imprint</a>
             <br>
-            Website powered by: <strong>blogc {{ BLOGC_VERSION }}</strong>
-            {%- ifdef BLOGC_SYSINFO_USERNAME %} |
-            Built by {{ BLOGC_SYSINFO_USERNAME }}
-            {%- ifdef BLOGC_SYSINFO_HOSTNAME %}@{{ BLOGC_SYSINFO_HOSTNAME }} {% ifdef BLOGC_SYSINFO_INSIDE_DOCKER %}(docker){% endif %} {% endif %}
+            Website powered by: <strong>blogc {{ BLOGC_VERSION }}</strong> |
+            Built {% ifdef BLOGC_SYSINFO_USERNAME %}by {{ BLOGC_SYSINFO_USERNAME }}{% endif %}
+            {%- ifdef BLOGC_SYSINFO_HOSTNAME %}{% ifdef BLOGC_SYSINFO_USERNAME %}@
+            {%- else %}at {% endif %}{{ BLOGC_SYSINFO_HOSTNAME }}
+            {%- ifdef BLOGC_SYSINFO_INSIDE_DOCKER %} (docker){% endif %} {% endif %}
             {%- ifdef BLOGC_RUSAGE_CPU_TIME %}in {{ BLOGC_RUSAGE_CPU_TIME }}
             {%- ifdef BLOGC_SYSINFO_DATETIME %} ({{ BLOGC_SYSINFO_DATETIME }} GMT){% endif %}
             {%- ifdef BLOGC_RUSAGE_MEMORY %}, {% endif %}{% endif %}
             {%- ifdef BLOGC_RUSAGE_MEMORY %}using {{ BLOGC_RUSAGE_MEMORY }}{% endif %}.
-            {%- endif %}
           </p>
         </div>
       </div>
