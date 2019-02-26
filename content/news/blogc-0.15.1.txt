@@ -1,0 +1,20 @@
+TITLE: [ANN] blogc-0.15.1
+DATE: 2019-02-26 21:40:00
+-------------------------
+I just released version `0.15.1` of blogc.
+
+This is a bugfix release, that includes the following changes:
+
+* Backslashes won't escape inline code in source files, to be more compatible
+  with [Markdown spec](https://daringfireball.net/projects/markdown/syntax#code).
+  To escape a back-tick character inside inline code, please enclose the code
+  with double back-ticks.
+* Simplified implementation of `BLOGC_SYSINFO_USERNAME` template variable, to
+  prevent issues with static builds in glibc, due to some functions requiring
+  shared libraries even when built statically.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
