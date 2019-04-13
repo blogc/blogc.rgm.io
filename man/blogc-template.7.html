@@ -173,6 +173,21 @@ that the <code>TITLE</code> variable is defined:</p>
 {% endblock %}
 </code></pre>
 
+<h3 id="listing_entry-block">listing_entry block</h3>
+
+<p>This block is identical to the <code>entry</code> block, but its content is included in
+the output file only when <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> is called with <code>-l</code> and <code>-e</code> <var>SOURCE</var>. The
+variables available in the block are provided by the source file provided
+using <code>-e</code>.</p>
+
+<p>This is how a <code>listing_entry</code> block is defined:</p>
+
+<pre><code>{% block listing_entry %}
+This content will only be included when rendering a listing, but with
+content provided by a single entry.
+{% endblock %}
+</code></pre>
+
 <h2 id="TEMPLATE-VARIABLES">TEMPLATE VARIABLES</h2>
 
 <p>Template variables are used to provide content to templates from <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>
@@ -408,7 +423,7 @@ tested, may be subject of parsing bugs. Please report any issues to:
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#x72;&#x61;&#102;&#97;&#101;&#x6c;&#x40;&#114;&#x61;&#x66;&#97;&#x65;&#108;&#x6d;&#97;&#x72;&#x74;&#x69;&#110;&#115;&#46;&#x65;&#x6e;&#x67;&#x2e;&#98;&#114;" data-bare-link="true">&#x72;&#x61;&#x66;&#x61;&#x65;&#108;&#x40;&#x72;&#x61;&#x66;&#97;&#x65;&#108;&#x6d;&#x61;&#114;&#x74;&#105;&#110;&#115;&#46;&#x65;&#110;&#103;&#x2e;&#x62;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x61;&#x66;&#x61;&#101;&#108;&#64;&#x72;&#97;&#102;&#97;&#101;&#x6c;&#x6d;&#97;&#114;&#116;&#105;&#110;&#x73;&#x2e;&#101;&#x6e;&#103;&#46;&#x62;&#114;" data-bare-link="true">&#114;&#97;&#x66;&#x61;&#101;&#x6c;&#x40;&#x72;&#x61;&#x66;&#x61;&#x65;&#x6c;&#x6d;&#x61;&#114;&#116;&#105;&#110;&#115;&#x2e;&#x65;&#110;&#103;&#46;&#98;&#114;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -417,7 +432,7 @@ tested, may be subject of parsing bugs. Please report any issues to:
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>February 2019</li>
+    <li class='tc'>April 2019</li>
     <li class='tr'>blogc-template(7)</li>
   </ol>
 

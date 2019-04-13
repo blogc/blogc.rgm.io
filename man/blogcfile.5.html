@@ -157,6 +157,11 @@ their order in the <code>[posts]</code> section.</p></li>
 The prefix of the index HTML page, that is the listing of blog posts. This
 option is useful if the user wants to host a page in the root of the website,
 and move the posts listing index to a subdirectory.</p></li>
+<li><p><code>listing_entry</code> (default: unset):
+The page that will be included in the listing pages of the website, without
+the page prefix and without the extension, only the "slug" should be used.
+See <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> and the description of <code>listing_entry</code> block in <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a>
+for details.</p></li>
 <li><p><code>locale</code> (default: unset):
 The locale to be used when calling <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>. E.g. <code>en_US.UTF-8</code>.</p></li>
 <li><p><code>main_template</code> (default: <code>main.tmpl</code>):
@@ -253,7 +258,7 @@ assets/custom.css
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#114;&#97;&#x66;&#x61;&#101;&#x6c;&#64;&#114;&#x61;&#x66;&#x61;&#x65;&#x6c;&#109;&#x61;&#x72;&#x74;&#x69;&#110;&#x73;&#46;&#x65;&#110;&#x67;&#46;&#98;&#x72;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#x6c;&#64;&#114;&#x61;&#102;&#97;&#101;&#x6c;&#x6d;&#x61;&#114;&#116;&#x69;&#110;&#x73;&#46;&#x65;&#x6e;&#103;&#x2e;&#x62;&#114;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#114;&#x61;&#x66;&#97;&#x65;&#x6c;&#x40;&#114;&#97;&#x66;&#97;&#101;&#x6c;&#x6d;&#97;&#x72;&#x74;&#x69;&#110;&#115;&#x2e;&#x65;&#110;&#103;&#x2e;&#x62;&#x72;" data-bare-link="true">&#114;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#97;&#x66;&#97;&#101;&#108;&#109;&#x61;&#114;&#x74;&#105;&#x6e;&#115;&#x2e;&#101;&#110;&#x67;&#x2e;&#x62;&#x72;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -262,7 +267,7 @@ assets/custom.css
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>July 2018</li>
+    <li class='tc'>April 2019</li>
     <li class='tr'>blogcfile(5)</li>
   </ol>
 

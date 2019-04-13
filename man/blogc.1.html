@@ -85,14 +85,15 @@
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
 <p><code>blogc</code> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>] <var>SOURCE</var><br />
-<code>blogc</code> <code>-l</code> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>] [<var>SOURCE</var> ...]<br />
-<code>blogc</code> <code>-l</code> <code>-p</code> <var>KEY</var> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] [<var>SOURCE</var> ...]<br />
+<code>blogc</code> <code>-l</code> [<code>-e</code> <var>SOURCE</var>] [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>] [<var>SOURCE</var> ...]<br />
+<code>blogc</code> <code>-l</code> [<code>-e</code> <var>SOURCE</var>] [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>] [<var>SOURCE</var> ...]<br />
+<code>blogc</code> <code>-l</code> [<code>-e</code> <var>SOURCE</var>] <code>-p</code> <var>KEY</var> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] [<var>SOURCE</var> ...]<br />
 <code>blogc</code> <code>-i</code> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>] &lt; <var>FILE_LIST</var><br />
-<code>blogc</code> <code>-i</code> <code>-l</code> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>] &lt; <var>FILE_LIST</var><br />
-<code>blogc</code> <code>-i</code> <code>-l</code> <code>-p</code> <var>KEY</var> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] &lt; <var>FILE_LIST</var><br />
+<code>blogc</code> <code>-i</code> <code>-l</code> [<code>-e</code> <var>SOURCE</var>] [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>] &lt; <var>FILE_LIST</var><br />
+<code>blogc</code> <code>-i</code> <code>-l</code> [<code>-e</code> <var>SOURCE</var>] <code>-p</code> <var>KEY</var> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] &lt; <var>FILE_LIST</var><br />
 <code>echo</code> <code>-e</code> "<var>SOURCE</var>\n..." | <code>blogc</code> <code>-i</code> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>]<br />
-<code>echo</code> <code>-e</code> "<var>SOURCE</var>\n..." | <code>blogc</code> <code>-i</code> <code>-l</code> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>]<br />
-<code>echo</code> <code>-e</code> "<var>SOURCE</var>\n..." | <code>blogc</code> <code>-i</code> <code>-l</code> <code>-p</code> <var>KEY</var> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...]<br />
+<code>echo</code> <code>-e</code> "<var>SOURCE</var>\n..." | <code>blogc</code> <code>-i</code> <code>-l</code> [<code>-e</code> <var>SOURCE</var>] [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...] <code>-t</code> <var>TEMPLATE</var> [<code>-o</code> <var>OUTPUT</var>]<br />
+<code>echo</code> <code>-e</code> "<var>SOURCE</var>\n..." | <code>blogc</code> <code>-i</code> <code>-l</code> [<code>-e</code> <var>SOURCE</var>] <code>-p</code> <var>KEY</var> [<code>-d</code>] [<code>-D</code> <var>KEY</var>=<var>VALUE</var> ...]<br />
 <code>blogc</code> [<code>-h</code>|<code>-v</code>]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
@@ -108,10 +109,14 @@ designed to be used with <a class="man-ref" href="https://man.cx/make(1)">make<s
 <dt class="flush"><code>entry</code></dt><dd><p>Default mode, first example in <a href="#SYNOPSIS" title="SYNOPSIS" data-bare-link="true">SYNOPSIS</a>. Accepts only one source
 file, and process it as a single entry of the blog/website, like a static
 page or a post.</p></dd>
-<dt class="flush"><code>listing</code></dt><dd><p>Listing mode, second example in <a href="#SYNOPSIS" title="SYNOPSIS" data-bare-link="true">SYNOPSIS</a>, activated when
-calling <code>blogc</code> with <code>-l</code> option. Accepts multiple source files, and allow
-users to iterate over the content of all the source files to produce listing
-pages, like indexes and feeds.</p></dd>
+<dt class="flush"><code>listing</code></dt><dd><p>Listing mode, second example in <a href="#SYNOPSIS" title="SYNOPSIS" data-bare-link="true">SYNOPSIS</a>, activated when calling <code>blogc</code>
+with <code>-l</code> option. Accepts multiple source files, and allow users to iterate
+over the content of all the source files to produce listing pages, like
+indexes and feeds. By providing another source file to <code>blogc</code> with <code>-e</code>
+option, third example in <a href="#SYNOPSIS" title="SYNOPSIS" data-bare-link="true">SYNOPSIS</a>, its content will be available for usage
+during listing, similar to the default entry mode. This is useful for users
+that want to have an index page with content and posts listing together.
+See <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> for details.</p></dd>
 </dl>
 
 
@@ -126,14 +131,18 @@ line while using this option, they will be parsed <strong>before</strong> the fi
 from standard input.</p></dd>
 <dt class="flush"><code>-l</code></dt><dd><p>Activates listing mode, allowing user to provide multiple source files. See
 <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a> for details.</p></dd>
+<dt><code>-e</code> <var>SOURCE</var></dt><dd><p>When used together with <code>-l</code> the source file will be parsed and its content
+will be made available for usage in the templates in listing mode. See
+<a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> for details.</p></dd>
 <dt><code>-D</code> <var>KEY</var>=<var>VALUE</var></dt><dd><p>Set global configuration parameter. <var>KEY</var> must be an ascii uppercase string,
 with only letters, numbers (after the first letter) and underscores (after
 the first letter). These parameters are available anywhere in templates,
 but may be overridden by local configuration parameters set in source files.
 See <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> for details.</p></dd>
-<dt class="flush"><code>-p</code> <var>KEY</var></dt><dd><p>Show the value of a global configuration parameter right after the source
-parsing and exits. This is useful to get parameters for your <code>Makefile</code>,
-like the last page when using pagination, see <a class="man-ref" href="blogc-pagination.7.html">blogc-pagination<span class="s">(7)</span></a> for details.</p></dd>
+<dt class="flush"><code>-p</code> <var>KEY</var></dt><dd><p>Show the value of a variable right after the source parsing and exits. This
+is useful to get parameters for your <code>Makefile</code>, like the last page when
+implementing pagination, see <a class="man-ref" href="blogc-pagination.7.html">blogc-pagination<span class="s">(7)</span></a> for details. This option can
+also dump variables defined in a source file, if called without <code>-l</code>.</p></dd>
 <dt><code>-t</code> <var>TEMPLATE</var></dt><dd><p>Template file. It is a required option, if <code>blogc</code> needs to render something.
 See <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> for details.</p></dd>
 <dt><code>-o</code> <var>OUTPUT</var></dt><dd><p>Output file. If provided this option, save the compiled output to the given
@@ -162,6 +171,11 @@ can be overridden using environment variables. See <a class="man-ref" href="http
 <pre><code>$ blogc -l -t template.tmpl -o index.html source1.txt source2.txt source3.txt
 </code></pre>
 
+<p>Build index from source files, with additional content from <code>index.txt</code>:</p>
+
+<pre><code>$ blogc -l -e index.txt -t template.tmpl -o index.html source1.txt source2.txt source3.txt
+</code></pre>
+
 <p>Build entry page from source file:</p>
 
 <pre><code>$ blogc -t template.tmpl -o entry.html entry.txt
@@ -175,7 +189,7 @@ subject of parsing bugs. Please report any issues to:
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#114;&#97;&#102;&#x61;&#x65;&#108;&#64;&#114;&#x61;&#102;&#x61;&#x65;&#x6c;&#x6d;&#97;&#114;&#x74;&#105;&#x6e;&#115;&#46;&#101;&#x6e;&#x67;&#x2e;&#x62;&#x72;" data-bare-link="true">&#114;&#x61;&#102;&#97;&#x65;&#108;&#x40;&#x72;&#x61;&#x66;&#x61;&#x65;&#x6c;&#x6d;&#97;&#114;&#x74;&#105;&#110;&#x73;&#x2e;&#101;&#x6e;&#103;&#46;&#x62;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#114;&#x61;&#x66;&#97;&#x65;&#x6c;&#x40;&#114;&#97;&#x66;&#97;&#101;&#x6c;&#x6d;&#97;&#x72;&#x74;&#x69;&#110;&#115;&#x2e;&#x65;&#110;&#103;&#x2e;&#x62;&#x72;" data-bare-link="true">&#114;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#97;&#x66;&#97;&#101;&#108;&#109;&#x61;&#114;&#x74;&#105;&#x6e;&#115;&#x2e;&#101;&#110;&#x67;&#x2e;&#x62;&#x72;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -184,7 +198,7 @@ subject of parsing bugs. Please report any issues to:
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>August 2018</li>
+    <li class='tc'>April 2019</li>
     <li class='tr'>blogc(1)</li>
   </ol>
 

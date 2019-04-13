@@ -1,0 +1,25 @@
+TITLE: [ANN] blogc-0.16.1
+DATE: 2019-04-14 22:23:00
+-------------------------
+I just released version `0.16.0` of blogc.
+
+This release includes the following changes:
+
+* Added new template block `listing_entry`, to include the content of a source
+  file on a listing page. This is useful if the user wants to have an index
+  page with posts listing and some content together. See
+  [`blogc(1)`](/man/blogc.1.html) (description of `-e` option) and
+  [`blogc-template(7)`](/man/blogc-template.7.html) for details.
+* Adapted [`blogc-make(1)`](/man/blogc-make.1.html) to support the new
+  `listing_entry` block. See [`blogcfile(5)`](/man/blogcfile.5.html) for
+  details.
+* Changed [`blogc(1)`](/man/blogc.1.html) `-p` option to be able to retrieve
+  values from entries, instead of just listings. Any variables that can be used
+  in templates are available, including `CONTENT`, that contains the HTML
+  generated from the source file.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
