@@ -1,4 +1,4 @@
-TITLE: [ANN] blogc-0.16.1
+TITLE: [ANN] blogc-0.16.0
 DATE: 2019-04-14 22:23:00
 -------------------------
 I just released version `0.16.0` of blogc.
