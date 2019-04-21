@@ -25,6 +25,8 @@ template):
 
     $ blogc-make atom_dump > templates/atom.tmpl
 
+and add `atom_template = atom.tmpl` to `[settings]` in your `blogcfile(5)`.
+
 Please keep in mind that when using the old feed template your atom IDs are
 invalid.
 
