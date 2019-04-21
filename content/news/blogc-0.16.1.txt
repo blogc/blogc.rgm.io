@@ -1,0 +1,35 @@
+TITLE: [ANN] blogc-0.16.1
+DATE: 2019-04-21 19:00:00
+-------------------------
+I just released version `0.16.1` of blogc.
+
+This is a bug fix release for `blogc-make(1)`, with the following changes:
+
+- `blogc-make(1)` was implementing atom feeds wrong for long time. Atom IDs
+  are supposed to be valid URIs. This is a small but breaking change. It is
+  supposed to make some clients think that all of the old posts were
+  republished. The public aggregators using my blogs' feeds do not
+  republished anything, though. 
+- `atom_legacy_entry_id` isn't supported by `blogcfile(5)` anymore. There's
+  no point in officially supporting broken IDs. If you need it, please run
+  the same command provided before.
+
+This release is only relevant for users relying on `blogc-make(1)` *AND*
+using default atom feed templates. Users with custom atom templates may
+also want to make sure that their feeds are valid, though.
+
+Users wanting to make sure that this release won't change their feeds, can
+run the following command before upgrading (it assumes that templates are
+stored in `templates/` and that is using the default internal atom
+template):
+
+    $ blogc-make atom_dump > templates/atom.tmpl
+
+Please keep in mind that when using the old feed template your atom IDs are
+invalid.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
