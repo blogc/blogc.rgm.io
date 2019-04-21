@@ -12,7 +12,6 @@ post_prefix = news
 pagination_prefix = news/page
 index_prefix = news
 posts_per_page = 4
-atom_template = atom.tmpl
 
 [posts]
 hello-world
