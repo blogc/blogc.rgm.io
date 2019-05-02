@@ -1,0 +1,21 @@
+TITLE: [ANN] blogc-0.17.0
+DATE: 2019-05-02 20:40:00
+-------------------------
+I just released version `0.17.0` of blogc.
+
+This release includes the following changes:
+
+* [`blogc(1)`](/man/blogc.1.html) now supports sorting source files by `DATE`
+  variable, by providing the `FILTER_SORT=1` global variable. The source
+  files are sorted in descending order by default, and can be reversed by
+  providing the `FILTER_REVERSE=1` global variable. See
+  [`blogc-pagination(7)`](/man/blogc-pagination.7.html) for details.
+* [`blogc-make(1)`](/man/blogc-make.1.html) got a new setting to support
+  sorting posts: `posts_sort`. See [`blogcfile(5)`](/man/blogcfile.5.html)
+  for details.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael

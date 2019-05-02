@@ -103,9 +103,14 @@ variable, as a space-separated list of tags (tags can't have spaces,
 obviously). See <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a> for details about how to define source
 variables. The pagination filters will only act on the files with the
 provided tag, instead of filtering the whole file set.</p></dd>
-<dt><code>FILTER_REVERSE</code></dt><dd><p>Any string, if defined, <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will list files in reverse order. This
-is always the first filter applied to the files. All the other filters will
-get the files already in the reverse order, and won't care about this.</p></dd>
+<dt><code>FILTER_REVERSE</code></dt><dd><p>Boolean (1/y/yes/true/on), if set, <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will list files in reverse order.
+This filter is combined with <code>FILTER_SORT</code>, and all the other filters will
+get the files already in the reverse order.</p></dd>
+<dt><code>FILTER_SORT</code></dt><dd><p>Boolean (1/y/yes/true/on), if set, <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will sort files using the <code>DATE</code>
+variable provided in the files, instead of respecting the order of the
+source files provided to <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a>. The files are sorted in descending order
+and combined with <code>FILTER_REVERSE</code>, that will result in the files sorted in
+ascending order. All the other filters will get the files already sorted.</p></dd>
 </dl>
 
 
@@ -195,7 +200,7 @@ all of them.</p>
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x72;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#x61;&#x66;&#97;&#x65;&#x6c;&#x6d;&#x61;&#114;&#116;&#x69;&#110;&#115;&#x2e;&#101;&#110;&#103;&#x2e;&#98;&#x72;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#108;&#64;&#114;&#97;&#x66;&#97;&#x65;&#108;&#109;&#x61;&#x72;&#x74;&#105;&#110;&#x73;&#46;&#101;&#x6e;&#x67;&#x2e;&#98;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#114;&#x61;&#102;&#97;&#x65;&#108;&#x40;&#x72;&#97;&#102;&#x61;&#101;&#x6c;&#109;&#97;&#114;&#x74;&#x69;&#110;&#x73;&#46;&#x65;&#x6e;&#x67;&#x2e;&#x62;&#x72;" data-bare-link="true">&#114;&#97;&#102;&#x61;&#x65;&#x6c;&#x40;&#x72;&#x61;&#x66;&#97;&#101;&#x6c;&#109;&#x61;&#114;&#116;&#x69;&#110;&#115;&#46;&#x65;&#x6e;&#103;&#x2e;&#98;&#x72;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -204,7 +209,7 @@ all of them.</p>
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>March 2018</li>
+    <li class='tc'>May 2019</li>
     <li class='tr'>blogc-pagination(7)</li>
   </ol>
 

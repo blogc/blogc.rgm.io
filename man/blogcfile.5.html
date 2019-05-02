@@ -172,6 +172,10 @@ directories, and is relative to <code>content_dir</code> and the output director
 Number of posts per page in the pagination pages. If negative, all the posts
 are included. If <code>0</code>, no post listing pages are generated. Also, if negative or
 <code>0</code>, the <code>pagination</code> build rule is disabled.</p></li>
+<li><p><code>posts_sort</code> (default: <code>false</code>):
+If true, <a class="man-ref" href="blogc.1.html">blogc<span class="s">(1)</span></a> will sort the posts by date, despite the order of the posts
+in the <code>[posts]</code> section, in descending order. This setting is compatible with
+<code>html_order</code> and <code>atom_order</code> settings, to control the order of the posts.</p></li>
 <li><p><code>source_ext</code> (default: <code>.txt</code>):
 The extension of the source files.</p></li>
 <li><p><code>tag_prefix</code> (default: <code>tag</code>):
@@ -253,7 +257,7 @@ assets/custom.css
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#x72;&#x61;&#x66;&#97;&#101;&#108;&#x40;&#114;&#97;&#x66;&#97;&#x65;&#x6c;&#x6d;&#x61;&#114;&#x74;&#x69;&#110;&#115;&#46;&#101;&#x6e;&#x67;&#x2e;&#98;&#x72;" data-bare-link="true">&#x72;&#x61;&#x66;&#97;&#x65;&#x6c;&#x40;&#x72;&#x61;&#x66;&#97;&#x65;&#108;&#x6d;&#x61;&#x72;&#x74;&#x69;&#110;&#x73;&#46;&#x65;&#x6e;&#103;&#46;&#98;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#114;&#x61;&#x66;&#x61;&#101;&#x6c;&#64;&#x72;&#97;&#102;&#x61;&#101;&#x6c;&#109;&#97;&#x72;&#x74;&#105;&#110;&#x73;&#46;&#101;&#110;&#103;&#46;&#x62;&#114;" data-bare-link="true">&#114;&#x61;&#x66;&#x61;&#x65;&#108;&#64;&#114;&#97;&#x66;&#97;&#x65;&#108;&#x6d;&#x61;&#114;&#116;&#x69;&#110;&#x73;&#46;&#101;&#x6e;&#x67;&#46;&#x62;&#114;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -262,7 +266,7 @@ assets/custom.css
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>April 2019</li>
+    <li class='tc'>May 2019</li>
     <li class='tr'>blogcfile(5)</li>
   </ol>
 
