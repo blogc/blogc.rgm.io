@@ -1,0 +1,23 @@
+TITLE: [ANN] blogc-0.18.0
+DATE: 2019-09-10 21:30:00
+-------------------------
+I just released version `0.18.0` of blogc.
+
+This release includes the following changes:
+
+* [`blogc-make(1)](/man/blogc-make.1.html) now includes the `pagination_tags`
+  rule, to build pagination pages for each tag.
+* Fixed a bug in [`blogc(1)`](/man/blogc.1.html) that prevented digits in `-D`
+  command-line arguments.
+* Do not show error message when evaluating variables with
+  [`blogc(1)`](/man/blogc.1.html)'s `-p` command-line argument.
+
+Starting from this release I'm signing the tags in the git repository and the
+tarballs with the following PGP Key:
+[`0xe00c52c92febed9b`](https://keys.gentoo.org/pks/lookup?op=get&search=0xE00C52C92FEBED9B)
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
