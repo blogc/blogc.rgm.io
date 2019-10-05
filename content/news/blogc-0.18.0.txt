@@ -5,7 +5,7 @@ I just released version `0.18.0` of blogc.
 
 This release includes the following changes:
 
-* [`blogc-make(1)](/man/blogc-make.1.html) now includes the `pagination_tags`
+* [`blogc-make(1)`](/man/blogc-make.1.html) now includes the `pagination_tags`
   rule, to build pagination pages for each tag.
 * Fixed a bug in [`blogc(1)`](/man/blogc.1.html) that prevented digits in `-D`
   command-line arguments.
