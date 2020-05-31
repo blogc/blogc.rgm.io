@@ -132,8 +132,11 @@ from standard input.</p></dd>
 <dt class="flush"><code>-l</code></dt><dd><p>Activates listing mode, allowing user to provide multiple source files. See
 <a class="man-ref" href="blogc-source.7.html">blogc-source<span class="s">(7)</span></a> for details.</p></dd>
 <dt><code>-e</code> <var>SOURCE</var></dt><dd><p>When used together with <code>-l</code> the source file will be parsed and its content
-will be made available for usage in the templates in listing mode. See
-<a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> for details.</p></dd>
+will be made available for usage in the templates in listing mode via
+<code>listing_entry</code> blocks. This option can be used more than once, so users can
+have more than one <code>listing_entry</code> block in the same template. Passing an
+empty string will skip the <code>listing_entry</code> block. See <a class="man-ref" href="blogc-template.7.html">blogc-template<span class="s">(7)</span></a> for
+details.</p></dd>
 <dt><code>-D</code> <var>KEY</var>=<var>VALUE</var></dt><dd><p>Set global configuration parameter. <var>KEY</var> must be an ascii uppercase string,
 with only letters, numbers (after the first letter) and underscores (after
 the first letter). These parameters are available anywhere in templates,
@@ -189,7 +192,7 @@ subject of parsing bugs. Please report any issues to:
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Rafael G. Martins &lt;<a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#114;&#x61;&#x66;&#97;&#x65;&#x6c;&#x40;&#114;&#97;&#x66;&#97;&#101;&#x6c;&#x6d;&#97;&#x72;&#x74;&#x69;&#110;&#115;&#x2e;&#x65;&#110;&#103;&#x2e;&#x62;&#x72;" data-bare-link="true">&#114;&#97;&#x66;&#97;&#x65;&#108;&#64;&#x72;&#97;&#x66;&#97;&#101;&#108;&#109;&#x61;&#114;&#x74;&#105;&#x6e;&#115;&#x2e;&#101;&#110;&#x67;&#x2e;&#x62;&#x72;</a>&gt;</p>
+<p>Rafael G. Martins &lt;<a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#x72;&#97;&#x66;&#97;&#x65;&#x6c;&#64;&#x72;&#97;&#102;&#97;&#101;&#x6c;&#109;&#97;&#114;&#x74;&#105;&#x6e;&#x73;&#46;&#101;&#x6e;&#x67;&#x2e;&#x62;&#x72;" data-bare-link="true">&#x72;&#x61;&#102;&#x61;&#x65;&#108;&#64;&#x72;&#97;&#102;&#x61;&#x65;&#108;&#x6d;&#x61;&#114;&#116;&#x69;&#110;&#x73;&#46;&#101;&#110;&#x67;&#46;&#98;&#114;</a>&gt;</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
@@ -198,7 +201,7 @@ subject of parsing bugs. Please report any issues to:
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>Rafael G. Martins</li>
-    <li class='tc'>April 2019</li>
+    <li class='tc'>May 2020</li>
     <li class='tr'>blogc(1)</li>
   </ol>
 

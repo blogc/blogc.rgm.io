@@ -1,0 +1,26 @@
+TITLE: [ANN] blogc-0.19.0
+DATE: 2020-05-31 19:18:00
+-------------------------
+I just released version `0.19.0` of blogc.
+
+This release includes the following changes:
+
+* [`blogc(1)`](/man/blogc.1.html) now accepts multiple `-e` command-line
+  arguments, to allow declaration of multiple `listing_entry` template blocks.
+  See [`blogc-template(7)`](/man/blogc-template.7.html) for details.
+  This is not supported by [`blogc-make(1)`](/man/blogc-make.1.html), it only
+  accepts one file as `listing_entry` setting.
+* [`blogc(1)`](/man/blogc.1.html) now supports a `listing_empty` template
+  block, that is displayed only when the the listing set is empty. See
+  [`blogc-template(7)`](/man/blogc-template.7.html) for details.
+* Fixed a race condition in [`blogc-make(1)`](/man/blogc-make.1.html)'s
+  `runserver` command.
+* Minor adjustments in [`blogc-make(1)`](/man/blogc-make.1.html) atom feed
+  generation.
+* Some other minor bug fixes.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
