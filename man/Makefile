@@ -6,6 +6,7 @@ all: \
 	blogc-runserver.1.html \
 	blogc-source.7.html \
 	blogc-template.7.html \
+	blogc-toctree.7.html \
 	blogc-pagination.7.html \
 	$(NULL)
 

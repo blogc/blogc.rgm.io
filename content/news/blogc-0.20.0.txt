@@ -1,0 +1,20 @@
+TITLE: [ANN] blogc-0.20.0
+DATE: 2020-09-15 21:00:00
+-------------------------
+I just released version `0.20.0` of blogc.
+
+This release includes the following changes:
+
+* [`blogc(1)`](/man/blogc.1.html) now generates a "Table of Contents" tree for
+  each source file. See [`blogc-toctree(7)`](/man/blogc-toctree.7.html) for
+  usage instructions.
+
+Starting from this release I'm signing the tags in the git repository and the
+tarballs with the following PGP Key:
+[`0x47B8CCD75DBE6358`](https://keys.gentoo.org/pks/lookup?op=get&search=0x47B8CCD75DBE6358)
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
