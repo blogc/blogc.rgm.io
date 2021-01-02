@@ -1,0 +1,23 @@
+TITLE: [ANN] blogc-0.20.1
+DATE: 2021-01-02 23:12:00
+-------------------------
+I just released version `0.20.1` of blogc.
+
+This release includes the following minor changes:
+
+* Fixed sorting of posts in [`blogc(1)`](/man/blogc.1.html) when some post's
+  `DATE` was before `Sun Sep 9 01:46:40 AM UTC 2001`.
+* Simplified utf-8 implementation.
+
+Starting from this release we are providing a new [Debian/Ubuntu](/deb-repository/)
+with packages for [`blogc(1)`](/man/blogc.1.html) and the helper tools.
+
+On the other hand, I left the Gentoo development team, and the Gentoo package is
+orphaned right now. If you are a Gentoo user and have some interest maintaining
+it, please adopt.
+
+For download links, project details and a FAQ, please visit
+[[https://blogc.rgm.io]].
+
+Thanks,  
+Rafael
