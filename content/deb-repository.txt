@@ -1,0 +1,37 @@
+TITLE: Debian/Ubuntu repositories
+---------------------------------
+Starting from blogc `0.20.1`, we are providing a Debian/Ubuntu repository,
+for the following distributions:
+
+**Debian**
+
+- `buster`
+- `bullseye`
+- `sid`
+
+**Ubuntu**
+
+- `focal`
+- `groovy`
+
+To install the repository, run the following commands:
+
+    # echo "deb [trusted=yes] https://deb.rgm.io/blogc $(lsb_release -cs) main" \
+           > /etc/apt/sources.list.d/blogc.list
+    # echo "deb-src [trusted=yes] https://deb.rgm.io/blogc $(lsb_release -cs) main" \
+           >> /etc/apt/sources.list.d/blogc.list
+    # apt update
+
+With that, you should be able to install the following packages:
+
+- `blogc`
+- `blogc-git-receiver`
+- `blogc-make`
+- `blogc-runserver`
+
+Please note that the repositories are generated automatically by Github-Actions,
+and are not GPG-signed. This is why we have `[trusted=yes]` set in the repository
+configuration.
+
+If you do not trust these builds, you can easily build your own `deb`s from git,
+using the `debian/` folder shipped there.

@@ -64,6 +64,7 @@ blogc-0.20.0
 
 [pages]
 index
+deb-repository
 
 [copy]
 assets/bootstrap.bundle.min.js
