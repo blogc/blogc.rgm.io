@@ -9,8 +9,9 @@ This release includes the following minor changes:
   `DATE` was before `Sun Sep 9 01:46:40 AM UTC 2001`.
 * Simplified utf-8 implementation.
 
-Starting from this release we are providing a new [Debian/Ubuntu](/deb-repository/)
-with packages for [`blogc(1)`](/man/blogc.1.html) and the helper tools.
+Starting with this release we are providing a new [Debian/Ubuntu repository]
+(/deb-repository/) with packages for [`blogc(1)`](/man/blogc.1.html) and the
+helper tools.
 
 On the other hand, I left the Gentoo development team, and the Gentoo package is
 orphaned right now. If you are a Gentoo user and have some interest maintaining
