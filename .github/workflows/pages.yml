@@ -23,23 +23,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install blogc
-        run: |
-          echo "deb [trusted=yes] https://deb.rgm.io/blogc $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/blogc.list
-          sudo apt-get update -y
-          sudo apt-get install -y blogc-make
-
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Pages
-        uses: actions/configure-pages@v1
+        uses: actions/configure-pages@v5
+
+      - name: Setup blogc
+        uses: blogc/setup-blogc@v1
+        with:
+          blogc-version: HEAD
 
       - name: Build
         run: blogc-make
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./_build
 
@@ -52,5 +51,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
 
